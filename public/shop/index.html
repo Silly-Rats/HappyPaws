@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Zoo shop in Ukraine!</title>
+    <link rel="icon" type="image/x-icon" href="/images/mainicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+</head>
+<body>
+<header>
+    <div class="navAndLogo">
+        <i class="fas fa-bars" id="menuBars"></i>
+        <div class="imgLogo">
+            <img src="images/logo.png">
+            <h1>Zoo Shop</h1>
+        </div>
+    </div>
+    <div class="categoriesHead">
+        <h3>Categories </h3>
+        <i class="fas fa-chevron-down"></i>
+    </div>
+    <div class="userAccount">
+        <i class="fas fa-cart-shopping"></i>
+        <i class="fas fa-user"></i>
+    </div>
+</header>  
+<main>
+    <div class="headCategories">
+        <ul>
+            <li>Dog Food</li>
+            <li>Medicines</li>
+            <li>Hygeine</li>
+            <li>Accesories</li>
+            <li>Toys</li>
+        </ul>
+    </div>
+    <div class="categoriesSideBar">
+        <h1>Dog Food</h1>
+        <div class="priceLimits">
+            <h3>Price</h3>
+            <form action="#">
+                <input type="number" name="fromPrice" placeholder="from">
+                <p>-</p>
+                <input type="number" name="toPrice" placeholder="to">
+                <button type="submit" class="SideBarSub">OK</button>
+            </form>
+        </div>
+        <div class="filterName">
+            <h3>Sort of Dog Food</h3>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="filterSubparagraph">
+            <ul>
+                <li><input type="checkbox" id="dry_food" value="Dry food for dogs"><label for="dry_food">Dry food for dogs</label></li>
+                <li><input type="checkbox" id="canned_food" value="Сanned food for dogs"><label for="canned_food">Сanned food for dogs</label></li>
+                <li><input type="checkbox" id="bones_treats" value="Bones and treats"><label for="bones_treats">Bones and treats</label></li>
+                <li><input type="checkbox" id="milk_substitutes" value="Milk substitutes"><label for="milk_substitutes">Milk substitutes</label></li>
+                <li><input type="checkbox" id="medicinal_fodder" value="Medicinal fodder"><label for="medicinal_fodder">Medicinal fodder</label></li>
+            </ul>
+        </div>
+        
+        <div class="filterName">
+            <h3>Brand</h3>
+            <i class="fas fa-chevron-down"></i>
+        </div>    
+        <div class="filterSubparagraph">
+            <ul>
+                <li><input type="checkbox" id="royal_canin" value="Royal Canin"><label for="royal_canin">Royal Canin</label></li>
+                <li><input type="checkbox" id="first_choice" value="1st Choice"><label for="first_choice">1st Choice</label></li>
+                <li><input type="checkbox" id="acana" value="Acana"><label for="acana">Acana</label></li>
+                <li><input type="checkbox" id="monge" value="Monge"><label for="monge">Monge</label></li>
+                <li><input type="checkbox" id="nutram" value="Nutram"><label for="nutram">Nutram</label></li>
+            </ul>
+        </div>  
+        
+        <div class="filterName">
+            <h3>Country</h3>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="filterSubparagraph">
+            <ul>
+                <li><input type="checkbox" id="usa" value="USA"><label for="usa">USA</label></li>
+                <li><input type="checkbox" id="uk" value="UK"><label for="uk">UK</label></li>
+                <li><input type="checkbox" id="italy" value="Italy"><label for="italy">Italy</label></li>
+                <li><input type="checkbox" id="brazil" value="Brazil"><label for="brazil">Brazil</label></li>
+                <li><input type="checkbox" id="france" value="France"><label for="france">France</label></li>
+            </ul>
+        </div> 
+        
+        <div class="filterName">
+            <h3>Purpose</h3>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="filterSubparagraph">
+            <ul>
+                <li><input type="checkbox" id="daily" value="Daily"><label for="daily">Daily</label></li>
+                <li><input type="checkbox" id="medical" value="Medical"><label for="medical">Medical</label></li>
+                <li><input type="checkbox" id="diet" value="Diet"><label for="diet">Diet</label></li>
+                <li><input type="checkbox" id="vegan" value="Vegan"><label for="vegan">Vegan</label></li>
+                <li><input type="checkbox" id="anti_allergic" value="Anti-Allergic"><label for="anti_allergic">Anti-Allergic</label></li>
+            </ul> 
+        </div>
+              
+        <div class="filterName">
+            <h3>Sort of Dog Food</h3>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </div>
+
+    
+
+    <div class="categoriesAndProducts">
+        <div class="search">
+            <input type="text" placeholder="Search the product, ex  “Dog Food Acana”..." >
+            <button type="submit" class="searchSub"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+        <div class="desctopCategories">
+            <div class="desctopCategory">
+                <i class="fa-solid fa-bone"></i>
+                <h2 class="categoryTitle">Dog Food</h2>
+            </div>
+            <div class="desctopCategory">
+                <i class="fa-solid fa-pills"></i>
+                <h2 class="categoryTitle">Medicines</h2>
+            </div>
+            <div class="desctopCategory">
+                <i class="fa-solid fa-soap"></i>
+                <h2 class="categoryTitle">Hygeine</h2>
+            </div>
+            <div class="desctopCategory">
+                <img src="images/collar.png">
+                <h2 class="categoryTitle">Accesories</h2>
+            </div>
+            <div class="desctopCategory">
+                <img src="images/toys.png">
+                <h2 class="categoryTitle">Toys</h2>
+            </div>
+        </div>
+
+        <div class="products">
+            <div class="product">
+                <div class="productImg">
+                    <img src="images/image 32.png">
+                </div>
+                <div class="productSlider">
+                    <p>...</p>
+                </div>
+                <div class="productDesc">
+                    <h3>Dog beaver</h3>
+                    <h2>2$</h2>
+                    <h4>Learn More...</h4>
+                </div>
+            </div>
+            <div class="product">
+                <div class="productImg">
+                    <img src="images/image 43.png">
+                </div>
+                <div class="productSlider">
+                    <p>...</p>
+                </div>
+                <div class="productDesc">
+                    <h3>Dog beaver</h3>
+                    <h2>2$</h2>
+                    <h4>Learn More...</h4>
+                </div>
+            </div>
+            <div class="product">
+                <div class="productImg">
+                    <img src="images/image 34.png">
+                </div>
+                <div class="productSlider">
+                    <p>...</p>
+                </div>
+                <div class="productDesc">
+                    <h3>Dog beaver</h3>
+                    <h2>2$</h2>
+                    <h4>Learn More...</h4>
+                </div>
+            </div>
+            <div class="product">
+                <div class="productImg">
+                    <img src="images/image 32.png">
+                </div>
+                <div class="productSlider">
+                    <p>...</p>
+                </div>
+                <div class="productDesc">
+                    <h3>Dog beaver</h3>
+                    <h2>2$</h2>
+                    <h4>Learn More...</h4>
+                </div>
+            </div>
+            <div class="product">
+                <div class="productImg">
+                    <img src="images/image 43.png">
+                </div>
+                <div class="productSlider">
+                    <p>...</p>
+                </div>
+                <div class="productDesc">
+                    <h3>Dog beaver</h3>
+                    <h2>2$</h2>
+                    <h4>Learn More...</h4>
+                </div>
+            </div>
+            <div class="product">
+                <div class="productImg">
+                    <img src="images/image 34.png">
+                </div>
+                <div class="productSlider">
+                    <p>...</p>
+                </div>
+                <div class="productDesc">
+                    <h3>Dog beaver</h3>
+                    <h2>2$</h2>
+                    <h4>Learn More...</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="seeMore">
+            <i class="fa-solid fa-spinner"></i>
+            <h2> See more products</h2>
+        </div>
+    </div> 
+    
+    
+</main>
+<footer>
+    <div class="footerInfo">
+        <div class="footerPhones">
+            <p>Phones:</p>
+            <p>+380-68-438-68-68 (Telegram,Viber)</p>
+            <p>(425) 555-12-12</p>
+        </div>
+        <div class="footerScdule">
+            <p>Work schedule:</p>
+            <p>Mon-Fri: 6:30-20:00</p>
+            <p>Sat-Sun: 8:00-17:00</p>
+        </div>
+        <div class="footerContacts">
+            <p>Contact:</p>
+            <p>happy.paws@gmail.com</p>
+            <p><i class="fab fa-instagram"></i> @happy_paws</p>
+            <p>Address: 28 Zelena St., Lviv</p>
+        </div>
+    </div>
+    <div class="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2673.591758200127!2d24.038071583982262!3d49.83236914284526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473add42d4507667%3A0x1e478dea8f41eac6!2z0LLRg9C70LjRhtGPINCX0LXQu9C10L3QsCwgMjgsINCb0YzQstGW0LIsINCb0YzQstGW0LLRgdGM0LrQsCDQvtCx0LvQsNGB0YLRjCwgNzkwMDA!5e0!3m2!1suk!2sua!4v1713189273403!5m2!1suk!2sua" 
+        width="300" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
