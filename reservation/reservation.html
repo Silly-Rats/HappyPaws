@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Reservation</title>
+</head>
+<body>
+    <div class="content">
+        <div class="first">
+            <div class="header">
+                <img src="images/dogsheader.png">
+                <div class="header_line flex_row">
+                    <img src="https://img.icons8.com/material-outlined/192/3C3638/menu--v1.png" alt="menu--v1"/>
+                    <div class="logo flex_row">
+                        <img src="images/logo.png" alt="Happy Paws Logo">
+                        <div>Happy<br>Paws</div>
+                    </div>
+                    <div class="nav flex_row">
+                        <div class="nav-item">Reviews</div>
+                        <div class="nav-item">Shop</div>
+                        <div class="nav-item">
+                            Services
+                            <img src="images/services.png" alt="services">
+                        </div>
+                        <div class="nav-item user">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#3c3638" d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>
+                        </div>
+                    </div>
+                    <div class="user">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#3c3638" d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>
+                    </div>
+                </div>
+            </div>
+            <div class="reservation-form flex_column" >
+                <div class="p">Reservation</div>
+                <form class="form1 flex_column">
+                    <input type="text" id="name" name="name" placeholder="Enter name and surname" required>
+                    <input type="email" id="email" name="email" placeholder="Enter email" required>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter phone" required>
+                    <input type="text" id="dog-name" name="dog-name" placeholder="Enter dog name" required>
+
+                    <select id="dog_breed" name="service" required>
+                        <option value="">Select a breed</option>
+
+                    </select>
+
+                    <select id="dog_size" name="dog_size" required>
+                        <option value="">Select a size</option>
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+
+                    </select>
+
+                    <select id="service" name="service" required>
+                        <option value="">Select a service</option>
+                        <option value="training">Training</option>
+                        <option value="grooming">Grooming</option>
+                        <option value="hotel">Boarding</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+
+        <div class="reservation flex_row">
+            <div class="left-panel ">
+                <h2>Training</h2>
+                <form action="#" class="form2 flex_column" >
+                    <select name="type" id="type">
+                        <option value="">Choose type</option>
+                        <option value="single">Single subscription</option>
+                        <option value="monthly">Monthly subscription</option>
+                    </select>
+                    <select name="type" id="Trainer">
+                        <option value="">Choose trainer</option>
+                    </select>
+
+                    <div class="list-container">
+                        <div class="list-item">1. 6.03 Wednesday 16:00</div>
+                        <div class="list-item">2. 8.03 Friday 18:00</div>
+                        <div class="list-item">3. 12.03 Friday 18:00</div>
+                    </div>
+
+                    <button type="submit"><div class="h">Confirm</div></button>
+                </form>
+            </div>
+            <div class="right-panel flex_column">
+                <div class="calendar-header">
+                    <span class="arrow arrow-left" onclick="prevMonth()"></span>
+                    <span class="month" id="currentMonthLabel"></span>
+                    <span class="arrow arrow-right" onclick="nextMonth()"></span>
+                </div>
+                <div class="calendar-container">
+                    <div class="calendar-body" id="calendarBody">
+
+                    </div>
+                </div>
+                <select name="type">
+                    <option value="">Choose time</option>
+                    <option value="john">John</option>
+                    <option value="emma">Emma</option>
+                    <option value="mike">Mike</option>
+                </select>
+
+                <div class="list-container list-container2">
+                    <div class="list-item">1. 6.03 Wednesday 16:00</div>
+                    <div class="list-item">2. 8.03 Friday 18:00</div>
+                    <div class="list-item">3. 12.03 Friday 18:00</div>
+                </div>
+
+                <button class="button2" type="submit"><div class="h2">Confirm</div></button>
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <script src="reservation.js"></script>
+</body>
+</html>
