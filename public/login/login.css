@@ -1,0 +1,189 @@
+body {
+    margin: 0;
+    font-family: "Work Sans", "Open Sans", sans-serif;
+    font-size: 2vw;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+.content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("./images/paws.png");
+    background-size: cover;
+    background-color: #3C3638;
+}
+
+form{
+    background-color: #ffffff;
+    text-align: center;
+    border-radius: 20px;
+    width: 35vw;
+    padding: 0.5vw 0 3vw 0;
+}
+.title{
+    font-weight: 500;
+}
+button{
+    background-color: #846554;
+    color: #ffffff;
+    font-family: "Work Sans", "Open Sans", sans-serif;
+    font-weight: 350;
+    width: 30vw;
+    height: 3vw;
+    font-size: 1.8vw;
+    border-radius: 8px;
+    border: none;
+    margin: 2vw 0.5vw 0.5vw;
+    cursor: pointer;
+} 
+
+
+button:hover{
+    background-color: #5b4441;
+    color: #ffffff;
+}
+
+.forgotPass{
+    background-color: white;
+    color: #808080;
+    font-size: 1.2vw;
+    height: 2.3vw;
+    width: 30vw;
+    border: 2px solid #808080;
+    margin-top: 1.5vh;
+}
+
+.forgotPass:hover{
+    background-color: white;
+    color: #5f5f5f;
+}
+
+.signUp{
+    font-size: 1vw;
+    font-weight: 300;
+    color: #2E2E2E;
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 0px;
+    margin: 0 0  0 -15vw;
+    height: 2.5vh;
+}
+
+.signUp:hover{
+    color: #6b6b6b;
+    background-color: rgba(255, 255, 255, 0);
+    text-decoration: underline;
+}
+
+input{
+    font-size: 1.4vw;
+    font-weight: 300;
+    border: none;      
+    font-family: "Work Sans", "Open Sans", sans-serif;        
+    border-bottom: 1px solid #6C6C6C; 
+    width: 27vw;
+    padding: 0.6vw 2vw 0.4vw 2vw;
+    outline: none; 
+    margin-bottom: 2%;
+}
+
+.inputs{
+    display: flex; 
+    flex-direction: column;
+}
+
+.flex_row{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.logo{
+    padding: 1vh 0 0 12vw;
+}
+
+.logo>div{
+    font-size: 2vw;
+    line-height: 1.5vw;
+    font-weight: 600;
+    color: #231F20;
+    text-align: left;
+}
+
+.logo>img {
+    width: 7vw;
+    background-size: cover;
+}
+
+.inputImg{
+    position: absolute;
+    width: 2vw;
+    margin-top: 0.3vw;
+    height: auto;
+    opacity: 60%;
+}
+
+#toggle-password{
+    position: absolute;
+    width: 2vw;
+    height: auto;
+    opacity: 60%;
+    cursor: pointer;
+    margin-left: -2vw;
+    margin-top: 1vh;
+}
+
+
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.4); 
+}
+
+.modal-content {
+    background-color: #fefefe;
+    text-align: center;
+    margin: 15% auto; 
+    padding: 20px;
+    width: 35vw; 
+    border-radius: 20px;
+    animation: slideDown 1s ease; 
+  }
+
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 3vw;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-500%); }
+    to { transform: translateY(0); }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(0); }
+    to { transform: translateY(500%); }
+}
+
+.smallInfo{
+    font-size: 1.2vw;
+    margin-top: -3vh;
+    font-weight: 300;
+}
