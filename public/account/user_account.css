@@ -1,0 +1,138 @@
+body{
+    margin: 0;
+    font-family: "Work Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+.content{
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+}
+
+.header>img{
+    position: absolute;
+    z-index: 1;
+    margin: 0.3% 0 0 14vw;
+    width: 18%;
+}
+
+.header_line {
+    position: relative;
+    background-color: #C5C5C5;
+    justify-content: space-between;
+}
+.flex_row{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+.flex_column{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.logo{
+    padding: 0.2vh 0 0.2vh 4vw;
+}
+.logo>div{
+    font-size: 1.7vw;
+    line-height: 1.3vw;
+    font-weight: 600;
+    color: #231F20;
+}
+.logo>img {
+    width: 5vw;
+    background-size: cover;
+    padding: 0.5vw;
+}
+.nav{
+    width: 50vw;
+    justify-content: space-evenly;
+}
+.nav-item {
+    font-size: 1.8vw;
+    font-weight: 400;
+}
+.user{
+    padding: 0 0 0 2vw;
+}
+.nav-item>img{
+    width:  1.5vw;
+}
+
+.user_img {
+    margin: 2.2vw 0 0 4vw;
+    width: 11vw; 
+    height: 11vw; 
+    object-fit: cover; 
+    border-radius: 50%; 
+}
+
+#user_button{
+    width: 4.5vw;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+    animation: fallDown 0.3s ease forwards;
+}
+
+@keyframes fallDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.dropdown-content button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    text-align: left;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.nav-item:hover .dropdown-content {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.menu_button{
+    font-size: 1.2vw;
+    font-weight: 400;
+    font-family: "Work Sans", sans-serif;
+}
+
+.menu_button:hover{
+    background-color: #C5C5C5;
+}
+
+.user_info{
+    font-size: 1.8vw;
+    margin: -12vw 0 0 18vw;
+    font-weight: 250;
+    line-height: 1vw;
+}
+
+.row {
+    display: flex;
+    margin-bottom: -2vw;  
+}
+
+.row p {
+    margin-right: 1vw; 
+    font-weight: 400;
+}
