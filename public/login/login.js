@@ -44,7 +44,7 @@ document.getElementById('toggle-password').addEventListener('click', function() 
 let signupButton = document.getElementById('signUp');
 
 signupButton.addEventListener('click', function() {
-    window.location.href = "signup.html";
+    window.location.href = "../signup/signup.html";
 });
 
 
@@ -67,17 +67,14 @@ function login() {
   fetch('http://localhost:8080/api/auth/authenticate', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({
-        email: "john.doe@example.com",
-        password: "password"
-    })
+    body: JSON.stringify(dataToSend)
 })
   .then(response => response.json())
   .then(data => {
-      console.log('Success:', data);
+      console.log('Success');
+      localStorage.setItem('token', data.token);
   })
   .catch((error) => {
-      console.error('Error:', error);
-      
+      console.error('Error');
   });
 }

@@ -67,7 +67,6 @@ button:hover{
     font-weight: 300;
     color: #2E2E2E;
     background-color: rgba(255, 255, 255, 0);
-    border-radius: 0px;
     margin: 0 0  0 -15vw;
     height: 2.5vh;
 }
@@ -185,5 +184,9 @@ input{
 .smallInfo{
     font-size: 1.2vw;
     margin-top: -3vh;
+    font-weight: 300;
+}
+
+.close{
     font-weight: 300;
 }

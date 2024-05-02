@@ -1,43 +1,62 @@
-document.getElementById('toggle-password').addEventListener('click', function() {
+document.getElementById('toggle-password').addEventListener('click', function () {
     let passwordInput = document.getElementById('password');
     let passwordRepeat = document.getElementById('password2');
     let toggleIcon = document.getElementById('toggle-password');
-    
+
     if (passwordInput.type === 'password') {
         passwordInput.type = 'text';
-        passwordRepeat.type = 'text'; 
+        passwordRepeat.type = 'text';
         toggleIcon.src = 'images/open.png';
-        toggleIcon.alt = 'Hide Password';        
+        toggleIcon.alt = 'Hide Password';
     } else {
         passwordInput.type = 'password';
         passwordRepeat.type = 'password';
-        toggleIcon.src = 'images/close.png'; 
-        toggleIcon.alt = 'Show Password';        
+        toggleIcon.src = 'images/close.png';
+        toggleIcon.alt = 'Show Password';
     }
 });
-
 
 
 let loginButton = document.getElementById('logIn');
 
-loginButton.addEventListener('click', function() {
-    window.location.href = "login.html";
+loginButton.addEventListener('click', function () {
+    window.location.href = "../login/login.html";
 });
 
 
-document.getElementById('birthday').addEventListener('focus', function() {
-    this.type = 'date'; 
+document.getElementById('birthday').addEventListener('focus', function () {
+    this.type = 'date';
+    this.style.color = 'black';
 });
 
-document.getElementById('birthday').addEventListener('blur', function() {
+document.getElementById('birthday').addEventListener('blur', function () {
     if (this.value === '') {
-        this.type = 'text'; 
-        this.placeholder = "Date of birth"; 
+        this.type = 'text';
+        this.placeholder = "Date of birth";
     }
 });
 
-document.getElementById('birthday').addEventListener('input', function() {
-    this.placeholder = ''; 
+document.getElementById('phone').addEventListener('focus', function () {
+    if (this.value === '') {
+        this.value = "+380";
+    }
+});
+
+document.getElementById('phone').addEventListener('input', function () {
+    if (!/^\+380\d*$/.test(this.value)) {
+        this.value = "+380";
+    }
+});
+
+document.getElementById('phone').addEventListener('blur', function () {
+    if (this.value === '+380' || this.value === '') {
+        this.value='';
+        this.placeholder = "Phone number";
+    }
+});
+
+document.getElementById('birthday').addEventListener('input', function () {
+    this.placeholder = '';
 });
 
 
@@ -49,6 +68,7 @@ function createAccount() {
     let email = document.getElementById('email').value;
     let password = document.getElementById('password').value;
     let password2 = document.getElementById('password2').value;
+    const type = 'user';
 
 
     if (name === '' || surname === '' || birthday === '' || phone === '' || email === '' || password === '' || password2 === '') {
@@ -61,29 +81,35 @@ function createAccount() {
         return;
     }
 
-    var dataToSend = {
-        name: name,
-        surname: surname,
-        birthday: birthday,
-        phone: phone,
+    if (phone.length !== 13) {
+        alert("Please enter a valid phone number");
+        phone.focus();
+        return;
+    }
+
+
+    let dataToSend = {
+        firstName: name,
+        lastName: surname,
+        dob: birthday,
+        phoneNum: phone,
         email: email,
-        password: password
+        type: type,
+        password: password,
+        description: null
     };
-    // шо тутт
-    fetch('your_server_endpoint', {
+
+    fetch('http://localhost:8080/api/auth/register', {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
+        headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(dataToSend)
     })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Success:', data);
-        
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        
-    });
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success');
+            localStorage.setItem('token', data.token);
+        })
+        .catch((error) => {
+            console.error('Error: ' + error);
+        });
 }
