@@ -76,5 +76,6 @@ function login() {
   })
   .catch((error) => {
       console.error('Error');
+      alert("Incorrect email or password.");
   });
 }
