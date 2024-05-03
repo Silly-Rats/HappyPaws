@@ -35,7 +35,7 @@ document.getElementById('toggle-password').addEventListener('click', function() 
   span.onclick = closeModal;
 
   window.onclick = function(event) {
-    if (event.target == modal) {
+    if (event.target === modal) {
       closeModal();
     }
 }
@@ -44,7 +44,7 @@ document.getElementById('toggle-password').addEventListener('click', function() 
 let signupButton = document.getElementById('signUp');
 
 signupButton.addEventListener('click', function() {
-    window.location.href = "../signup/signup.html";
+    window.location.href = "http://localhost:8000/signup";
 });
 
 
