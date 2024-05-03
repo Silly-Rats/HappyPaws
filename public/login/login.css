@@ -24,9 +24,11 @@ form{
     width: 35vw;
     padding: 0.5vw 0 3vw 0;
 }
+
 .title{
     font-weight: 500;
 }
+
 button{
     background-color: #846554;
     color: #ffffff;
@@ -40,7 +42,6 @@ button{
     margin: 2vw 0.5vw 0.5vw;
     cursor: pointer;
 } 
-
 
 button:hover{
     background-color: #5b4441;
@@ -66,7 +67,7 @@ button:hover{
     font-size: 1vw;
     font-weight: 300;
     color: #2E2E2E;
-    background-color: rgba(255, 255, 255, 0);
+    background: none;
     margin: 0 0  0 -15vw;
     height: 2.5vh;
 }
@@ -82,7 +83,7 @@ input{
     font-weight: 300;
     border: none;      
     font-family: "Work Sans", "Open Sans", sans-serif;        
-    border-bottom: 1px solid #6C6C6C; 
+    border-bottom: 1px solid #6C6C6C;
     width: 27vw;
     padding: 0.6vw 2vw 0.4vw 2vw;
     outline: none; 
@@ -162,6 +163,7 @@ input{
     color: #aaa;
     float: right;
     font-size: 3vw;
+    font-weight: 300;
 }
 
 .close:hover,
@@ -187,6 +189,303 @@ input{
     font-weight: 300;
 }
 
-.close{
-    font-weight: 300;
+
+@media (max-width: 576px) {
+    body {
+        font-size: 6vw;
+    }
+
+    form{
+        border-radius: 5px;
+        width: 100vw;
+        height: 115vw;
+        padding: 9vw 0 3vw 0;
+    }
+
+    button{
+        width: 90vw;
+        height: 10vw;
+        font-size: 6vw;
+        border-radius: 8px;
+        margin: 5vw 0.5vw 0.5vw;
+    }
+
+    .forgotPass{
+        font-size: 5vw;
+        height: 9vw;
+        width: 90vw;
+        margin-top: 1.5vh;
+    }
+
+    .signUp{
+        font-size: 4vw;
+        margin: 4vw 0  0 0;
+        height: 2.5vh;
+    }
+
+    input{
+        font-size: 6vw;
+        width: 68vw;
+        padding: 0.6vw 10vw 0.4vw 10vw;
+        border-bottom: 1px solid #6C6C6C;
+        margin-bottom: 2%;
+    }
+
+    .logo{
+        padding-left: 24vw;
+    }
+
+    .logo>div{
+        font-size: 9vw;
+        line-height: 7vw;
+    }
+
+    .logo>img {
+        width: 24vw;
+    }
+
+    .inputImg{
+        width: 8vw;
+        margin-top: -0.8vw;
+    }
+
+    #toggle-password{
+        width: 9vw;
+        margin: 0 0 0 -10vw;
+        height: auto;
+    }
+
+    .modal-content {
+        margin: 75vw 0 0 0;
+        padding: 20px;
+        width: 90vw;
+        border-radius: 5px;
+    }
+
+    .close {
+        font-size: 8vw;
+    }
+
+    .smallInfo{
+        font-size: 4vw;
+        margin-top: -3vh;
+    }
+}
+
+@media (max-width: 992px) and (min-width: 577px) {
+    body {
+        font-size: 7vw;
+    }
+
+    form{
+        width: 100vw;
+        height: 110vw;
+        padding: 0.5vw 0 3vw 0;
+    }
+
+    button{
+        width: 90vw;
+        height: 10vw;
+        font-size: 6vw;
+        border-radius: 20px;
+        margin: 5vw 0.5vw 0.5vw;
+    }
+
+    .forgotPass{
+        font-size: 5vw;
+        height: 8vw;
+        width: 90vw;
+        margin-top: 3vw;
+        border: solid 3px;
+    }
+
+    .signUp{
+        font-size: 4vw;
+        margin: 4vw 0  0 0;
+        height: 2.5vh;
+    }
+
+    input{
+        font-size: 6vw;
+        width: 70vw;
+        padding: 0.6vw 10vw 0.4vw 9vw;
+        margin-bottom: 2%;
+        border-bottom: 2px solid #6C6C6C;
+    }
+
+    .logo{
+        padding: 1vh 0 0 24vw;
+    }
+
+    .logo>div{
+        font-size: 9vw;
+        line-height: 7vw;
+    }
+
+    .logo>img {
+        width: 25vw;
+    }
+
+    .inputImg{
+        width: 8vw;
+        margin-top: -0.8vw;
+    }
+
+    #toggle-password{
+        width: 8vw;
+        margin: 0 0 0 -10vw;
+        height: auto;
+    }
+
+    .modal-content {
+        margin: 45vw 0 0 0;
+        padding: 6px 0 8vw 0;
+        width: 100vw;
+        border-radius: 5px;
+    }
+
+    .close {
+        font-size: 8vw;
+        margin-right: 2vw;
+    }
+
+    .smallInfo{
+        font-size: 4vw;
+        margin-top: -3vh;
+    }
+}
+
+@media (max-width: 1200px) and (min-width: 993px){
+    body {
+        font-size: 3vw;
+    }
+
+    .content{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
+        height: 100vh;
+        background-image: url("./images/paws.png");
+        background-size: cover;
+        background-color: #3C3638;
+    }
+
+    form{
+        background-color: #ffffff;
+        text-align: center;
+        border-radius: 20px;
+        width: 50vw;
+        height: 45vw;
+        padding: 0.5vw 0 3vw 0;
+    }
+
+    button{
+        width: 45vw;
+        height: 4vw;
+        font-size: 2.5vw;
+    }
+
+    button:hover{
+        background-color: #5b4441;
+        color: #ffffff;
+    }
+
+    .forgotPass{
+        font-size: 2vw;
+        height: 3.5vw;
+        width: 45vw;
+    }
+
+    .forgotPass:hover{
+        background-color: white;
+        color: #5f5f5f;
+    }
+
+    .signUp{
+        font-size: 1.6vw;
+        margin: 0 0  0 -21vw;
+    }
+
+    .signUp:hover{
+        color: #6b6b6b;
+        background-color: rgba(255, 255, 255, 0);
+        text-decoration: underline;
+    }
+
+    input{
+        font-size: 2.5vw;
+        width: 38vw;
+        padding: 0.6vw 3vw 0.4vw 4vw;
+        outline: none;
+        margin-bottom: 2%;
+    }
+
+    .inputs{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .flex_row{
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+    }
+
+    .logo{
+        padding: 1vw 0 0 14vw;
+    }
+
+    .logo>div{
+        font-size: 4vw;
+        line-height: 3vw;
+    }
+
+    .logo>img {
+        width: 10vw;
+    }
+
+    .inputImg{
+        width: 3.5vw;
+        margin-top: -0.2vw;
+    }
+
+    #toggle-password{
+        width: 3.5vw;
+        margin-left: -3.8vw;
+        margin-top: 1vh;
+    }
+
+    .modal-content {
+        width: 50vw;
+    }
+
+
+    .close {
+        font-size: 4vw;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    @keyframes slideDown {
+        from { transform: translateY(-500%); }
+        to { transform: translateY(0); }
+    }
+
+    @keyframes slideUp {
+        from { transform: translateY(0); }
+        to { transform: translateY(500%); }
+    }
+
+    .smallInfo{
+        font-size: 2vw;
+        margin-top: -3vh;
+        font-weight: 300;
+    }
+
 }
