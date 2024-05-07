@@ -72,26 +72,52 @@ fetchProducts();
 
 // PRODUCTS VISIBILITY ON PAGE
 function render(classObj) {
-    const element = document.createElement('div');
-    element.classList.add('product');
-    element.innerHTML = `
-        <div class="productImg">
-        <div class="slide"><img src="images/image 43.png"></div>
-        <div class="slide"><img src="images/acana2.jpg"></div>
-        <div class="slide"><img src="images/acana3.jpg"></div>
-        </div>
-        <div class="productSlider">
-            <div class="dot" data-pos="0"></div>
-            <div class="dot" data-pos="1"></div>
-            <div class="dot" data-pos="2"></div>
-        </div>
-        <div class="productDesc">
-            <h3>${classObj.name}</h3>
-            <h2>12$</h2>
-            <h4>Learn More...</h4>
-        </div>
-    `;
-    return element; 
+    const div = document.createElement('div');
+    div.classList.add('product');
+
+    let productImg = document.createElement('div');
+    productImg.classList.add('productImg');
+    div.appendChild(productImg);
+
+    let slide = document.createElement('div');
+    slide.classList.add('slide');
+    let img = document.createElement('img');
+    img.src = "images/image 43.png";
+    slide.appendChild(img);
+    // img = document.createElement('img');
+    // img.src = "images/image 32.png";
+    // slide.appendChild(img);
+    // img = document.createElement('img');
+    // img.src = "images/image 34.png";
+    // slide.appendChild(img);
+    div.appendChild(slide);
+
+    let productSlider = document.createElement('div');
+    productSlider.classList.add('productSlider');
+    for (let i = 0; i < 3; i++) {
+        let dot = document.createElement('div');
+        dot.classList.add('dot');
+        dot.data_pos = `${i}`;
+        productSlider.appendChild(dot);
+        dot.addEventListener('click', (e) => {
+            console.log(i);
+        });
+    }
+    div.appendChild(productSlider);
+
+    let productDesc = document.createElement('div');
+    productDesc.classList.add('productDesc');
+    let h3 = document.createElement('h3');
+    h3.innerHTML = classObj.name;
+    productDesc.appendChild(h3);
+    let h2 = document.createElement('h2');
+    h2.innerHTML = '12$';
+    let h4 = document.createElement('h4');
+    h4.innerHTML = 'Learn More';
+    productDesc.appendChild(h4);
+    div.appendChild(productDesc);
+
+    return div;
 }
 
 function showProductsOnPage(){
@@ -140,11 +166,3 @@ fetchFilters();
 let dots = document.querySelectorAll('.dots');
 let imageWrapper = document.querySelector('.productImg');
 let imagesArr = document.querySelectorAll('.slide');
-
-dots.forEach((dot) => {
-    dot.addEventListener('click',() => {
-        let currentPos = parseInt(dots.getAttribute('data-pos'));
-        let newPos = parseInt(dots.getAttribute('data-pos'))
-    })
-
-})
