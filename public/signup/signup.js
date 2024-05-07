@@ -26,7 +26,6 @@ loginButton.addEventListener('click', function () {
 
 document.getElementById('birthday').addEventListener('focus', function () {
     this.type = 'date';
-    this.style.color = 'black';
 });
 
 document.getElementById('birthday').addEventListener('blur', function () {
