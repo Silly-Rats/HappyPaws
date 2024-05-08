@@ -3,8 +3,8 @@
 //SIDENAV FUNCTIONS
 let sideBar = document.querySelector('.categoriesSideBar');
 let screenBars = document.querySelector('#menuBars');
-let filterName = document.querySelectorAll('.filterName');
-let filterSubparagraph = document.querySelectorAll('.filterSubparagraph');
+// let filterName = document.querySelectorAll('.filterName');
+// let filterSubparagraph = document.querySelectorAll('.filterSubparagraph');
 let productsPanel = document.querySelector('.products');
 
 function dropSownHeadMenu (element, list) {
@@ -12,10 +12,6 @@ function dropSownHeadMenu (element, list) {
         list.classList.toggle('show'); 
     });
 }
-
-filterName.forEach((name, index) => {
-    dropSownHeadMenu(name, filterSubparagraph[index]);
-});
 
 dropSownHeadMenu(screenBars, sideBar);
 
@@ -48,7 +44,7 @@ const getResource = async (url) => {
 
 let productList = []; 
 
-async function fetchProducts() {
+async function fetchProducts(url) {
     class Product {
         constructor(id, name, description, price) {
             this.id = id;
@@ -59,7 +55,7 @@ async function fetchProducts() {
     }
 
     try {
-        const data = await getResource('http://localhost:8080/api/item/6/items?start=0&limit=9');
+        const data = await getResource(url);
         data.items.forEach(({id, name, description, price}) => {
             let product = new Product(id, name, description, price);
             productList.push(product);
@@ -70,7 +66,19 @@ async function fetchProducts() {
     }
 }
 
-fetchProducts();
+fetchProducts('http://localhost:8080/api/item/6/items?start=0&limit=9');
+
+
+function showProductsOnPage(){
+    let i = 9;
+    let seeMore = document.querySelector('.seeMore');
+    seeMore.addEventListener('click', () => {
+        fetchProducts(`http://localhost:8080/api/item/6/items?start=${i}&limit=9`);
+        i += 9; 
+    })
+}
+
+showProductsOnPage();
 
 // PRODUCTS VISIBILITY ON PAGE
 function renderProduct(classObj) {
@@ -126,19 +134,6 @@ function renderProduct(classObj) {
     return div;
 }
 
-function showProductsOnPage(){
-    let i = 0;
-    for (; i < 3; i++){
-        productsPanel.appendChild(render(productList[i]));
-    }
-    let seeMore = document.querySelector('.seeMore');
-    seeMore.addEventListener('click', () => {
-        let j = i + 3;
-        for (; i < j; i++){
-            productsPanel.appendChild(render(productList[i]));
-        }
-    })
-}
 
 // DYNAMIC FILTERS FOR PRODUCTS
 let filtersList = [];
@@ -187,26 +182,44 @@ async function getCatName(){
 
 function renderFilter(classObj){
     const div = document.createElement('div');
-    div.classList.add = 'filter';
+    div.className = 'filter';
+    
     let divSubCat = document.createElement('div');
     divSubCat.classList.add('filterName');
     divSubCat.innerHTML = `
         <h3>${classObj.name}</h3>
         <i class="fas fa-chevron-down"></i>
-    `
+    `;
     div.appendChild(divSubCat);
+    
     let filtList = document.createElement('div');
     filtList.classList.add('filterSubparagraph');
     let list = document.createElement('ul');
     filtList.appendChild(list);
+    
     for(let i = 0; i < classObj.values.length; i++){
         let item = document.createElement('li');
-        item.innerHTML = `<input type="checkbox" id="daily" value="Daily"><label for="daily">Daily</label>`;
+        let checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.id = `${classObj.values[i].value}`;
+        checkbox.value = `${classObj.values[i].value}`;
+        
+        let label = document.createElement('label');
+        label.htmlFor = `${classObj.values[i].value}`;
+        label.textContent = `${classObj.values[i].value}`;
+        
+        item.appendChild(checkbox);
+        item.appendChild(label);
+        
         list.appendChild(item);
     }
+
+    dropSownHeadMenu(divSubCat, filtList); // Corrected the function call
+    
+    div.appendChild(filtList);
+    
     return div;
 }
-
 
 
 // let dot = document.createElement('div');
