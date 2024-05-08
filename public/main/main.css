@@ -1,0 +1,261 @@
+body{
+    margin: 0;
+    font-family: "Work Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    overflow-x: hidden;
+}
+.content{
+    width: 100vw;
+    height: 101vh;
+    background-image: url("images/paws.png");
+    background-size: cover;
+}
+
+.header>img{
+    position: absolute;
+    z-index: 1;
+    margin: 0.3% 0 0 14vw;
+    width: 18%;
+}
+
+.header_line {
+    position: relative;
+    background-color: #C5C5C5;
+    justify-content: space-between;
+    top: 4.4vw;
+}
+.flex_row{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+.flex_column{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.logo{
+    padding: 0.2vh 0 0.2vh 4vw;
+}
+.logo>div{
+    font-size: 1.7vw;
+    line-height: 1.3vw;
+    font-weight: 600;
+    color: #231F20;
+}
+.logo>img {
+    width: 5vw;
+    background-size: cover;
+}
+.nav{
+    width: 50vw;
+    justify-content: space-evenly;
+}
+.nav-item {
+    font-size: 1.5vw;
+    font-weight: 450;
+}
+.user{
+    padding: 0 0 0 2vw;
+}
+.nav-item>img{
+    width: 1.2vw;
+}
+.nav-item>svg{
+    width: 2.2vw;
+}
+
+
+
+/*Main*/
+
+.contain {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4vw 9vw 15vw 9vw;
+    background-image: url('images/center_dogs.png');
+    background-size: 88.5vw;
+    background-repeat: no-repeat;
+    background-position: center ;
+
+}
+
+.left-section {
+    flex: 1;
+    padding-right: 2vw;
+    text-align: left;
+}
+
+h1{
+    line-height: 1.5;
+}
+
+.right-section {
+    flex: 1;
+    margin-top:4vw;
+}
+
+
+
+/*Menu*/
+
+.menu {
+    padding: 3.5vw 9.5vw;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3vw;
+    background-color: #c5c5c5;
+}
+
+.service {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.6vw;
+}
+
+.service img {
+    width: 100%;
+    height: 100%;
+    height: auto;
+    transition: transform 0.3s;
+}
+
+.service-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 98.5%;
+    border-radius: 0.6vw;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    font-size: 2.5vw;
+    font-weight: 350;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.service:hover .service-overlay {
+    opacity: 1;
+}
+
+
+
+
+/*Slider*/
+.w4-section{
+    padding: 0vw 0vw;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0vw;
+    margin: 0vw 0vw;
+}
+
+.w1-col{
+    background-color: #3c3638;
+}
+.w2-col{
+    background-color: #846554;
+}
+.w3-col{
+    width: 25vw;
+    background-color: #fff;
+}
+.w4-col{
+    background-color: #808080;
+}
+
+.video {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4.5vw 5vw;
+    background-color: #3c3638;
+    margin: 0vw;
+}
+
+.description {
+    flex: 1;
+    padding-right: 2vw;
+}
+
+h2 {
+    font-size: 1.95vw;
+    font-weight: 300;
+    margin-bottom: 1vw;
+    color: #ffff ;
+    line-height: 1.5;
+    text-align: justify; 
+}
+
+.youtube {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.youtube-video-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+.youtube-video-container::after {
+    display: block;
+    content: "";
+    padding-top: 56.25%; 
+}
+
+.youtube-video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.slide1{
+    top:0vw;
+}
+
+
+
+
+
+/*Footer*/
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2vw 6vw;
+    background-color: #20201f;
+}
+
+.left-section3 {
+    float: left;
+    width: 60%; 
+    padding-right: 1vw;
+}
+
+
+.right-section3 {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.image-and-heading {
+    display: flex;
+    align-items: center;
+}
+
+
+.image-and-heading img {
+    margin-right: 0.5vw; 
+}
