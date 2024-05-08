@@ -50,19 +50,21 @@ let productList = [];
 
 async function fetchProducts() {
     class Product {
-        constructor(id, name, description) {
+        constructor(id, name, description, price) {
             this.id = id;
             this.name = name;
             this.description = description;
+            this.price = price;
         }
     }
 
     try {
         const data = await getResource('http://localhost:8080/api/item/6/items?start=0&limit=9');
-        data.items.forEach(({id, name, description}) => {
-            productList.push(new Product(id, name, description));
+        data.items.forEach(({id, name, description, price}) => {
+            let product = new Product(id, name, description, price);
+            productList.push(product);
+            productsPanel.appendChild(renderProduct(product));
         });
-        showProductsOnPage(); 
     } catch (error) {
         console.error('Error: ', error); 
     }
@@ -71,7 +73,7 @@ async function fetchProducts() {
 fetchProducts();
 
 // PRODUCTS VISIBILITY ON PAGE
-function render(classObj) {
+function renderProduct(classObj) {
     const div = document.createElement('div');
     div.classList.add('product');
 
@@ -98,10 +100,10 @@ function render(classObj) {
         let dot = document.createElement('div');
         dot.classList.add('dot');
         dot.data_pos = `${i}`;
-        productSlider.appendChild(dot);
-        dot.addEventListener('click', (e) => {
+        dot.addEventListener('dragover', (e) => {
             console.log(i);
         });
+        productSlider.appendChild(dot);
     }
     div.appendChild(productSlider);
 
@@ -112,6 +114,10 @@ function render(classObj) {
     productDesc.appendChild(h3);
     let h2 = document.createElement('h2');
     h2.innerHTML = '12$';
+    let price = document.createElement('h2');
+    price.innerHTML = `${classObj.price}$`;
+    price.classList.add('productPrice');
+    productDesc.appendChild(price);
     let h4 = document.createElement('h4');
     h4.innerHTML = 'Learn More';
     productDesc.appendChild(h4);
@@ -138,19 +144,23 @@ function showProductsOnPage(){
 let filtersList = [];
 async function fetchFilters() {
     class Filter {
-        constructor(id, name, value) {
+        constructor(id, name, values) {
             this.id = id;
             this.name = name;
-            this.value = value;
+            this.values = values;
         }
     }
 
     try {
         const data = await getResource('http://localhost:8080/api/category/6/attr');
-        data.forEach(({id, name, value}) => {
-            filtersList.push(new Filter(id, name, value));
+        data.forEach(({id, name, values}) => {
+            let filterItem = new Filter(id, name, values);
+            filtersList.push(filterItem);
+            console.log(filterItem);
+            sideBar.appendChild(renderFilter(filterItem));
         });
-        console.log(Filter);
+        
+        
     }
      catch (error) {
         console.error('Error: ', error); 
@@ -161,8 +171,41 @@ async function fetchFilters() {
 
 fetchFilters();
 
+async function getCatName(){
+    let catName;
+    try {
+        catName = await getResource('http://localhost:8080/api/category/6/info');
+        console.log(catName.name);
+        document.querySelector('#categoryName').innerHTML = catName.name;
+        
+    }
+     catch (error) {
+        console.error('Error: ', error); 
+    } 
+}
+
+function renderFilter(classObj){
+    getCatName();
+    const div = document.createElement('div');
+    div.classList.add = 'filter';
+    let divSubCat = document.createElement('div');
+    let h3 = document.createElement('h3');
+    h3.innerHTML = `${classObj.name}`;
+    divSubCat.appendChild(h3);
+
+
+    return div;
+}
+
+renderFilter();
+
+let dot = document.createElement('div');
+dot.classList.add('dot');
+dot.data_pos = `1`;
+dot.addEventListener('dragover', (e) => {
+    console.log(1);
+});
 
 // SLIDER
-let dots = document.querySelectorAll('.dots');
 let imageWrapper = document.querySelector('.productImg');
 let imagesArr = document.querySelectorAll('.slide');

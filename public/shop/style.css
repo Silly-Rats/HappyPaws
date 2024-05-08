@@ -319,14 +319,16 @@ input[type='number']{
     height: 25vh;
 }
 
-.product h2 {
+.productPrice {
     text-align: center;
     color: var(--secondary-text-color);
     font-weight: 300;
+    font-family: "Public Sans", sans-serif;
 }
 
 .product h3 {
     font-weight: 200;
+    font-family: "Public Sans", sans-serif;
 }
 
 .product h4 {
@@ -349,6 +351,10 @@ input[type='number']{
     margin-left: 5vw;
     color:var(--main-text-color);
 }
+
+/* .productDesc{
+    background-color:midnightblue;
+} */
 
 .seeMore h2 {
     font-weight: 400;
