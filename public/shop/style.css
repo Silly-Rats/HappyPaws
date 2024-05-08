@@ -117,7 +117,7 @@ header {
 }
 
 .headCategories {
-    position:absolute;
+    position:fixed;
     top: 11.3%;
     left: 25%;
     width: 55vw;
@@ -126,6 +126,7 @@ header {
     font-size: larger;
     border-radius: 10%;
     display: none;
+    z-index: 120;
 }
 
 .headCategories ul {
@@ -311,20 +312,23 @@ input[type='number']{
     flex-direction: column;
     align-items:center;
     z-index: -100;
+    text-align: center;
 }
 
 .product img {
     height: 25vh;
 }
 
-.product h2 {
+.productPrice {
     text-align: center;
     color: var(--secondary-text-color);
     font-weight: 300;
+    font-family: "Public Sans", sans-serif;
 }
 
 .product h3 {
     font-weight: 200;
+    font-family: "Public Sans", sans-serif;
 }
 
 .product h4 {
@@ -348,6 +352,10 @@ input[type='number']{
     color:var(--main-text-color);
 }
 
+/* .productDesc{
+    background-color:midnightblue;
+} */
+
 .seeMore h2 {
     font-weight: 400;
     margin-left: 1vw;
@@ -355,6 +363,19 @@ input[type='number']{
 
 .seeMore i {
     font-size: x-large;
+}
+
+.productSlider{
+    display: flex;
+    justify-content: space-between;
+    width: 20%;
+    margin-bottom: 5%;
+}
+
+.dot {
+    height: 1.5vw;
+    width: 1.5vw;
+    background-color:dimgrey;
 }
 
 /* MEDIA QUERIES */
@@ -401,8 +422,21 @@ input[type='number']{
         width: 30vw;
     }
 
+    .dot {
+        height: 2vh;
+        width: 2vh;
+        background-color:dimgrey;
+    }
+
 } 
 @media (min-width: 768px) { 
+
+    .dot {
+        height: 1vw;
+        width: 1vw;
+        background-color:lightgray;
+    }
+
     #menuBars {
         display: block;
     }
@@ -488,6 +522,12 @@ input[type='number']{
 @media (min-width: 992px) { 
     #menuBars {
         display: none;
+    }
+
+    .dot {
+        height: 0.5vw;
+        width: 0.5vw;
+        background-color:dimgrey;
     }
 
     .desctopCategories{
@@ -601,6 +641,12 @@ input[type='number']{
 
 } 
 @media (min-width: 1200px) {
+
+    .dot {
+        height: 0.5vw;
+        width: 0.5vw;
+        background-color:dimgrey;
+    }
 
     .imgLogo h1 {
         display: block;
