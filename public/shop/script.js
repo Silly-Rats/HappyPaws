@@ -143,6 +143,7 @@ function showProductsOnPage(){
 // DYNAMIC FILTERS FOR PRODUCTS
 let filtersList = [];
 async function fetchFilters() {
+    getCatName();
     class Filter {
         constructor(id, name, values) {
             this.id = id;
@@ -185,27 +186,36 @@ async function getCatName(){
 }
 
 function renderFilter(classObj){
-    getCatName();
     const div = document.createElement('div');
     div.classList.add = 'filter';
     let divSubCat = document.createElement('div');
-    let h3 = document.createElement('h3');
-    h3.innerHTML = `${classObj.name}`;
-    divSubCat.appendChild(h3);
-
-
+    divSubCat.classList.add('filterName');
+    divSubCat.innerHTML = `
+        <h3>${classObj.name}</h3>
+        <i class="fas fa-chevron-down"></i>
+    `
+    div.appendChild(divSubCat);
+    let filtList = document.createElement('div');
+    filtList.classList.add('filterSubparagraph');
+    let list = document.createElement('ul');
+    filtList.appendChild(list);
+    for(let i = 0; i < classObj.values.length; i++){
+        let item = document.createElement('li');
+        item.innerHTML = `<input type="checkbox" id="daily" value="Daily"><label for="daily">Daily</label>`;
+        list.appendChild(item);
+    }
     return div;
 }
 
-renderFilter();
 
-let dot = document.createElement('div');
-dot.classList.add('dot');
-dot.data_pos = `1`;
-dot.addEventListener('dragover', (e) => {
-    console.log(1);
-});
+
+// let dot = document.createElement('div');
+// dot.classList.add('dot');
+// dot.data_pos = `1`;
+// dot.addEventListener('dragover', (e) => {
+//     console.log(1);
+// });
 
 // SLIDER
-let imageWrapper = document.querySelector('.productImg');
-let imagesArr = document.querySelectorAll('.slide');
+// let imageWrapper = document.querySelector('.productImg');
+// let imagesArr = document.querySelectorAll('.slide');
