@@ -8,12 +8,10 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap"
-          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap"
-          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 </head>
 <body>
@@ -33,9 +31,17 @@
         <i class="fas fa-cart-shopping"></i>
         <i class="fas fa-user"></i>
     </div>
-</header>
+</header>  
 <main>
-    <div class="headCategories"></div>
+    <div class="headCategories">
+        <ul>
+            <li>Dog Food</li>
+            <li>Medicines</li>
+            <li>Hygeine</li>
+            <li>Accesories</li>
+            <li>Toys</li>
+        </ul>
+    </div>
     <div class="categoriesSideBar">
         <h1 id="categoryName"></h1>
         <div class="priceLimits">
@@ -46,33 +52,26 @@
                 <input type="number" id="toPrice" placeholder="to">
             </form>
         </div>
-        <button class="searchButton applyFilters">Search</button>
+        <div>
+            <button class="applyFilters">Search</button>
+        </div>
     </div>
 
     <div class="categoriesAndProducts">
         <div class="search">
-            <input type="text" id="search" placeholder="Search the product, ex  “Dog Food Acana”...">
+            <input type="text" id="search" placeholder="Search the product, ex  “Dog Food Acana”..." >
             <button type="submit" class="searchSub applyFilters"><i class="fa-solid fa-magnifying-glass"></i></button>
-        </div>
-        <div class="sort">
-            <label for="sortBy">Sort by: </label>
-            <select id="sortBy">
-                <option value="date">New</option>
-                <option value="price">Price</option>
-                <option value="name">Name</option>
-            </select>
-            <i id="asc" class="fa-solid fa-lg fa-arrow-up-long"></i>
         </div>
 
         <div class="products"></div>
 
         <div class="seeMore">
-            <i class="fa-solid fa-spinner fa-pulse"></i>
+            <i class="fa-solid fa-spinner"></i>
             <h2> See more products</h2>
         </div>
-    </div>
-
-
+    </div> 
+    
+    
 </main>
 <footer>
     <div class="footerInfo">
@@ -94,9 +93,8 @@
         </div>
     </div>
     <div class="map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2673.591758200127!2d24.038071583982262!3d49.83236914284526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473add42d4507667%3A0x1e478dea8f41eac6!2z0LLRg9C70LjRhtGPINCX0LXQu9C10L3QsCwgMjgsINCb0YzQstGW0LIsINCb0YzQstGW0LLRgdGM0LrQsCDQvtCx0LvQsNGB0YLRjCwgNzkwMDA!5e0!3m2!1suk!2sua!4v1713189273403!5m2!1suk!2sua"
-                width="300" height="300" style="border:0;" allowfullscreen="" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2673.591758200127!2d24.038071583982262!3d49.83236914284526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473add42d4507667%3A0x1e478dea8f41eac6!2z0LLRg9C70LjRhtGPINCX0LXQu9C10L3QsCwgMjgsINCb0YzQstGW0LIsINCb0YzQstGW0LLRgdGM0LrQsCDQvtCx0LvQsNGB0YLRjCwgNzkwMDA!5e0!3m2!1suk!2sua!4v1713189273403!5m2!1suk!2sua" 
+        width="300" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 </footer>
 <script src="script.js"></script>
