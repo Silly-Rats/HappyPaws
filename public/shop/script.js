@@ -3,8 +3,6 @@
 //SIDENAV FUNCTIONS
 let sideBar = document.querySelector('.categoriesSideBar');
 let screenBars = document.querySelector('#menuBars');
-// let filterName = document.querySelectorAll('.filterName');
-// let filterSubparagraph = document.querySelectorAll('.filterSubparagraph');
 let productsPanel = document.querySelector('.products');
 
 function dropSownHeadMenu (element, list) {
@@ -94,26 +92,21 @@ function renderProduct(classObj) {
     let img = document.createElement('img');
     img.src = "images/image 43.png";
     slide.appendChild(img);
-    // img = document.createElement('img');
-    // img.src = "images/image 32.png";
-    // slide.appendChild(img);
-    // img = document.createElement('img');
-    // img.src = "images/image 34.png";
-    // slide.appendChild(img);
+    img = document.createElement('img');
+    img.src = "images/image 32.png";
+    slide.appendChild(img);
+    img = document.createElement('img');
+    img.src = "images/image 34.png";
+    slide.appendChild(img);
     div.appendChild(slide);
 
-    let productSlider = document.createElement('div');
-    productSlider.classList.add('productSlider');
-    for (let i = 0; i < 3; i++) {
-        let dot = document.createElement('div');
-        dot.classList.add('dot');
-        dot.data_pos = `${i}`;
-        dot.addEventListener('dragover', (e) => {
-            console.log(i);
-        });
-        productSlider.appendChild(dot);
-    }
-    div.appendChild(productSlider);
+    let arrows = document.createElement('div');
+    arrows.classList.add('arrows');
+    arrows.innerHTML = `
+        <i class="fa-solid fa-arrow-left arrowLeft"></i>
+        <i class="fa-solid fa-arrow-right arrowRight"></i>
+    `;
+    div.appendChild(arrows);
 
     let productDesc = document.createElement('div');
     productDesc.classList.add('productDesc');
@@ -152,7 +145,6 @@ async function fetchFilters() {
         data.forEach(({id, name, values}) => {
             let filterItem = new Filter(id, name, values);
             filtersList.push(filterItem);
-            console.log(filterItem);
             sideBar.appendChild(renderFilter(filterItem));
         });
         
@@ -171,7 +163,6 @@ async function getCatName(){
     let catName;
     try {
         catName = await getResource('http://localhost:8080/api/category/6/info');
-        console.log(catName.name);
         document.querySelector('#categoryName').innerHTML = catName.name;
         
     }
@@ -214,7 +205,7 @@ function renderFilter(classObj){
         list.appendChild(item);
     }
 
-    dropSownHeadMenu(divSubCat, filtList); // Corrected the function call
+    dropSownHeadMenu(divSubCat, filtList); 
     
     div.appendChild(filtList);
     
@@ -222,13 +213,15 @@ function renderFilter(classObj){
 }
 
 
-// let dot = document.createElement('div');
-// dot.classList.add('dot');
-// dot.data_pos = `1`;
-// dot.addEventListener('dragover', (e) => {
-//     console.log(1);
-// });
+
 
 // SLIDER
-// let imageWrapper = document.querySelector('.productImg');
-// let imagesArr = document.querySelectorAll('.slide');
+function slider(wrapper, images){
+    let arrowLeft = document.querySelectorAll('.arrowLeft');
+    let arrowRight = document.querySelectorAll('.arrowRight');
+    arrowLeft.forEach((arrow) => {
+        arrow.addEventListener('click', () => {
+            console.log('hui');
+        })
+    })
+}
