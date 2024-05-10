@@ -336,9 +336,21 @@ footer p {
     font-family: "Exo 2", sans-serif;
     text-align: center;
 }
+/* 
+.fa-trash {
+    position: relative;
+    right: -105%;
+    bottom: -20%;
+    font-size: x-large;
+} */
 
-
-
+.bin {
+    /* background-color: darkmagenta; */
+    margin-top: 5%;
+    font-size: xx-large;
+    text-align: right;
+    width: 140%;
+}
 
 
 
@@ -411,6 +423,14 @@ footer p {
 
     .totalPriceInfo div {
         margin-top: 10%;
+    }
+
+    .bin {
+        /* background-color: darkmagenta; */
+        margin-top: 5%;
+        font-size: xxx-large;
+        text-align: right;
+        width: 190%;
     }
 
 } 
@@ -526,7 +546,13 @@ footer p {
         text-align: center;
     }
 
-    
+    .bin {
+        /* background-color: darkmagenta; */
+        margin-top: 4%;
+        font-size: x-large;
+        text-align: right;
+        width: 120%;
+    }
 
     .userCart h1 {
         margin-bottom: 5%;
@@ -648,6 +674,14 @@ footer p {
 } 
 @media (min-width: 1200px) {
 
+    .bin {
+        /* background-color: darkmagenta; */
+        /* margin-top: 5%; */
+        font-size: x-large;
+        text-align: right;
+        width: 110%;
+    }
+
     .imgLogo h1 {
         display: block;
         font-size: 1.7rem;
@@ -753,7 +787,7 @@ footer p {
     .cartProduct {
         width: 20%;
         height: 80%;
-        padding: 3%;
+        padding: 3% 3% 2% 3%;
     }
 }
 
