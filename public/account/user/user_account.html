@@ -10,18 +10,39 @@
 
     <body>
         <div class="content">
-            <img src="images/test.png" class="user_img">
-            <div class="user_info">
-                <div class="row">
-                    <p>Name</p>
-                    <p>Surname</p>
+            <div class="header">
+                <div class="header_line flex_row">
+                    <img src="https://img.icons8.com/material-outlined/192/3C3638/menu--v1.png" alt="menu--v1"/>
+                    <div class="logo flex_row">
+                        <img src="images/logo.png" alt="Happy Paws Logo">
+                        <div>Happy<br>Paws</div>
+                    </div>
+                    <div class="nav flex_row">
+                        <div class="nav-item">Reviews</div>
+                        <div class="nav-item">Shop</div>
+                        <div class="nav-item">
+                            Services
+                            <img src="images/services.png" alt="services">
+                        </div>
+                        <div class="nav-item user">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#3c3638" d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>
+                        </div>
+                    </div>
+                    <div class="user">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#3c3638" d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>
+                    </div>
                 </div>
-                <p>02.05.2005</p>
-                <p>+380991234567</p>
-                <p>your_email@gmail.com</p>
-                <div class="row">
-                    <button>Edit</button>
-                    <button class="delete_button">Delete</button>
+            </div>
+            <div class="user_box">
+                <img src="../images/test1.png" class="user_photo">
+                <div class="user_info">
+                    <div>
+                        <input type="text" value="John" class="name_input" alt="name" readonly>
+                        <input type="text" value="Doe" class="name_input" alt="surname" readonly>
+                    </div>
+                    <input type="date" value="2024-05-07" readonly>
+                    <input type="text" value="+380991234567" readonly maxlength="13">
+                    <input type="email" value="your_email@gmail.com" readonly>
                 </div>
             </div>
         </div>

@@ -1,13 +1,12 @@
-document.addEventListener("DOMContentLoaded", function() {
-    window.addEventListener('click', function(event) {
-        if (!event.target.matches('.services-dropdown')) {
-            var dropdowns = document.getElementsByClassName("dropdown-content");
-            for (var i = 0; i < dropdowns.length; i++) {
-                var dropdown = dropdowns[i];
-                if (dropdown.classList.contains('show')) {
-                    dropdown.classList.remove('show');
-                }
-            }
+let inputs = document.querySelectorAll('.name_input');
+if (inputs.length > 0) {
+    inputs.forEach(function(input) {
+        let altText = input.getAttribute('alt');
+
+        if (altText === 'name') {
+            input.value = 'John';
+        } else if (altText === 'surname') {
+            input.value = 'Doe';
         }
     });
-});
+}
