@@ -1,6 +1,7 @@
 'use strict';
 
-const category = 7;
+const pathName =window.location.pathname.split('/');
+const category = pathName[pathName.length - 1];
 
 //SIDENAV FUNCTIONS
 let sideBar = document.querySelector('.categoriesSideBar');
@@ -9,44 +10,17 @@ let productsPanel = document.querySelector('.products');
 
 function dropDownSideMenu(element, list) {
     element.addEventListener('click', () => {
-        list.classList.toggle('show');
-    });
-}
-
-dropDownSideMenu(screenBars, sideBar);
-
-//DROP DOWN MENU
-let categoriesHead = document.querySelector('.categoriesHead');
-let headCategories = document.querySelector('.headCategories');
-
-function dropDownHeadMenu(element, list) {
-    let hide = true;
-
-    element.addEventListener('mouseover', () => {
-        list.style.display = 'flex';
-    });
-    element.addEventListener('mouseleave', () => {
-        setTimeout(() => {
-            if (hide) {
-                list.style.display = 'none';
-            }
-        }, 300);
-    });
-
-    list.addEventListener('mouseover', (e) => {
-        e.stopPropagation();
-        hide = false;
-    });
-    list.addEventListener('mouseout', (e) => {
-        e.stopPropagation();
-        if (!e.relatedTarget.classList.contains('category')) {
-            hide = true;
+        if (list.style.display === 'none') {
+            list.style.display = 'block';
+            list.style.opacity = '1';
+        } else {
             list.style.display = 'none';
+            list.style.opacity = '0';
         }
     });
 }
 
-dropDownHeadMenu(categoriesHead, headCategories);
+dropDownSideMenu(screenBars, sideBar);
 
 //GETTING PRODUCT INFO FROM SERVER
 const getResource = async (url) => {
