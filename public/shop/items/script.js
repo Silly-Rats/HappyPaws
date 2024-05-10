@@ -33,24 +33,6 @@ const getResource = async (url) => {
     return await res.json();
 };
 
-async function fetchCategories() {
-    let data = await getResource('http://localhost:8080/api/category/info');
-
-    data.forEach(({id, name}) => {
-        let h4 = document.createElement('h4');
-        h4.innerText = name;
-        h4.classList.add('category');
-        h4.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            window.location.href = `http://localhost:8000/category/${id}`;
-        });
-        headCategories.appendChild(h4);
-    })
-}
-
-fetchCategories();
-
 const limit = 9;
 let start = 0;
 
