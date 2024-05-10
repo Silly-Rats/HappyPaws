@@ -84,7 +84,7 @@ header {
 .categoriesHead {
     display: flex;
     align-items: center;
-    width: 11vw;
+    width: fit-content;
     justify-content: space-around;
 }
 
@@ -119,15 +119,16 @@ header {
 }
 
 .headCategories {
-    position: fixed;
-    top: 11.3vh;
-    left: 25vw;
-    width: 55vw;
+    position: absolute;
+    top: 11vh;
+    right: 50vw;
+    width: fit-content;
     height: fit-content;
     background-color: var(--secondary-bg-color);
-    padding-top: 3vh;
-    border-radius: 10%;
-    display: none;
+    padding: 3vh 2vw 0 2vw;
+    border-radius: 5vh;
+    display: flex;
+    flex-direction: column;
     z-index: 120;
 }
 
@@ -136,8 +137,9 @@ header {
     font-size: x-large;
     font-weight: 500;
     text-align: center;
-    padding: 0 2vw 3vh 2vw;
-    width: 10vw;
+    align-self: center;
+    padding-bottom: 3vh;
+    width: inherit;
 }
 
 /* FOOTER */
@@ -322,7 +324,6 @@ button:hover {
 }
 
 /* PRODUCTS */
-
 .products {
     display: flex;
     flex-wrap: wrap;
@@ -410,6 +411,7 @@ button:hover {
     }
 
     .userAccount {
+        padding: 0 2vw;
         width: 10vw;
         display: flex;
         justify-content: space-between;
@@ -422,15 +424,6 @@ button:hover {
 
     .categoriesSideBar {
         position: fixed;
-    }
-
-    .headCategories {
-        width: 35vw;
-        left: 30vw;
-    }
-
-    .headCategories li {
-        width: 30vw;
     }
 }
 
@@ -482,15 +475,6 @@ button:hover {
         width: 75vw;
         font-size: large;
     }
-
-    .headCategories {
-        width: 35vw;
-        left: 35vw;
-    }
-
-    .headCategories li {
-        width: 30vw;
-    }
 }
 
 @media (min-width: 992px) {
@@ -508,20 +492,6 @@ button:hover {
         align-items: center;
         justify-content: center;
         z-index: 100;
-    }
-
-    .categoriesHead {
-        margin-left: 0;
-    }
-
-    .headCategories {
-        width: 20vw;
-        left: 45vw;
-    }
-
-    .headCategories li {
-        width: 15vw;
-        height: 1vh;
     }
 
     .categoriesHead h3 {
@@ -585,6 +555,10 @@ button:hover {
     .sort {
         margin-left: 50%;
     }
+
+    .headCategories {
+        right: 45vw;
+    }
 }
 
 @media (min-width: 1200px) {
@@ -605,16 +579,6 @@ button:hover {
 
     .categoriesHead h3 {
         font-size: 1.7rem;
-    }
-
-    .headCategories {
-        width: 15vw;
-        left: 70vw;
-    }
-
-    .headCategories li {
-        width: 10vw;
-        height: 0.1vh;
     }
 
     .categoriesHead {
@@ -682,5 +646,9 @@ button:hover {
 
     .search {
         margin-bottom: 3vh;
+    }
+
+    .headCategories {
+        right: 22vw;
     }
 }

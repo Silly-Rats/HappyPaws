@@ -23,14 +23,14 @@ function dropDownHeadMenu(element, list) {
     let hide = true;
 
     element.addEventListener('mouseover', () => {
-        list.style.display = 'block';
+        list.style.display = 'flex';
     });
     element.addEventListener('mouseleave', () => {
         setTimeout(() => {
             if (hide) {
-                // list.style.display = 'none'
+                list.style.display = 'none';
             }
-        }, 1000);
+        }, 300);
     });
 
     list.addEventListener('mouseover', (e) => {
@@ -39,7 +39,10 @@ function dropDownHeadMenu(element, list) {
     });
     list.addEventListener('mouseout', (e) => {
         e.stopPropagation();
-        hide = true;
+        if (!e.relatedTarget.classList.contains('category')) {
+            hide = true;
+            list.style.display = 'none';
+        }
     });
 }
 
@@ -62,6 +65,7 @@ async function fetchCategories() {
     data.forEach(({id, name}) => {
         let h4 = document.createElement('h4');
         h4.innerText = name;
+        h4.classList.add('category');
         h4.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
@@ -138,7 +142,6 @@ function renderProduct(classObj) {
     let h4 = document.createElement('h4');
     h4.innerHTML = 'Learn More';
     h4.addEventListener('click', () => {
-        console.log('A');
         window.location.href = `http://localhost:8000/item/${classObj.id}`;
     });
     productDesc.appendChild(h4);
@@ -235,7 +238,7 @@ function renderFilter(classObj) {
         list.appendChild(item);
     }
 
-    dropDownHeadMenu(divSubCat, filtList); // Corrected the function call
+    dropDownSideMenu(divSubCat, filtList); // Corrected the function call
     div.appendChild(filtList);
 
     return div;
