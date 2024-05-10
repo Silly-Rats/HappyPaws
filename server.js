@@ -20,8 +20,8 @@ app.get('/reservation', (req, res) => {
     res.sendFile(__dirname + '/public/reservation/reservation.html');
 });
 
-app.get('/shop', (req, res) => {
-    res.sendFile(__dirname + '/public/shop/index.html');
+app.get('/shop/items/:category', (req, res) => {
+    res.sendFile(__dirname + '/public/shop/items/index.html');
 });
 
 app.listen(port, () => {
@@ -31,5 +31,5 @@ app.listen(port, () => {
     console.log('http://localhost:' + port + '/signup');
     console.log('http://localhost:' + port + '/account/user');
     console.log('http://localhost:' + port + '/reservation');
-    console.log('http://localhost:' + port + '/shop');
+    console.log('http://localhost:' + port + '/shop/items/6');
 })
