@@ -25,6 +25,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: fixed;
     width: 100vw;
     height: 7vh;
     z-index: 100;
@@ -140,6 +141,11 @@ footer p {
     font-size: 1rem;
 }
 
+.show {
+    display: block;
+    opacity: 1;
+}
+
 button {
     background-color: var(--main-text-color);
     color: #fff;
@@ -172,6 +178,10 @@ button:hover {
 @media (min-width: 768px) {
     #menuBars {
         display: block;
+    }
+
+    .categoriesSideBar {
+        width: 20vw;
     }
 
     .categoriesHead {
@@ -221,6 +231,12 @@ button:hover {
     .categoriesHead h3 {
         font-size: 1.7rem;
         margin-right: 1vw;
+    }
+
+    .categoriesSideBar {
+        display: block;
+        width: 16vw;
+        opacity: 1;
     }
 
     .imgLogo img {
