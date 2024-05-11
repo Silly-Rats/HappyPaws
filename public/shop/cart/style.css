@@ -431,6 +431,7 @@ footer p {
         font-size: xxx-large;
         text-align: right;
         width: 190%;
+        color:var(--main-text-color);
     }
 
 } 
