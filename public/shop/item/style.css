@@ -105,7 +105,7 @@ table {
     padding: 5%;
     border-radius: 10px;
     margin-top: 10%;
-    width: 70vw;
+    width: 60vw;
 }
 
 th:first-child {
@@ -130,13 +130,32 @@ th {
         height: 45vh;
     }
 
+    .productDesc {
+        width: 60vw;
+        padding: 10% 0;
+    }
+
     .specifications {
         margin-top: 5%;
+    }
+
+    th {
+        font-size: x-large;
     }
 
     option {
         padding: 10%;
         color:#402918;
+    }
+
+    .dot {
+        height: 1em;
+        width: 1em;
+    }
+
+    .detailDesc {
+        width: 55vw;
+        font-size: x-large;
     }
 }
 
@@ -163,7 +182,7 @@ th {
     }
 
     h1 {
-        font-size: 3em;
+        font-size: 2.5em;
     }
 
     option, button {
@@ -182,7 +201,7 @@ th {
         margin-top: 5%;
     }
 
-    option {
+    option, .detailDesc {
         font-size: 1em;
     }
 
@@ -190,20 +209,25 @@ th {
         font-size: 1.5em;
     }
 
-    .specifications {
+    .specifications, .detailDesc {
         margin-top: 10%;
     }
+
+    /* .detailDesc {
+        width: 78vw;
+    } */
+
 }
 
 @media (min-width: 992px) {
     .mainProductInfo{
         flex-direction: row;
         flex-wrap: wrap;
+        align-items:flex-start;
         justify-content: space-around;
     }
 
     .productDesc {
-        flex-direction: row;
         flex-wrap: wrap;
         width : 45vw;
         padding: 0;
@@ -211,6 +235,8 @@ th {
 
     .detailDesc {
         margin-bottom: 5%;
+        margin-left: -95%;
+        width: 80vw;
     }
 
     .productImg {
@@ -221,10 +247,49 @@ th {
 }
 
 @media (min-width: 1200px) {
-    .productImg {
-        width: 30vw;
+    .info {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        width: 70vw;
     }
 
-    
+
+    .mainProductInfo {
+        padding-top: 10% 0;
+        align-items:flex-start;
+    }
+
+    .productImg {
+        width: 25vw;
+        margin-top: 0;
+        height: 50vh;
+    }
+
+    .imageSlider {
+        height: 35vh;
+    }
+
+    .specifications {
+        margin-top: 0;
+    }
+
+    .shortInfo, .specifications {
+        width: 25vw;
+    }
+
+    .productDesc {
+        display: flex;
+        flex-direction: row;
+        width: 60vw;
+        justify-content: space-around;
+        padding: 0;
+    }
+
+    .detailDesc {
+        width: 55vw;
+        margin-left: 0;
+    }
    
 }
