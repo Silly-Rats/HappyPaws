@@ -1,4 +1,4 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
@@ -12,10 +12,11 @@
 }
 
 /* GENERAL */
-h3, h1, h2{
+h3, h1, h2 {
     color: var(--main-text-color);
     font-family: "Exo 2", sans-serif;
 }
+
 p {
     font-family: "Public Sans", sans-serif;
 }
@@ -24,19 +25,33 @@ main {
     padding: 15vw 15vw;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 /* HEADER */
 header {
     background-color: var(--main-bg-color);
-    padding: 25px;
+    padding: 2vh 2vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: fixed;
-    width:100vw;
+    width: 100vw;
+    height: 25vh;
     z-index: 100;
 }
 
- .imgLogo{
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 35vh 5vw 0 5vw;
+}
+
+.imgLogo {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -59,94 +74,249 @@ header {
 }
 
 .userAccount {
-    margin-right: 5%;
+    margin-right: 5vw;
     width: 15vw;
     display: flex;
     justify-content: space-between;
 }
 
 .userAccount i {
-    color:var(--main-text-color);
+    color: var(--main-text-color);
     font-size: 2rem;
 }
 
-.navAndLogo{
+.navAndLogo {
     display: flex;
-    align-items:center;
+    align-items: center;
 }
 
-/* SORTINGS */
+button {
+    background-color: var(--main-text-color);
+    color: #fff;
+    padding: 1vh 2vw;
+    font-family: "Public Sans", sans-serif;
+    font-size: large;
+    border-radius: 2vh;
+}
+
+button:hover {
+    background-color: var(--secondary-bg-color);
+    color: var(--main-text-color);
+    transition: 0.5s;
+}
+
+/* SORTING */
 .sortings {
     display: flex;
     flex-direction: column;
-    width: 70%;
+    width: 70vw;
     justify-content: space-between;
+    margin: 0 5vw;
 }
 
-.sortings h2 {
+.sorting label {
     font-weight: 400;
+    font-size: x-large;
     margin-right: 1vw;
+    align-self: center;
+    width: 20vw;
 }
 
 .sorting {
     display: flex;
     flex-direction: row;
-    padding: 2% 0;
+    align-items: center;
+    padding: 2vw 0;
 }
 
-.sorting input[type = 'number'] {
-    width: 35vw;
-    color:var(--main-text-color);
-    padding-left: 0.5vw;
+.sorting input, select {
+    padding: 1vh 1vw;
+    background-color: var(--main-bg-color);
+    border: 2px solid var(--main-text-color);
+    color: var(--main-text-color);
+    font-family: "Public Sans", sans-serif;
+    font-size: large;
+    border-radius: 2vh;
+    width: 40vw;
+    box-sizing: content-box;
 }
 
-.sorting input[type = 'number']:focus, select {
+.sorting input::placeholder {
+    color: var(--main-text-color);
+}
+
+.sorting input:focus, select:focus {
     outline: none;
     border: 3px solid var(--main-text-color);
 }
 
-input, select {
-    background-color: var(--main-bg-color);
-    border: 2px solid var(--main-text-color);
-    font-family: "Public Sans", sans-serif;
-    border-radius: 10px;
+.sorting select::selection {
+    background-color: var(--secondary-bg-color);
+    color: var(--main-text-color);
 }
 
 .orderTable {
     width: 70vw;
-    padding: 5%;
+    padding: 5vh 5vw;
+    margin-bottom: 7vh;
     background-color: var(--secondary-bg-color);
-    border-radius: 20px;
+    border: solid 2px var(--main-text-color);
+    border-radius: 5vw;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
 
- .orderTableHeader {
+.orderTableHeader {
     display: flex;
     justify-content: space-between;
- }
+    margin-bottom: 3vh;
+    width: 70vw;
+}
 
 .dateAndStatus {
     display: flex;
-    width: 50%;
-    justify-content: space-between;
+    flex-direction: row;
+    width: 50vw;
 }
 
-@media (min-width: 576px) { 
-   
+.dateAndStatus h2 {
+    margin-right: 5vw;
+}
+
+.item {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 4vh;
+}
+
+.info {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    flex-wrap: wrap;
+    justify-content: start;
+    margin-bottom: 1vh;
+}
+
+.info h2 {
+    min-width: 25vw;
+}
+
+.itemName, .itemType, .itemPrice, .itemQty {
+    margin-left: 3vw;
+    font-weight: 500;
+    width: 70vw;
+    font-size: x-large;
+}
+
+.seeMore {
+    align-self: center;
+}
+
+.orderBottom {
+    display: flex;
+    flex-direction: column;
+}
+
+.orderButtons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.orderButtons button {
+    padding: 1vh 2vw;
+    margin-top: 2vh;
+    width: 40vw;
+    font-size: larger;
+}
+
+.cancel {
+    border-color: #c14a4a;
+    color: #c14a4a;
+    background-color: var(--secondary-bg-color);
+}
+
+.infoButton {
+    border-color: var(--main-text-color);
+    color: var(--main-text-color);
+    background-color: var(--secondary-bg-color);
+}
+
+#dialogMask {
+    display: none;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    z-index: 125;
+    height: 100vh;
+    width: 100vw;
+}
+
+#infoDialog {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 35vh;
+    height: fit-content;
+    width: 70vw;
+    padding: 5vh 5vw;
+    border: solid 3px var(--main-text-color);
+    background-color: var(--secondary-bg-color);
+    border-radius: 5vw;
+    z-index: 150;
+}
+
+#infoDialog h3 {
+    width: 100%;
+    margin-bottom: 2vh;
+    border-bottom: 2px solid var(--main-text-color);
+    font-weight: 500;
+}
+
+#infoDialog button {
+    margin-top: 1vh;
+}
+
+#dialogHeader {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-bottom: 2vh;
+}
+
+#dialogHeader i {
+    width: 10vw;
+    text-align: right;
+}
+
+#dialogHeader h2 {
+    text-align: center;
+    width: 50vw;
+    margin-left: 10vw;
+}
+
+@media (min-width: 576px) {
+
     .userAccount {
         width: 10vw;
         display: flex;
         justify-content: space-between;
     }
-    .sortings {
-        width: 90%;
+
+    .info h2 {
+        min-width: 17vw;
     }
 
-    .sorting input[type = 'number'] {
-        width: 60vw;
+    .itemName, .itemType, .itemPrice, .itemQty {
+        width: 50vw;
     }
-    
-} 
-@media (min-width: 768px) { 
+
+}
+
+@media (min-width: 768px) {
 
     .imgLogo img {
         display: block;
@@ -156,40 +326,69 @@ input, select {
         width: 5vw;
     }
 
-    .userAccount i{
+    .userAccount i {
         font-size: 1.7rem;
     }
 
-    .sortings {
-        margin-left: 5%;
-    }
- 
-    .sorting input[type = 'number'] {
-        width: 50vw;
-        color:var(--main-text-color);
-        padding-left: 0.5vw;
+    .info h2 {
+        width: 12vw;
     }
 
-} 
-@media (min-width: 992px) { 
-   
+    .orderButtons button {
+        width: 30vw;
+    }
+
+    #infoDialog {
+        width: 50vw;
+    }
+
+}
+
+@media (min-width: 992px) {
+
+    header {
+        height: 10vh;
+    }
+
+    main {
+        padding-top: 21vh;
+    }
+
     .imgLogo h1 {
         display: block;
         font-size: 1.7rem;
     }
-   
+
     .imgLogo img {
         display: block;
     }
 
+    .sorting label {
+        font-weight: 400;
+        width: fit-content;
+    }
 
-    .userAccount i{
+    .sorting {
+        margin-left: 2vw;
+    }
+
+    .sorting input {
+        width: 25vw;
+        color: var(--main-text-color);
+        padding-left: 0.5vw;
+    }
+
+    .sorting select {
+        width: fit-content;
+    }
+
+    .userAccount i {
         font-size: x-large;
     }
 
     .sortings {
         flex-direction: row;
-        /* margin-right: 5%; */
+        margin-right: 5vw;
         margin-left: 0;
     }
 
@@ -197,7 +396,82 @@ input, select {
         width: 15vw;
     }
 
-} 
+    .info h2 {
+        display: none;
+    }
+
+    .itemName, .itemType, .itemPrice, .itemQty {
+        margin-left: 0;
+    }
+
+    .item {
+        margin-bottom: 2vh;
+    }
+
+    .itemName, .itemType, .itemPrice {
+        margin-right: 5vw;
+        text-overflow: ellipsis;
+        text-wrap: nowrap;
+        overflow: hidden;
+    }
+
+    .itemPrice, .itemQty {
+        text-align: right;
+    }
+
+    .itemName {
+        width: 26vw;
+    }
+
+    .itemType {
+        width: 16vw;
+    }
+
+    .itemPrice {
+        width: 10vw;
+    }
+
+    .itemQty {
+        width: 3vw;
+    }
+
+    .orderBottom {
+        width: 70vw;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: baseline;
+    }
+
+    .orderBottom h2 {
+        width: 35vw;
+    }
+
+    .orderButtons {
+        width: 70vw;
+        flex-direction: row;
+        justify-content: end;
+    }
+
+    .orderButtons button {
+        font-size: medium;
+        width: fit-content;
+    }
+
+    .cancel, .infoButton {
+        margin-right: 2vw;
+    }
+
+    #infoDialog {
+        top: 30vh;
+        width: 50vw;
+    }
+
+    #dialogHeader h2 {
+        width: 30vw;
+    }
+
+}
+
 @media (min-width: 1200px) {
 
     .imgLogo h1 {
@@ -208,7 +482,7 @@ input, select {
     .imgLogo img {
         display: block;
     }
-    
+
     .userAccount {
         width: 1.5vw;
     }
@@ -216,41 +490,32 @@ input, select {
     .sortings {
         display: flex;
         flex-direction: row;
-        width: 70%;
+        width: 70vw;
         justify-content: space-between;
     }
-    
-    .sortings h2 {
-        font-weight: 400;
-        margin-right: 1vw;
-    }
-    
-    .sorting {
-        display: flex;
-        flex-direction: row;
-    }
-    
-    .sorting input[type = 'number'] {
-        width: 25vw;
-        color:var(--main-text-color);
-        padding-left: 0.5vw;
-    }
-    
-    .sorting input[type = 'number']:focus, select {
+
+    .sorting input:focus, select:focus {
         outline: none;
         border: 3px solid var(--main-text-color);
     }
-    
+
     input, select {
         background-color: var(--main-bg-color);
         border: 2px solid var(--main-text-color);
         font-family: "Public Sans", sans-serif;
-        border-radius: 10px;
     }
+
+    #infoDialog {
+        width: 40vw;
+    }
+
+    #dialogHeader i {
+        width: 5vw;
+    }
+
+    #dialogHeader h2 {
+        width: 30vw;
+        margin-left: 5vw;
+    }
+
 }
-
-
-
-
-
- 

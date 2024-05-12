@@ -41,5 +41,4 @@ app.listen(port, () => {
     console.log('http://localhost:' + port + '/account/user');
     console.log('http://localhost:' + port + '/reservation');
     console.log('http://localhost:' + port + '/shop/category');
-    console.log('http://localhost:' + port + '/shop/items/6');
 })

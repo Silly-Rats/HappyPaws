@@ -52,7 +52,7 @@ function dropDownHeadMenu(element, list) {
 }
 dropDownHeadMenu(categoriesHead, headCategories);
 
-const navAndLogo = document.querySelector('.navAndLogo');
+const navAndLogo = document.querySelector('.imgLogo');
 
 navAndLogo.addEventListener('click', () => {
     window.location.href = `http://localhost:8000/shop/category`;
