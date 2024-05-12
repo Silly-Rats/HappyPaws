@@ -13,9 +13,8 @@ p {
 
 /* MAIN PRODUCT INFO */
 .mainProductInfo {
-    width: 90vw;
-    height: 100vh;  
-    padding: 40vw 5vw;
+    width: 90vw; 
+    padding: 20vh 5vw 3vh 5vw;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -106,6 +105,7 @@ table {
     padding: 5%;
     border-radius: 10px;
     margin-top: 10%;
+    width: 70vw;
 }
 
 th:first-child {
@@ -118,17 +118,111 @@ th {
 
 /* MEDIA QUERIES */
 @media (min-width: 576px) {
-  
+    .quantity {
+        font-size: 1.5em;
+        padding: 2%;
+    }
+
+    .productImg {
+        height: 60vh;
+    }
+    .imageSlider {
+        height: 45vh;
+    }
+
+    .specifications {
+        margin-top: 5%;
+    }
+
+    option {
+        padding: 10%;
+        color:#402918;
+    }
 }
 
 @media (min-width: 768px) {
+    .productImg {
+        height: 60vh;
+        width: 50vw;
+    }
+    .imageSlider {
+        height: 45vh;
+    }
 
+    .dotSlider {
+        padding: 10%;
+    }
+
+    .dot {
+        width: 2vh;
+        height: 2vh;
+    }
+
+    .mainProductInfo{
+        padding: 20vh 3vw 5vh 4vw;
+    }
+
+    h1 {
+        font-size: 3em;
+    }
+
+    option, button {
+        height: 10vh;
+    }
+
+    h2 {
+        font-size: 2em;
+    }
+
+    th {
+        font-size: 1.8rem;
+    }
+
+    table {
+        margin-top: 5%;
+    }
+
+    option {
+        font-size: 1em;
+    }
+
+    p, button, select{
+        font-size: 1.5em;
+    }
+
+    .specifications {
+        margin-top: 10%;
+    }
 }
 
 @media (min-width: 992px) {
-  
+    .mainProductInfo{
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .productDesc {
+        flex-direction: row;
+        flex-wrap: wrap;
+        width : 45vw;
+        padding: 0;
+    }
+
+    .detailDesc {
+        margin-bottom: 5%;
+    }
+
+    .productImg {
+        margin-top: 10%;
+        width: 40vw;
+    }
+
 }
 
 @media (min-width: 1200px) {
+    .productImg {
+        width: 30vw;
+    }
    
 }
