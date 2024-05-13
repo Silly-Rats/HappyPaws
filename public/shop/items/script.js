@@ -1,6 +1,7 @@
 'use strict';
 
-const category = 7;
+const pathName =window.location.pathname.split('/');
+const category = pathName[pathName.length - 1];
 
 //SIDENAV FUNCTIONS
 let sideBar = document.querySelector('.categoriesSideBar');
@@ -9,41 +10,17 @@ let productsPanel = document.querySelector('.products');
 
 function dropDownSideMenu(element, list) {
     element.addEventListener('click', () => {
-        list.classList.toggle('show');
+        if (list.style.display === 'none') {
+            list.style.display = 'block';
+            list.style.opacity = '1';
+        } else {
+            list.style.display = 'none';
+            list.style.opacity = '0';
+        }
     });
 }
 
 dropDownSideMenu(screenBars, sideBar);
-
-//DROP DOWN MENU
-let categoriesHead = document.querySelector('.categoriesHead');
-let headCategories = document.querySelector('.headCategories');
-
-function dropDownHeadMenu(element, list) {
-    let hide = true;
-
-    element.addEventListener('mouseover', () => {
-        list.style.display = 'block';
-    });
-    element.addEventListener('mouseleave', () => {
-        setTimeout(() => {
-            if (hide) {
-                // list.style.display = 'none'
-            }
-        }, 1000);
-    });
-
-    list.addEventListener('mouseover', (e) => {
-        e.stopPropagation();
-        hide = false;
-    });
-    list.addEventListener('mouseout', (e) => {
-        e.stopPropagation();
-        hide = true;
-    });
-}
-
-dropDownHeadMenu(categoriesHead, headCategories);
 
 //GETTING PRODUCT INFO FROM SERVER
 const getResource = async (url) => {
@@ -55,23 +32,6 @@ const getResource = async (url) => {
 
     return await res.json();
 };
-
-async function fetchCategories() {
-    let data = await getResource('http://localhost:8080/api/category/info');
-
-    data.forEach(({id, name}) => {
-        let h4 = document.createElement('h4');
-        h4.innerText = name;
-        h4.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            window.location.href = `http://localhost:8000/category/${id}`;
-        });
-        headCategories.appendChild(h4);
-    })
-}
-
-fetchCategories();
 
 const limit = 9;
 let start = 0;
@@ -138,7 +98,6 @@ function renderProduct(classObj) {
     let h4 = document.createElement('h4');
     h4.innerHTML = 'Learn More';
     h4.addEventListener('click', () => {
-        console.log('A');
         window.location.href = `http://localhost:8000/item/${classObj.id}`;
     });
     productDesc.appendChild(h4);
@@ -235,7 +194,7 @@ function renderFilter(classObj) {
         list.appendChild(item);
     }
 
-    dropDownHeadMenu(divSubCat, filtList); // Corrected the function call
+    dropDownSideMenu(divSubCat, filtList); // Corrected the function call
     div.appendChild(filtList);
 
     return div;
