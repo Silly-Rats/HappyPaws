@@ -40,7 +40,7 @@ body{
 .header_line>.user{
     display: none;
 }
-.flex_row{
+.flex-row{
     display: flex;
     align-items: center;
     flex-direction: row;

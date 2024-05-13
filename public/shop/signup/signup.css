@@ -1,0 +1,224 @@
+:root {
+    --main-bg-color: #f6bc42;
+    --secondary-bg-color: #f5ded2;
+    --main-text-color: #402918;
+    --secondary-text-color: #de9a2c;
+}
+
+button {
+    cursor: pointer;
+    background-color: var(--main-text-color);
+    color: var(--secondary-bg-color);
+    padding: 1vh 2vw;
+    font-family: "Public Sans", sans-serif;
+    font-size: large;
+    border-radius: 2vh;
+}
+
+button:hover {
+    background-color: var(--secondary-bg-color);
+    color: var(--main-text-color);
+    transition: 0.5s;
+}
+
+body {
+    margin: 0;
+    font-family: "Work Sans", "Open Sans", sans-serif;
+    font-size: x-large;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-color: var(--secondary-bg-color);
+}
+
+form {
+    background-color: var(--main-text-color);
+    text-align: center;
+    border-radius: 5vh;
+    width: 80vw;
+    padding: 5vh 5vw 5vh 5vw;
+}
+
+.logo {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-text {
+    font-size: xx-large;
+    font-weight: 600;
+    color: var(--secondary-bg-color);
+    text-align: left;
+}
+
+.logo > img {
+    aspect-ratio: auto;
+    height: 10vh;
+    margin-right: 2vw;
+    background-size: cover;
+}
+
+.title {
+    font-weight: 500;
+    color: var(--secondary-bg-color);
+}
+
+#logIn {
+    font-size: medium;
+    font-weight: 300;
+    color: var(--secondary-bg-color);
+}
+
+#logIn:hover {
+    color: #6b6b6b;
+    text-decoration: underline;
+}
+
+input {
+    font-size: large;
+    font-weight: 300;
+    /*border: none;*/
+    font-family: "Work Sans", "Open Sans", sans-serif;
+    color: var(--secondary-bg-color);
+    background-color: var(--main-text-color);
+    width: 60vw;
+    outline: none;
+}
+
+input::placeholder {
+    color: var(--secondary-bg-color);
+}
+
+input[type="date"]::-webkit-datetime-edit-fields-wrapper {
+    color: var(--secondary-bg-color);
+}
+
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+}
+
+.imagedInput {
+    width: 60vw;
+    margin: 1vh 2vw 2vh 2vw;
+    border-bottom: 1px solid var(--secondary-bg-color);
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.input-row {
+    display: flex;
+    justify-content: space-between;
+    width: 60vw;
+    margin-bottom: 1vh;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2vh;
+}
+
+.smallInputs {
+    width: 11.7vw;
+}
+
+.flex-row {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.imagedInput {
+    width: 44vw;
+    margin: 1vh 2vw 2vh 2vw;
+    border-bottom: 1px solid var(--secondary-bg-color);
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.inputImg {
+    padding: 1vh 1vw;
+    height: 3vh;
+    aspect-ratio: auto;
+    display: none;
+}
+
+#password {
+    margin: 1vh 0 2vh 0;
+}
+
+@media (min-width: 576px) {
+
+    #signUp {
+        font-size: large;
+    }
+
+    .logo-text {
+        font-size: xxx-large;
+    }
+
+    .title {
+        font-size: xx-large;
+    }
+
+}
+
+@media (min-width: 768px) {
+
+    form {
+        width: 60vw;
+    }
+
+    button {
+        width: 50vw;
+        font-size: x-large;
+    }
+
+    .imagedInput {
+        width: 50vw;
+    }
+
+    input {
+        font-size: x-large;
+    }
+
+    .inputImg {
+        display: block;
+    }
+
+}
+
+@media (min-width: 992px) {
+
+    form {
+        width: 35vw;
+    }
+
+    button {
+        width: 35vw;
+        font-size: x-large;
+    }
+
+    .imagedInput {
+        width: 35vw;
+    }
+
+    #signUp {
+        text-decoration: underline;
+    }
+
+}
