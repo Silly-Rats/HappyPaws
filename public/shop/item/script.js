@@ -1,42 +1,8 @@
 'use strict';
 
-let prev = document.querySelector('.previous');
-let next = document.querySelector('.next');
-let slides = document.querySelectorAll('.slide');
-let slideIndex = 1;
-let dots = document.querySelectorAll('.dot');
 let infoBody = document.querySelector('.productDesc');
-
-showSlides(slideIndex);
-
-    function showSlides(n){
-        if (n > slides.length){
-            slideIndex = 1;
-        }
-        if (n < 1) {
-            slideIndex = slides.length;
-        }
-
-        slides.forEach(item => item.style.display = 'none');
-        slides[slideIndex - 1].style.display = 'block';
-
-    }
-
-    function plusSlides(n){
-        showSlides(slideIndex += n);
-    }
-
-    prev.addEventListener('click', () => {
-        plusSlides(-1);
-        dots.forEach(dot => dot.style.opacity = '.5');
-        dots[slideIndex - 1].style.opacity = 1;
-    });
-    next.addEventListener('click', () => {
-        plusSlides(1);
-        dots.forEach(dot => dot.style.opacity = '.5');
-        dots[slideIndex - 1].style.opacity = 1;
-    })
-
+let imgBody = document.querySelector('.productImg');
+let id = 1;
 
     const getResource = async (url) => {
         const res = await fetch(url);
@@ -49,11 +15,10 @@ showSlides(slideIndex);
     };
 
     async function fetchProductDesc() {
-        let url = `http://localhost:8080/api/item/1/info`; 
+        let url = `http://localhost:8080/api/item/${id}/info`; 
     
         try {
             const data = await getResource(url);
-            console.log(data);
             infoBody.appendChild(renderInfo(data));
             renderDesc(data);
         } catch (error) {
@@ -138,3 +103,86 @@ showSlides(slideIndex);
         infoBody.appendChild(detailDesc);
     }
 
+    async function fetchPhotos() {
+
+        let url = `http://localhost:8080/api/item/${id}/images`; 
+    
+        try {
+            const data = await getResource(url);
+            renderPhotos(data);
+    
+        } catch (error) {
+            console.error('Error: ', error);
+        }
+
+    }
+
+    fetchPhotos();
+
+    function renderPhotos(classObj){
+        let imageSlider = document.createElement('div');
+        imageSlider.classList.add('imageSlider');
+        let images = [];
+        for (let i = 0; i < classObj.length; i++){
+            let img = document.createElement('img');
+            img.classList.add('slide');
+            img.src = classObj[i].image;
+            imageSlider.appendChild(img);
+            images.push(img);
+        }
+        imgBody.appendChild(imageSlider);
+        let dotSlider = document.createElement('div');
+        dotSlider.classList.add('dotSlider');
+        let ip = document.createElement('i');
+        ip.classList.add('fa-solid');
+        ip.classList.add('fa-angle-left');
+        ip.classList.add('arrow');
+        ip.classList.add('previous');
+        dotSlider.appendChild(ip);
+        let dots = [];
+        for (let i = 0; i < classObj.length; i++){
+            let dot = document.createElement('div');
+            dot.classList.add('dot');
+            dotSlider.appendChild(dot);
+            dots.push(dot);
+        }
+        let inext = document.createElement('i');
+        inext.classList.add('fa-solid');
+        inext.classList.add('fa-angle-right');
+        inext.classList.add('arrow');
+        inext.classList.add('next');
+        dotSlider.appendChild(inext);
+
+
+        let slideIndex = 1;
+        showSlides(slideIndex, images);
+
+        ip.addEventListener('click', () => {
+            plusSlides(-1);
+            dots.forEach(dot => dot.style.opacity = '.5');
+            dots[slideIndex - 1].style.opacity = 1;
+        });
+        inext.addEventListener('click', () => {
+            plusSlides(1);
+            dots.forEach(dot => dot.style.opacity = '.5');
+            dots[slideIndex - 1].style.opacity = 1;
+        })
+
+    }
+
+    function showSlides(n, classObj){
+        if (n > classObj.length){
+            slideIndex = 1;
+        }
+        if (n < 1) {
+            slideIndex = classObj.length;
+        }
+
+        classObj.forEach(item => item.style.display = 'none');
+        classObj[slideIndex - 1].style.display = 'block';
+
+    }
+
+    function plusSlides(n){
+        showSlides(slideIndex += n);
+    }
