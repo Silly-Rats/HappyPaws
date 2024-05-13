@@ -10,6 +10,7 @@ button {
     background-color: var(--main-text-color);
     color: var(--secondary-bg-color);
     padding: 1vh 2vw;
+    margin-top: 2vh;
     font-family: "Public Sans", sans-serif;
     font-size: large;
     border-radius: 2vh;
@@ -87,10 +88,11 @@ form {
 input {
     font-size: large;
     font-weight: 300;
-    /*border: none;*/
+    border: none;
     font-family: "Work Sans", "Open Sans", sans-serif;
     color: var(--secondary-bg-color);
     background-color: var(--main-text-color);
+    border-bottom: 1px solid var(--secondary-bg-color);
     width: 60vw;
     outline: none;
 }
@@ -108,15 +110,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     display: none;
 }
 
-.imagedInput {
-    width: 60vw;
-    margin: 1vh 2vw 2vh 2vw;
-    border-bottom: 1px solid var(--secondary-bg-color);
-    display: flex;
-    align-items: center;
-    justify-content: start;
-}
-
 .input-row {
     display: flex;
     justify-content: space-between;
@@ -132,7 +125,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .smallInputs {
-    width: 11.7vw;
+    width: 25vw;
 }
 
 .flex-row {
@@ -142,12 +135,15 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .imagedInput {
-    width: 44vw;
-    margin: 1vh 2vw 2vh 2vw;
     border-bottom: 1px solid var(--secondary-bg-color);
     display: flex;
+    padding: 0;
     align-items: center;
     justify-content: start;
+}
+
+.imagedInput input {
+    border-bottom: none;
 }
 
 .inputImg {
@@ -157,13 +153,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     display: none;
 }
 
-#password {
-    margin: 1vh 0 2vh 0;
-}
-
 @media (min-width: 576px) {
 
-    #signUp {
+    #logIn {
         font-size: large;
     }
 
@@ -186,6 +178,14 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     button {
         width: 50vw;
         font-size: x-large;
+    }
+
+    .input-row {
+        width: 50vw;
+    }
+
+    .smallInputs {
+        width: 20vw;
     }
 
     .imagedInput {
@@ -211,6 +211,14 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     button {
         width: 35vw;
         font-size: x-large;
+    }
+
+    .input-row {
+        width: 35vw;
+    }
+
+    .smallInputs {
+        width: 15vw;
     }
 
     .imagedInput {
