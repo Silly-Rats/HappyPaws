@@ -56,4 +56,17 @@ const navAndLogo = document.querySelector('.imgLogo');
 
 navAndLogo.addEventListener('click', () => {
     window.location.href = `http://localhost:8000/shop/category`;
-})
+});
+
+const account = document.querySelector('#account');
+
+account.addEventListener('click', () =>
+    fetch('http://localhost:8080/api/user/type', {
+        headers: {'Authorization': localStorage.getItem('token')}
+    }).then(res => {
+        if (res.status === 200) {
+            window.location.href = `http://localhost:8000/shop/account`;
+        } else {
+            window.location.href = `http://localhost:8000/shop/login`;
+        }
+    }));

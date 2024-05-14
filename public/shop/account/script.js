@@ -1,5 +1,4 @@
-// const token = localStorage.getItem('token');
-const token = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwidHlwZSI6InVzZXIiLCJzdWIiOiJqb2huLmRvZUBleGFtcGxlLmNvbSIsImlhdCI6MTcxNTQ0MjcwOSwiZXhwIjoxNzE2MDQ3NTA5fQ.2v5ZDy414pU0kmdrS_D0tC4_E4E7h4ldKNMeMpB6pfw';
+const token = localStorage.getItem('token');
 
 const firstName = document.querySelector("#firstName");
 const lastName = document.querySelector("#lastName");
@@ -9,12 +8,32 @@ const newPass = document.querySelector("#newPass");
 const oldPass = document.querySelector("#oldPass");
 const email = document.querySelector("#email");
 
+function renderUser(classObj) {
+    firstName.value = classObj.firstName;
+    lastName.value = classObj.lastName;
+    dob.value = classObj.dob;
+    phone.value = classObj.phoneNum;
+    email.value = classObj.email;
+}
+
+fetch('http://localhost:8080/api/user/info', {
+    headers: {'Authorization': token}
+}).then((res) => {
+    if (res.status === 200) {
+        return res.json();
+    } else {
+        window.location.href = 'http://localhost:8000/shop/login';
+        return null;
+    }
+}).then(renderUser);
+
 let changeable = [firstName, lastName, dob, phone, newPass, oldPass];
 
 let editable = false;
 const edit = document.querySelector("#edit");
 const orders = document.querySelector("#orders");
 const deleteButton = document.querySelector("#delete");
+const leave = document.querySelector("#leave");
 
 async function saveUserInfo() {
     let newPassword = null;
@@ -96,15 +115,7 @@ confirm.addEventListener('click', () => {
 
 deleteButton.addEventListener('click', showDialog);
 
-function renderUser(classObj) {
-    firstName.value = classObj.firstName;
-    lastName.value = classObj.lastName;
-    dob.value = classObj.dob;
-    phone.value = classObj.phoneNum;
-    email.value = classObj.email;
-}
-
-fetch('http://localhost:8080/api/user/info', {
-    headers: {'Authorization': token}
-}).then((res) => res.json())
-    .then(renderUser);
+leave.addEventListener('click', () => {
+    localStorage.setItem('token', '');
+    window.location.href = 'http://localhost:8000/shop/category';
+});

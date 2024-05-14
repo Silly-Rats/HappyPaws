@@ -158,7 +158,7 @@ input[type="date"], input[type="date"]::placeholder {
     transition: 0.5s;
 }
 
-#orders {
+#orders, #leave {
     background-color: var(--secondary-bg-color);
     color: var(--main-text-color);
 }

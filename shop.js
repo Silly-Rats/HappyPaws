@@ -30,6 +30,6 @@ app.get('/shop/items/:category', (req, res) => {
 
 app.listen(port, () => {
     console.log('Server started on origin http://localhost:' + port);
-    console.log('Available URLs:');
+    console.log('Main page:');
     console.log('http://localhost:' + port + '/shop/category');
 })
