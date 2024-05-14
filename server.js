@@ -17,7 +17,7 @@ app.get('/signup', (req, res) => {
 });
 
 app.get('/account/user', (req, res) => {
-    res.sendFile(__dirname + '/public/account/user/user_account.html');
+    res.sendFile(__dirname + '/public/account/user/account.html');
 });
 
 app.get('/reservation', (req, res) => {
@@ -41,5 +41,4 @@ app.listen(port, () => {
     console.log('http://localhost:' + port + '/account/user');
     console.log('http://localhost:' + port + '/reservation');
     console.log('http://localhost:' + port + '/shop/category');
-    console.log('http://localhost:' + port + '/shop/items/6');
 })

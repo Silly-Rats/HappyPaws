@@ -149,9 +149,10 @@ footer p {
 button {
     background-color: var(--main-text-color);
     color: #fff;
-    padding: 0.5vh 0.5vw;
+    padding: 1vh 2vw;
     font-family: "Public Sans", sans-serif;
     font-size: large;
+    border-radius: 2vh;
 }
 
 button:hover {
