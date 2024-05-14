@@ -71,7 +71,8 @@ function login() {
     })
         .then(response => response.json())
         .then(data => {
-            localStorage.setItem('token', data.token);
+            localStorage.setItem('token', 'Bearer ' + data.token);
+            window.location.href = "http://localhost:8000/shop/account";
         })
         .catch((error) => {
             alert("Incorrect email or password.");

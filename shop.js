@@ -12,8 +12,12 @@ app.get('/shop/signup', (req, res) => {
     res.sendFile(__dirname + '/public/shop/signup/signup.html');
 });
 
-app.get('/account/user', (req, res) => {
-    res.sendFile(__dirname + '/public/account/user/user_account.html');
+app.get('/shop/account', (req, res) => {
+    res.sendFile(__dirname + '/public/shop/account/account.html');
+});
+
+app.get('/shop/orders', (req, res) => {
+    res.sendFile(__dirname + '/public/shop/orders/orders.html');
 });
 
 app.get('/shop/category/:category', (req, res) => {
@@ -27,8 +31,5 @@ app.get('/shop/items/:category', (req, res) => {
 app.listen(port, () => {
     console.log('Server started on origin http://localhost:' + port);
     console.log('Available URLs:');
-    console.log('http://localhost:' + port + '/shop/login');
-    console.log('http://localhost:' + port + '/shop/signup');
-    console.log('http://localhost:' + port + '/account/user');
     console.log('http://localhost:' + port + '/shop/category');
 })

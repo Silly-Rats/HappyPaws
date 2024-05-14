@@ -106,8 +106,8 @@ function createAccount() {
     })
         .then(response => response.json())
         .then(data => {
-            console.log('Success');
-            localStorage.setItem('token', data.token);
+            localStorage.setItem('token', 'Bearer ' + data.token);
+            window.location.href = "http://localhost:8000/shop/account";
         })
         .catch((error) => {
             console.error('Error: ' + error);
