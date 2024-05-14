@@ -71,21 +71,25 @@ function createAccount() {
 
 
     if (name === '' || surname === '' || birthday === '' || phone === '' || email === '' || password === '' || password2 === '') {
-        alert('Please fill in all fields');
+        alert('Please fill in all fields!');
         return;
     }
 
     if (password !== password2) {
-        alert('Passwords do not match');
+        alert('Passwords do not match!');
         return;
     }
 
     if (phone.length !== 13) {
-        alert("Please enter a valid phone number");
+        alert("Please enter a valid phone number!");
         phone.focus();
         return;
     }
 
+    if (password.length < 8) {
+        alert("Password must from 8 up to 40 symbols!");
+        return;
+    }
 
     let dataToSend = {
         firstName: name,
@@ -110,5 +114,6 @@ function createAccount() {
         })
         .catch((error) => {
             console.error('Error: ' + error);
+            alert('This email is already used!');
         });
 }
