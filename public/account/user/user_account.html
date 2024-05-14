@@ -1,32 +1,225 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Account</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="user_account.css">
-    </head>
+<head>
+    <title>Account</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="user_account.css">
+</head>
 
-    <body>
-        <div class="content">
-            <img src="images/test.png" class="user_img">
-            <div class="user_info">
-                <div class="row">
-                    <p>Name</p>
-                    <p>Surname</p>
+<body>
+<div class="content">
+    <div class="header">
+        <div class="header_line flex_row">
+            <img src="https://img.icons8.com/material-outlined/192/3C3638/menu--v1.png" alt="menu--v1"/>
+            <div class="logo flex_row">
+                <img src="images/logo.png" alt="Happy Paws Logo">
+                <div>Happy<br>Paws</div>
+            </div>
+            <div class="nav flex_row">
+                <div class="nav-item">Reviews</div>
+                <div class="nav-item">Shop</div>
+                <div class="nav-item">
+                    Services
+                    <img src="images/services.png" alt="services">
                 </div>
-                <p>02.05.2005</p>
-                <p>+380991234567</p>
-                <p>your_email@gmail.com</p>
-                <div class="row">
-                    <button>Edit</button>
-                    <button class="delete_button">Delete</button>
+                <div class="nav-item user">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#3c3638" d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>
                 </div>
             </div>
+            <div class="user">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#3c3638" d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>
+            </div>
         </div>
-        
-        <script src="user_account.js"></script>
-    </body>
+    </div>
+    <div class="user_info">
+        <img src="../images/test1.png" class="user_photo">
+        <div class="user_box">
+            <div>
+                <input type="text" class="name_input" alt="name"readonly>
+                <input type="text" class="name_input" alt="surname" readonly>
+            </div>
+            <div>
+                <input type="date" readonly style="border: none;">
+            </div>
+            <div>
+                <input type="text" readonly style="border: none;" maxlength="13">
+            </div>
+            <div>
+                <input type="email"  style="border: none;" readonly>
+            </div>
+            <button id="editUserInfo">Edit</button> <button class="delete_button">Delete</button>
+        </div>
+    </div>
+    <div class="dog_info">
+        <p class="info_title">Your Dogs</p>
+        <div class="dog_box">
+            <div class="dog_content">
+                <table>
+                    <thead>
+                    <tr>
+                        <th style="width: 10vw;">Name</th>
+                        <th style="width: 10vw;">Birth Date</th>
+                        <th style="width: 6vw;">Size</th>
+                        <th>Breed</th>
+                        <th style="width: 2vw;"></th>
+                    </tr>
+                    </thead>
+                    <tbody id="dogTableBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <button id="addDog">Add dog</button>
+        <button onclick="confirmDeleteAll()" class="delete_button">Delete all dogs</button>
+    </div>
+    <div class="reserv_info">
+        <p class="info_title">Reservations</p>
+        <div class="filters_box">
+            <p class="filters">Sort by:
+                <select class="filters" id="sortBySelect">
+                    <option value="date">Date</option>
+                    <option value="price">Price</option>
+                    <option value="dog">Dog</option>
+                </select>
+            </p>
+            <p class="filters">Type:
+                <select class="filters" id="typeSelect">
+                    <option value="all">All</option>
+                    <option value="training">Training</option>
+                    <option value="grooming">Grooming</option>
+                    <option value="hotel">Hotel</option>
+                </select>
+            </p>
+            <p class="filters">Status:
+                <select class="filters" id="statusSelect">
+                    <option value="all">All</option>
+                    <option value="completed">Completed</option>
+                    <option value="canceled">Canceled</option>
+                    <option value="inProcess">In Process</option>
+                </select>
+            </p>
+        </div>
+        <div class="reserv_box">
+            <div class="reserv_content">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Dog</th>
+                        <th>Trainer/food</th>
+                        <th>Date</th>
+                        <th>Price</th>
+                        <th style="width: 1vw;"></th>
+                    </tr>
+                    </thead>
+                    <tbody id="reservTableBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <button class="brownButton" style="margin-left: 37vw; width: 13vw">New</button>
+    </div>
+</div>
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p class="info_title" style="text-align: center;">Dog Details</p>
+        <div id="dogDetails"></div>
+
+        <button>Edit</button>
+        <button class="delete_button" onclick="confirmDelete()">Delete dog</button>
+    </div>
+</div>
+
+<div id="addDogModal" class="modal">
+    <div class="modal-content addDogmodal-content" id="addDogContent">
+        <span id="addDogCloseBtn" class="close">&times;</span>
+
+        <p class="info_title" style="text-align: center;">Add Dog</p>
+        <input type="text" id="dogName" placeholder="Name">
+        <input type="text" id="dogDOB" placeholder="Date of Birth">
+        <select id="dog_breed" name="service" required>
+            <option value="">Select a breed</option>
+        </select>
+        <div class="sizeButtons flex_row">
+            <label>
+                <input type="radio" name="size" value="S"> S
+            </label>
+            <label>
+                <input type="radio" name="size" value="M"> M
+            </label>
+            <label>
+                <input type="radio" name="size" value="L"> L
+            </label>
+        </div>
+        <textarea id="dogComment" placeholder="Comment..."></textarea>
+
+        <button id="saveDogBtn" class="brownButton">Save new dog</button>
+    </div>
+</div>
+
+<div id="editDogModal" class="modal">
+    <div class="modal-content addDogmodal-content" id="editDogContent">
+        <span id="editDogCloseBtn" class="close">&times;</span>
+
+        <p class="info_title" style="text-align: center;">Edit Dog</p>
+        <input type="text" id="dogName2" placeholder="Name">
+        <input type="text" id="dogDOB2" placeholder="Date of Birth">
+        <select id="dog_breed2" name="service" required>
+            <option value="">Select a breed</option>
+        </select>
+        <div class="sizeButtons flex_row">
+            <label>
+                <input type="radio" name="size2" value="S"> S
+            </label>
+            <label>
+                <input type="radio" name="size2" value="M"> M
+            </label>
+            <label>
+                <input type="radio" name="size2" value="L"> L
+            </label>
+        </div>
+
+        <textarea id="dogComment2" placeholder="Comment..."></textarea>
+
+        <button id="saveDogBtn" class="brownButton">Save changes</button>
+    </div>
+</div>
+
+<div id="editUserModal" class="modal">
+    <div class="modal-content" id="editUserContent">
+        <span class="close">&times;</span>
+        <p class="info_title" style="text-align: center;">Edit User</p>
+        <div>
+            <input type="text" id="editFirstName" placeholder="First Name" maxlength="20">
+            <input type="text" id="editLastName" placeholder="Last Name" maxlength="20">
+            <input type="text" id="editDOB" placeholder="Date of Birth">
+            <div class="custom-file-upload">
+                <label for="imageUpload" class="file-upload-label" id="fileUploadLabel">Upload New Profile Picture</label>
+                <input type="file" id="imageUpload" accept="image/*" onchange="updatePlaceholder()">
+
+            </div>
+
+        </div>
+        <div>
+            <input type="text" id="editPhone" placeholder="Phone" maxlength="13">
+            <input type="email" id="editEmail" placeholder="Email" maxlength="254">
+            <input type="password" id="newPassword" placeholder="New Password" maxlength="40">
+            <input type="password" id="oldPassword" placeholder="Old Password" maxlength="40">
+            <img src="images/close.png" alt="Show/Hide Password" id="toggle-password">
+        </div>
+        <button id="saveEditBtn">Save</button>
+    </div>
+</div>
+<div id="passConfirm" class="modal">
+    <div class="modal-content" id="passConfirmContent">
+        <span id="passConfirmClose" class="close">&times;</span>
+    </div>
+</div>
+<script src="user_account.js"></script>
+</body>
 
 </html>
