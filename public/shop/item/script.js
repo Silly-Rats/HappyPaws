@@ -5,6 +5,7 @@ let imgBody = document.querySelector('.productImg');
 let alertBtn = document.querySelector('.cartAlert');
 let xmark = document.querySelector('.fa-xmark');
 let id = 1;
+const cartItems = new Map();
 
     const getResource = async (url) => {
         const res = await fetch(url);
@@ -69,12 +70,8 @@ let id = 1;
             option.innerHTML = classObj.types[i].name;
             select.appendChild(option);
         }
-
-
-
         
         productPrice(select, classObj, h1p);
-
 
         weightsOrColors.appendChild(select);
         shortInfo.appendChild(weightsOrColors);
@@ -82,7 +79,7 @@ let id = 1;
         btn.type = 'submit';
         btn.innerHTML = 'Add to cart';
         shortInfo.appendChild(btn);
-        cartAlert(btn, h1p, h1, qp);
+        cartAlert(btn, h1p, h1, qp, select, classObj);
 
         let specifications = document.createElement('div');
         specifications.classList.add('specifications');
@@ -104,8 +101,7 @@ let id = 1;
         info.appendChild(shortInfo);
         info.appendChild(specifications);
 
-        
-        
+    
         return info;
     }
 
@@ -130,24 +126,26 @@ function productQty(plus, minus, number) {
 }
 
 function productPrice(select, objPrice, field){
-    console.log(objPrice);
     select.addEventListener("click", () => {
         const index = select.selectedIndex;
-        console.log(index);
         field.textContent = `${objPrice.types[index].price}$`;
     });
 }
 
-function cartAlert(btn, price, name, qty){
-    console.log(price, name, qty);
+function cartAlert(btn, price, name, qty, select, obj){
+    
     let prdName = document.querySelector('#prdName');
     let orderQty = document.querySelector("#orderQty");
     let orderPrc = document.querySelector('#orderPrc');
 
-
-
-
     btn.addEventListener('click', () => {
+        prdName.innerHTML = name.textContent;
+        orderQty.innerHTML = `x${qty.textContent}`
+        orderPrc.innerHTML = `${parseFloat(price.textContent) * (+(qty.textContent))}`;
+
+        const index = select.selectedIndex;
+        cartItems.set(obj.types[index].id, qty.textContent);
+
         alertBtn.classList.remove('hide');
         alertBtn.style.display = 'block';
     })
@@ -243,8 +241,5 @@ function cartAlert(btn, price, name, qty){
     function plusSlides(n){
         showSlides(slideIndex += n, images);
     }
-
-   
-
 
 
