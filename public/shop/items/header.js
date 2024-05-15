@@ -7,7 +7,12 @@ navAndLogo.addEventListener('click', () => {
 });
 
 const cart = document.querySelector('#cart');
+const cartWrapper = document.querySelector('#cartWrapper');
+const cartNum = document.querySelector('#cartNum');
 const account = document.querySelector('#account');
+
+const cartItems = new Map(
+    JSON.parse(localStorage.getItem('cartItems')));
 
 account.addEventListener('click', () =>
     fetch('http://localhost:8080/api/user/type', {
@@ -19,10 +24,20 @@ account.addEventListener('click', () =>
             window.location.href = `http://localhost:8000/shop/login`;
         }
     }));
+
 cart.addEventListener('click', () => {
     window.location.href = `http://localhost:8000/shop/cart`;
-})
+});
 
+cartWrapper.addEventListener('click', () => {
+    window.location.href = `http://localhost:8000/shop/cart`;
+});
+
+if (cartItems.size === 0) {
+    cartWrapper.style.display = 'none';
+} else {
+    cartNum.textContent = cartItems.size;
+}
 
 let categoriesHead = document.querySelector('.categoriesHead');
 let headCategories = document.querySelector('.headCategories');

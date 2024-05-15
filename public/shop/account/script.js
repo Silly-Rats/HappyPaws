@@ -1,5 +1,10 @@
 const token = localStorage.getItem('token');
 
+const image = document.querySelector('.userImg');
+let imageSrc = image.src;
+const file = document.querySelector('#file');
+const fileReader = new FileReader();
+
 const firstName = document.querySelector("#firstName");
 const lastName = document.querySelector("#lastName");
 const dob = document.querySelector("#dob");
@@ -7,6 +12,39 @@ const phone = document.querySelector("#phone");
 const newPass = document.querySelector("#newPass");
 const oldPass = document.querySelector("#oldPass");
 const email = document.querySelector("#email");
+
+function loadImage() {
+    fetch('http://localhost:8080/api/user/image', {
+        headers: {'Authorization': token}
+    }).then(res => res.text())
+        .then(data => {
+            if (data != null) {
+                image.src = data;
+                imageSrc = image.src;
+            } else {
+                image.src = 'images/user_default.png';
+            }
+        });
+}
+
+loadImage();
+
+image.addEventListener('click', () => {
+    file.click();
+});
+
+fileReader.addEventListener('loadend', (e) => {
+    fetch('http://localhost:8080/api/user/image', {
+        method: 'PATCH',
+        headers: {'Authorization': token},
+        body: e.target.result
+    }).then(res => res.text())
+        .then(data => image.src = data);
+});
+
+file.addEventListener('change', (e) => {
+    fileReader.readAsDataURL(e.target.files[0]);
+});
 
 function renderUser(classObj) {
     firstName.value = classObj.firstName;

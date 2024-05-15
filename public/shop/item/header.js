@@ -11,7 +11,7 @@ const cartWrapper = document.querySelector('#cartWrapper');
 const cartNum = document.querySelector('#cartNum');
 const account = document.querySelector('#account');
 
-const cartItems = new Map(
+let cartItems = new Map(
     JSON.parse(localStorage.getItem('cartItems')));
 
 account.addEventListener('click', () =>

@@ -150,7 +150,7 @@ function main() {
         dateAndStatus.appendChild(h2);
 
         h2 = document.createElement('h2');
-        h2.textContent = classObj.statusName;
+        h2.textContent = classObj.status;
         dateAndStatus.appendChild(h2);
         orderTableHeader.appendChild(dateAndStatus);
 

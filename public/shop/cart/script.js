@@ -9,13 +9,7 @@ const email = document.querySelector('#email');
 let id = null;
 
 const calcTotalPrice = document.querySelector('#calcTotalPrice');
-
-const cartItems = new Map();
-cartItems.set(1, 4);
-cartItems.set(3, 5);
-cartItems.set(6, 1);
-cartItems.set(7, 1);
-
+let cartItemsMap = new Map(JSON.parse(localStorage.getItem('cartItems')));
 const cartProducts = document.querySelector('.cartProducts');
 
 fetch('http://localhost:8080/api/user/info', {
@@ -46,8 +40,9 @@ function renderItem(classObj, qty) {
             totalOrderPrice += classObj.price * num;
             calcTotalPrice.textContent = totalOrderPrice.toFixed(2);
 
-            let newQty = cartItems.get(classObj.id) + num;
-            cartItems.set(classObj.id, newQty);
+            let newQty = cartItemsMap.get(classObj.id) + num;
+            cartItemsMap.set(classObj.id, newQty);
+            localStorage.setItem('cartItems', JSON.stringify(Array.from(cartItemsMap.entries())));
         }
     }
 
@@ -58,7 +53,8 @@ function renderItem(classObj, qty) {
 
     function deleteItem() {
         cartProducts.removeChild(product);
-        cartItems.delete(classObj.id);
+        cartItemsMap.delete(classObj.id);
+        localStorage.setItem('cartItems', JSON.stringify(Array.from(cartItemsMap.entries())));
 
         let totalPrice = +calcTotalPrice.textContent;
         let qty = +p.textContent;
@@ -148,7 +144,7 @@ function renderItem(classObj, qty) {
 
 async function getItems() {
     let totalPrice = 0;
-    for (const item of cartItems) {
+    for (const item of cartItemsMap) {
         let itemInfo = await fetch(`http://localhost:8080/api/item/type/${item[0]}/info`)
             .then(res => res.json());
         totalPrice += renderItem(itemInfo, item[1]);
@@ -175,25 +171,29 @@ toShop.addEventListener('click', () => {
 });
 
 submit.addEventListener('click', () => {
-    let request = [];
-    for (const item of cartItems) {
-        request.push({
-            'item': item[0],
-            'qty': item[1]
-        });
-    }
-
-    fetch('http://localhost:8080/api/order/user', {
-        method: 'POST',
-        headers: {'Authorization': token, 'Content-Type': 'application/json'},
-        body: JSON.stringify(request)
-    }).then(res => {
-        if (res.status === 200) {
-            if (id == null) {
-                toOrders.style.display = 'none';
-            }
-            mask.style.display = 'block';
-            dialog.style.display = 'flex';
+    if (cartItemsMap.size > 0) {
+        let request = [];
+        for (const item of cartItemsMap) {
+            request.push({
+                'item': item[0],
+                'qty': item[1]
+            });
         }
-    })
+
+        fetch('http://localhost:8080/api/order/user', {
+            method: 'POST',
+            headers: {'Authorization': token, 'Content-Type': 'application/json'},
+            body: JSON.stringify(request)
+        }).then(res => {
+            if (res.status === 200) {
+                if (id == null) {
+                    toOrders.style.display = 'none';
+                }
+                mask.style.display = 'block';
+                dialog.style.display = 'flex';
+            }
+        })
+    }
+    localStorage.removeItem('cartItems');
+    cartItemsMap = new Map();
 });

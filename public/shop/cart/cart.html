@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zoo Shop</title>
-    <link rel="icon" type="image/x-icon" href="img/mainicon.ico">
+    <link rel="icon" type="image/x-icon" href="images/mainicon.ico">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,18 +20,21 @@
 <body>
 <header>
     <div class="navAndLogo">
-        <i class="fas fa-bars" id="menuBars"></i>
         <div class="imgLogo">
-            <img src="img/logo.png">
+            <img src="images/logo.png">
             <h1>Zoo Shop</h1>
         </div>
     </div>
     <div class="categoriesHead">
         <h3>Categories </h3>
         <i class="fas fa-chevron-down"></i>
+        <div class="headCategories"></div>
     </div>
     <div class="userAccount">
         <i id="cart" class="fas fa-cart-shopping"></i>
+        <div id="cartWrapper">
+            <div id="cartNum"></div>
+        </div>
         <i id="account" class="fas fa-user"></i>
     </div>
 </header>
