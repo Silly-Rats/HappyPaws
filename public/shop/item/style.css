@@ -17,25 +17,23 @@ p {
 
 /* CART DIALOG */
 
-.cartAlert i {
-    position: absolute;
-    right: 5%;
-    top: 5%;
-}   
 .cartAlert {
     text-align: center;
-    height: 20vh;
-    width: 80vw;
+    z-index: 200;
+    width: 70vw;
     background-color: var(--secondary-bg-color);
     position: fixed;
-    left: 10%;
-    top: 15%;
+    left: 10vw;
+    top: 35vh;
     box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
     border-radius: 10px;
-    padding: 5% 0;
+    padding: 5vh 5vw;
 }
 
-
+.cartAlert i {
+    position: absolute;
+    right: 5vw;
+}
 
 .alertInfo, .alertNav{
     display: flex;
@@ -43,18 +41,14 @@ p {
     justify-content: space-around;
 }
 
-.toShop, .toCart {
-    padding: 1%;
-    border-radius: 5px;
+.alertNav button {
+    width: 30vw;
+    height: fit-content;
 }
 
-.toShop {
-    border: 1px solid var(--main-text-color);
-} 
-
-.toCart {
-    background-color: var(--main-text-color);
-    color:#fff;
+#toShop {
+    background-color: var(--secondary-bg-color);
+    color: var(--main-text-color);
 }
 
 /* MAIN PRODUCT INFO */
@@ -270,13 +264,15 @@ th {
 
     .cartAlert {
         width: 50vw;
-        height: 30vh;
-        left: 25%;
-        padding: 1% 0;
+        left: 20vw;
     }
 
     .cartAlert h3{
         font-size: x-large;
+    }
+
+    .alertNav button {
+        width: 20vw;
     }
 
 }
@@ -309,9 +305,12 @@ th {
 
     .cartAlert {
         width: 40vw;
-        height: 30vh;
-        left: 30%;
-        padding: 1% 0;
+        left: 27.5vw;
+        top: 30vh;
+    }
+
+    .alertNav button {
+        width: 15vw;
     }
 
 }
@@ -325,16 +324,8 @@ th {
         width: 70vw;
     }
 
-    .cartAlert {
-        width: 30vw;
-        height: 30vh;
-        left: 33%;
-        top: 12%;
-        padding: 1% 0;
-    }
-
     .mainProductInfo {
-        padding-top: 10% 0;
+        padding-top: 10%;
         align-items:flex-start;
     }
 
@@ -367,6 +358,10 @@ th {
     .detailDesc {
         width: 55vw;
         margin-left: 0;
+    }
+
+    .alertNav button {
+        width: 15vw;
     }
    
 }

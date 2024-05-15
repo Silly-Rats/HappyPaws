@@ -12,7 +12,7 @@
     --secondary-text-color: #de9a2c;
 }
 
-h3, h1, h2 {
+h3, h1 {
     color: var(--main-text-color);
     font-family: "Exo 2", sans-serif;
     margin-bottom: 1vh;
@@ -79,6 +79,26 @@ header {
     font-size: 1.3rem;
 }
 
+#cartWrapper {
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    margin: 0 0 -1vh -3vh;
+}
+
+#cartNum {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3vh;
+    height: 3vh;
+    padding: 1px 1px;
+    border-radius: 100%;
+    background-color: var(--secondary-bg-color);
+    color: var(--main-text-color);
+    font-size: large;
+}
+
 .navAndLogo {
     display: flex;
     align-items: center;
@@ -111,7 +131,7 @@ header {
     text-align: center;
     align-self: center;
     padding-bottom: 3vh;
-    width: inherit;
+    width: 100%;
 }
 
 /* FOOTER */
@@ -133,13 +153,12 @@ footer {
     flex-direction: column-reverse;
     align-items: center;
     padding: 2rem 0;
-    width: 100%; 
-    position: static;
+    z-index: -150;
+    position: relative;
 }
 
 footer p {
     font-size: 1rem;
-    font-family: "Public Sans", sans-serif;
 }
 
 .show {
@@ -149,10 +168,11 @@ footer p {
 
 button {
     background-color: var(--main-text-color);
-    color: #fff;
-    padding: 0.5vh 0.5vw;
+    color: var(--secondary-bg-color);
+    padding: 1vh 2vw;
     font-family: "Public Sans", sans-serif;
     font-size: large;
+    border-radius: 2vh;
 }
 
 button:hover {
@@ -174,8 +194,6 @@ button:hover {
         display: flex;
         justify-content: space-between;
     }
-
-
 }
 
 @media (min-width: 768px) {
@@ -191,10 +209,6 @@ button:hover {
         margin-left: 0;
     }
 
-    .categoriesHead h3 {
-        font-size: 2em;
-    }
-
     footer {
         flex-direction: row;
         align-items: center;
@@ -206,7 +220,7 @@ button:hover {
     }
 
     .userAccount {
-        width: 15vw;
+        width: 10vw;
     }
 
     .userAccount i {

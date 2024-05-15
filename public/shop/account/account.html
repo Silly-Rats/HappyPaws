@@ -33,6 +33,9 @@
     </div>
     <div class="userAccount">
         <i id="cart" class="fas fa-cart-shopping"></i>
+        <div id="cartWrapper">
+            <div id="cartNum"></div>
+        </div>
         <i id="account" class="fas fa-user"></i>
     </div>
 </header>
@@ -40,7 +43,7 @@
     <main>
         <div class="content">
             <div class="imageAndName">
-                <img src="images/logo.png" class="userImg">
+                <img class="userImg">
                 <div class="userInfo">
                     <div class="smallInputs">
                         <input type="text" id="firstName" readonly>
@@ -51,7 +54,7 @@
                     <input type="text" id="email" readonly>
                     <input type="text" id="newPass" placeholder="New Password">
                     <input type="text" id="oldPass" placeholder="Old Password">
-                    <input type="file" id="file" style="display: none">
+                    <input type="file" id="file" accept="image/png, image/jpeg" style="display: none">
                 </div>
             </div>
             <div class="buttons">

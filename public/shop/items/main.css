@@ -79,6 +79,26 @@ header {
     font-size: 1.3rem;
 }
 
+#cartWrapper {
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    margin: 0 0 -1vh -3vh;
+}
+
+#cartNum {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3vh;
+    height: 3vh;
+    padding: 1px 1px;
+    border-radius: 100%;
+    background-color: var(--secondary-bg-color);
+    color: var(--main-text-color);
+    font-size: large;
+}
+
 .navAndLogo {
     display: flex;
     align-items: center;
@@ -111,7 +131,7 @@ header {
     text-align: center;
     align-self: center;
     padding-bottom: 3vh;
-    width: inherit;
+    width: 100%;
 }
 
 /* FOOTER */
