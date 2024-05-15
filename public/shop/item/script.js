@@ -55,6 +55,7 @@ let id = 1;
         im.classList.add('fa-solid');
         im.classList.add('fa-minus');
         quantity.appendChild(im);
+        productQty(ip, im, qp);
         shortInfo.appendChild(priceQua);
         priceQua.appendChild(quantity);
 
@@ -66,6 +67,11 @@ let id = 1;
             option.innerHTML = classObj.types[i].name;
             select.appendChild(option);
         }
+
+
+        productPrice(select, classObj, h1p);
+
+
         weightsOrColors.appendChild(select);
         shortInfo.appendChild(weightsOrColors);
         let btn = document.createElement('button');
@@ -92,6 +98,8 @@ let id = 1;
         specifications.appendChild(table);
         info.appendChild(shortInfo);
         info.appendChild(specifications);
+
+        
         
         return info;
     }
@@ -102,6 +110,34 @@ let id = 1;
         detailDesc.innerHTML = classObj.description;
         infoBody.appendChild(detailDesc);
     }
+
+    
+function productQty(plus, minus, number) {
+    plus.addEventListener('click', () => {
+        number.textContent = (+(number.textContent)) + 1;
+    })
+    minus.addEventListener('click', () => {
+        if (number.textContent === '1') {
+            return;
+        }
+        number.innerHTML = (+(number.textContent)) - 1;
+    })
+}
+
+function productPrice(select, objPrice, field){
+    console.log(objPrice);
+    select.addEventListener("click", () => {
+        const index = select.selectedIndex;
+        console.log(index);
+        field.textContent = `${objPrice.types[index].price}$`;
+    });
+}
+
+function cartAlert(btn){
+    btn.addEventListener('click', () => {
+        
+    })
+}
 
     async function fetchPhotos() {
 
@@ -119,10 +155,13 @@ let id = 1;
 
     fetchPhotos();
 
+    let slideIndex = 1;
+    let images = [];
+
     function renderPhotos(classObj){
         let imageSlider = document.createElement('div');
         imageSlider.classList.add('imageSlider');
-        let images = [];
+        
         for (let i = 0; i < classObj.length; i++){
             let img = document.createElement('img');
             img.classList.add('slide');
@@ -152,9 +191,8 @@ let id = 1;
         inext.classList.add('arrow');
         inext.classList.add('next');
         dotSlider.appendChild(inext);
-
-
-        let slideIndex = 1;
+        imgBody.appendChild(dotSlider);
+    
         showSlides(slideIndex, images);
 
         ip.addEventListener('click', () => {
@@ -167,6 +205,7 @@ let id = 1;
             dots.forEach(dot => dot.style.opacity = '.5');
             dots[slideIndex - 1].style.opacity = 1;
         })
+
 
     }
 
@@ -184,5 +223,6 @@ let id = 1;
     }
 
     function plusSlides(n){
-        showSlides(slideIndex += n);
+        showSlides(slideIndex += n, images);
     }
+
