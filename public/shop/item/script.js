@@ -2,6 +2,8 @@
 
 let infoBody = document.querySelector('.productDesc');
 let imgBody = document.querySelector('.productImg');
+let alertBtn = document.querySelector('.cartAlert');
+let xmark = document.querySelector('.fa-xmark');
 let id = 1;
 
     const getResource = async (url) => {
@@ -69,6 +71,8 @@ let id = 1;
         }
 
 
+
+        
         productPrice(select, classObj, h1p);
 
 
@@ -78,6 +82,7 @@ let id = 1;
         btn.type = 'submit';
         btn.innerHTML = 'Add to cart';
         shortInfo.appendChild(btn);
+        cartAlert(btn, h1p, h1, qp);
 
         let specifications = document.createElement('div');
         specifications.classList.add('specifications');
@@ -133,9 +138,22 @@ function productPrice(select, objPrice, field){
     });
 }
 
-function cartAlert(btn){
+function cartAlert(btn, price, name, qty){
+    console.log(price, name, qty);
+    let prdName = document.querySelector('#prdName');
+    let orderQty = document.querySelector("#orderQty");
+    let orderPrc = document.querySelector('#orderPrc');
+
+
+
+
     btn.addEventListener('click', () => {
-        
+        alertBtn.classList.remove('hide');
+        alertBtn.style.display = 'block';
+    })
+    xmark.addEventListener('click', () => {
+        alertBtn.classList.add('hide');
+        alertBtn.style.display = 'none';
     })
 }
 
@@ -225,4 +243,8 @@ function cartAlert(btn){
     function plusSlides(n){
         showSlides(slideIndex += n, images);
     }
+
+   
+
+
 

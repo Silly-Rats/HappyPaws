@@ -11,19 +11,31 @@ p {
     font-family: "Exo 2", sans-serif;
 }
 
+.hide {
+    display: none;
+}
+
 /* CART DIALOG */
+
+.cartAlert i {
+    position: absolute;
+    right: 5%;
+    top: 5%;
+}   
 .cartAlert {
     text-align: center;
     height: 20vh;
     width: 80vw;
     background-color: var(--secondary-bg-color);
-    position: absolute;
+    position: fixed;
     left: 10%;
     top: 15%;
     box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
     border-radius: 10px;
     padding: 5% 0;
 }
+
+
 
 .alertInfo, .alertNav{
     display: flex;
@@ -316,7 +328,8 @@ th {
     .cartAlert {
         width: 30vw;
         height: 30vh;
-        left: 40%;
+        left: 33%;
+        top: 12%;
         padding: 1% 0;
     }
 
