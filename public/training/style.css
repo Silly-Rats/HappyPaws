@@ -442,6 +442,25 @@ h5 {
            width:9.77vw;
     }
 
+    .details h4{
+         color: #ffffff;
+         font-weight: 400;
+         font-size: 1.6vw;
+         text-align: justify;
+         margin-bottom: 1vw;
+         line-height: 1.5;
+
+    }
+    .details h1{
+        color: #ffffff;
+        font-size: 2.6vw;
+        font-weight: 500;
+        line-height: 1.5;
+        margin-bottom: 2vw;
+        text-align: center;
+    }
+
+
 
 .left-section2 {
     float: left;
@@ -690,69 +709,75 @@ h7 {
 
 
 
+
+
+
+
+
+
+
     .price {
-        flex-direction: column;
         align-items: center;
         display: flex;
         justify-content: space-between;
         background-color: #846554;
-    }
+         }
 
     #glaw{
         display:inline;
-        width:57.3vw;
+        width:100vw;
       }
 
       .blok1, .blok2{
-          float:left;
-          margin:0.5vw 0.5vw 0.5vw 0.5vw;
+          float:center;
+          margin:0.6vw 0.6vw 0.6vw 0.6vw;
           background: #846554;
           color: #ffff;
           padding: 1vw 1.5vw;
           text-align: left;
           border: 0.065vw solid #ffff;
-          border-radius: 0.33vw;
+          border-radius: 0.7vw;
         }
         .blok3, .blok4{
-          float:left;
-          margin:0.5vw 0.5vw 0.5vw 0.5vw;
+          float:center;
+          margin:1vw 0.6vw 0vw 0.6vw;
           background: #846554;
           color: #ffff;
           padding: 1vw 1.5vw;
           text-align: left;
           border: 0.065vw  solid #ffff;
-          border-radius: 0.33vw;
+          border-radius: 0.7vw;
           margin-bottom: 2vw;
         }
 
           .blok1, .blok3{
-              font-size: 1.65vw;
-              font-weight: 400;
-              width:29.3vw;
-              height:2.28vw;
+              font-size: 3.1vw;
+              font-weight: 300;
+              width:55vw;
+              height:5vw;
           }
 
           .blok2, .blok4{
-                  font-size: 1.95vw;
-                  font-weight: 400;
-                  width:9.77vw;
-                  height:2.28vw;
+                  font-size: 3.5vw;
+                  font-weight: 300;
+                  width:20vw;
+                  height:5vw;
                   text-align: center;
               }
 
 
         .blok5, .blok6{
-          float:left;
+          float:center;
           margin:0.33vw 0.26vw 0.26vw 0.26vw;
           background: #846554;
           color: #ffff;
           padding: 0.4vw 0.6vw;
           text-align: left;
           border: 0vw solid #846554;
-          border-radius: 0.33vw;
+          border-radius: 0.7vw;
           margin-bottom: 1.5vw;
-          font-size: 4vw;
-          font-weight: 300;
+          font-size: 3vw;
+          font-weight: 200;
           height:2.28vw;
         }
         .blok5{
@@ -764,26 +789,18 @@ h7 {
 
 
     .left-section2 {
-        float: left;
-        width: 60%;
+        float:center;
+        width: 100%;
         padding-right: 1vw;
         text-align: left;
     }
 
     .right-section2 {
-        float: right;
-        width: 40%;
-        display: flex;
-        justify-content: flex-end;
-        align-items: flex;
-        margin-bottom: 0vw;
-        margin-top: 0vw;
+        display: none;
     }
 
     .left-button {
-        float: left;
-        flex: 1;
-        display: flex;
+        display: none;
         justify-content: flex-end;
         align-items: flex;
         margin-top: 0vw;
@@ -802,6 +819,19 @@ h7 {
         transition: background-color 0.3s, color 0.3s;
     }
 
+
+    .details h4{
+        font-size: 3vw;
+        font-weight: 300;
+        margin-bottom: 5vw;
+    }
+    .details h1{
+        font-size: 4.3vw;
+        font-weight: 450;
+        margin-top: 10vw;
+    }
+
+
     .reserve-button2:hover {
         background-color: #846554;
         color: #ffff;
@@ -809,8 +839,16 @@ h7 {
     }
 
     .right-section2>img{
-        width: 25vw;
+        width: 0vw;
     }
+
+
+
+
+
+
+
+
 
     .footer {
         display: flex;
