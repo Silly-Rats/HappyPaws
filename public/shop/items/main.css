@@ -111,7 +111,7 @@ header {
     text-align: center;
     align-self: center;
     padding-bottom: 3vh;
-    width: inherit;
+    width: 100%;
 }
 
 /* FOOTER */

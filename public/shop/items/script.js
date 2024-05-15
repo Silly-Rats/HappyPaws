@@ -98,7 +98,7 @@ function renderProduct(classObj) {
     let h4 = document.createElement('h4');
     h4.innerHTML = 'Learn More';
     h4.addEventListener('click', () => {
-        window.location.href = `http://localhost:8000/item/${classObj.id}`;
+        window.location.href = `http://localhost:8000/shop/item/${classObj.id}`;
     });
     productDesc.appendChild(h4);
     div.appendChild(productDesc);

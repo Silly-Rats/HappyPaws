@@ -83,7 +83,7 @@ input:checked {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 1vh;
+    margin-top: 3vh;
     width: 60%;
 }
 

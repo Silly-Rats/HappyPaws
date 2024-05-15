@@ -111,7 +111,7 @@ header {
     text-align: center;
     align-self: center;
     padding-bottom: 3vh;
-    width: inherit;
+    width: 100%;
 }
 
 /* FOOTER */
@@ -148,7 +148,7 @@ footer p {
 
 button {
     background-color: var(--main-text-color);
-    color: #fff;
+    color: var(--secondary-bg-color);
     padding: 1vh 2vw;
     font-family: "Public Sans", sans-serif;
     font-size: large;
