@@ -45,6 +45,41 @@ input:checked {
     accent-color: #402918;
 }
 
+#dialogMask {
+    display: none;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    z-index: 125;
+    height: 100vh;
+    width: 100vw;
+}
+
+#orderedDialog {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 35vh;
+    left: 10vw;
+    height: fit-content;
+    width: 70vw;
+    padding: 5vh 5vw;
+    border: solid 3px var(--main-text-color);
+    background-color: var(--secondary-bg-color);
+    border-radius: 5vw;
+    z-index: 150;
+}
+
+#orderedDialog h2 {
+    margin-bottom: 2vh;
+    text-align: center;
+    color: var(--main-text-color);
+}
+
+#toOrders {
+    margin-right: 10vw;
+}
+
 /* CUSTOMER FORM */
 .formAndInfo {
     display: flex;
@@ -243,6 +278,10 @@ input:checked {
 /* MEDIA QUERIES */
 @media (min-width: 576px) {
 
+    #orderedDialog h2 {
+        font-size: xx-large;
+    }
+
     .formAndInfo {
         flex-direction: row;
         justify-content: space-around;
@@ -290,6 +329,11 @@ input:checked {
 }
 
 @media (min-width: 768px) {
+
+    #orderedDialog {
+        width: 40vw;
+        left: 25vw;
+    }
 
     .formAndInfo {
         display: flex;
@@ -371,6 +415,15 @@ input:checked {
 }
 
 @media (min-width: 992px) {
+
+    #orderedDialog {
+        width: 30vw;
+        left: 30vw;
+    }
+
+    #toOrders {
+        margin-right: 5vw;
+    }
 
     .formAndInfo {
         flex-direction: row;

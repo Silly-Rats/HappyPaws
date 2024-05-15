@@ -72,7 +72,7 @@ function main() {
         userEmail.textContent = classObj.userInfo.email;
         userPhone.textContent = classObj.userInfo.phoneNum;
 
-        const dialog = document.querySelector('#infoDialog');
+        const dialog = document.querySelector('#orderedDialog');
         const mask = document.querySelector('#dialogMask');
         dialog.style.display = 'flex';
         mask.style.display = 'block';
@@ -221,7 +221,7 @@ function main() {
 }
 
 let dialogClose = document.querySelectorAll('.dialogClose');
-const infoDialog = document.querySelector('#infoDialog');
+const infoDialog = document.querySelector('#orderedDialog');
 const dialogMask = document.querySelector('#dialogMask');
 dialogClose.forEach(e => e.addEventListener('click', (e) => {
     infoDialog.style.display = 'none';

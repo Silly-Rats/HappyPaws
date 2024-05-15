@@ -9,7 +9,6 @@ const email = document.querySelector('#email');
 let id = null;
 
 const calcTotalPrice = document.querySelector('#calcTotalPrice');
-const submit = document.querySelector('.orderInfoSubmit');
 
 const cartItems = new Map();
 cartItems.set(1, 4);
@@ -159,6 +158,22 @@ async function getItems() {
 
 getItems();
 
+
+const submit = document.querySelector('.orderInfoSubmit');
+const mask = document.querySelector('#dialogMask');
+const dialog = document.querySelector('#orderedDialog');
+
+const toOrders = document.querySelector('#toOrders');
+const toShop = document.querySelector('#toShop');
+
+toOrders.addEventListener('click', () => {
+    window.location.href = 'http://localhost:8000/shop/orders';
+})
+
+toShop.addEventListener('click', () => {
+    window.location.href = 'http://localhost:8000/shop/category';
+});
+
 submit.addEventListener('click', () => {
     let request = [];
     for (const item of cartItems) {
@@ -172,5 +187,13 @@ submit.addEventListener('click', () => {
         method: 'POST',
         headers: {'Authorization': token, 'Content-Type': 'application/json'},
         body: JSON.stringify(request)
-    });
+    }).then(res => {
+        if (res.status === 200) {
+            if (id == null) {
+                toOrders.style.display = 'none';
+            }
+            mask.style.display = 'block';
+            dialog.style.display = 'flex';
+        }
+    })
 });
