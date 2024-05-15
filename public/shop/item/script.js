@@ -2,7 +2,10 @@
 
 let infoBody = document.querySelector('.productDesc');
 let imgBody = document.querySelector('.productImg');
+let alertBtn = document.querySelector('.cartAlert');
+let xmark = document.querySelector('.fa-xmark');
 let id = 1;
+const cartItems = new Map();
 
     const getResource = async (url) => {
         const res = await fetch(url);
@@ -55,6 +58,7 @@ let id = 1;
         im.classList.add('fa-solid');
         im.classList.add('fa-minus');
         quantity.appendChild(im);
+        productQty(ip, im, qp);
         shortInfo.appendChild(priceQua);
         priceQua.appendChild(quantity);
 
@@ -66,12 +70,16 @@ let id = 1;
             option.innerHTML = classObj.types[i].name;
             select.appendChild(option);
         }
+        
+        productPrice(select, classObj, h1p);
+
         weightsOrColors.appendChild(select);
         shortInfo.appendChild(weightsOrColors);
         let btn = document.createElement('button');
         btn.type = 'submit';
         btn.innerHTML = 'Add to cart';
         shortInfo.appendChild(btn);
+        cartAlert(btn, h1p, h1, qp, select, classObj);
 
         let specifications = document.createElement('div');
         specifications.classList.add('specifications');
@@ -92,7 +100,8 @@ let id = 1;
         specifications.appendChild(table);
         info.appendChild(shortInfo);
         info.appendChild(specifications);
-        
+
+    
         return info;
     }
 
@@ -102,6 +111,49 @@ let id = 1;
         detailDesc.innerHTML = classObj.description;
         infoBody.appendChild(detailDesc);
     }
+
+    
+function productQty(plus, minus, number) {
+    plus.addEventListener('click', () => {
+        number.textContent = (+(number.textContent)) + 1;
+    })
+    minus.addEventListener('click', () => {
+        if (number.textContent === '1') {
+            return;
+        }
+        number.innerHTML = (+(number.textContent)) - 1;
+    })
+}
+
+function productPrice(select, objPrice, field){
+    select.addEventListener("click", () => {
+        const index = select.selectedIndex;
+        field.textContent = `${objPrice.types[index].price}$`;
+    });
+}
+
+function cartAlert(btn, price, name, qty, select, obj){
+    
+    let prdName = document.querySelector('#prdName');
+    let orderQty = document.querySelector("#orderQty");
+    let orderPrc = document.querySelector('#orderPrc');
+
+    btn.addEventListener('click', () => {
+        prdName.innerHTML = name.textContent;
+        orderQty.innerHTML = `x${qty.textContent}`
+        orderPrc.innerHTML = `${parseFloat(price.textContent) * (+(qty.textContent))}`;
+
+        const index = select.selectedIndex;
+        cartItems.set(obj.types[index].id, qty.textContent);
+
+        alertBtn.classList.remove('hide');
+        alertBtn.style.display = 'block';
+    })
+    xmark.addEventListener('click', () => {
+        alertBtn.classList.add('hide');
+        alertBtn.style.display = 'none';
+    })
+}
 
     async function fetchPhotos() {
 
@@ -119,10 +171,13 @@ let id = 1;
 
     fetchPhotos();
 
+    let slideIndex = 1;
+    let images = [];
+
     function renderPhotos(classObj){
         let imageSlider = document.createElement('div');
         imageSlider.classList.add('imageSlider');
-        let images = [];
+        
         for (let i = 0; i < classObj.length; i++){
             let img = document.createElement('img');
             img.classList.add('slide');
@@ -152,9 +207,8 @@ let id = 1;
         inext.classList.add('arrow');
         inext.classList.add('next');
         dotSlider.appendChild(inext);
-
-
-        let slideIndex = 1;
+        imgBody.appendChild(dotSlider);
+    
         showSlides(slideIndex, images);
 
         ip.addEventListener('click', () => {
@@ -167,6 +221,7 @@ let id = 1;
             dots.forEach(dot => dot.style.opacity = '.5');
             dots[slideIndex - 1].style.opacity = 1;
         })
+
 
     }
 
@@ -184,5 +239,7 @@ let id = 1;
     }
 
     function plusSlides(n){
-        showSlides(slideIndex += n);
+        showSlides(slideIndex += n, images);
     }
+
+

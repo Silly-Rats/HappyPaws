@@ -11,6 +11,52 @@ p {
     font-family: "Exo 2", sans-serif;
 }
 
+.hide {
+    display: none;
+}
+
+/* CART DIALOG */
+
+.cartAlert i {
+    position: absolute;
+    right: 5%;
+    top: 5%;
+}   
+.cartAlert {
+    text-align: center;
+    height: 20vh;
+    width: 80vw;
+    background-color: var(--secondary-bg-color);
+    position: fixed;
+    left: 10%;
+    top: 15%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+    border-radius: 10px;
+    padding: 5% 0;
+}
+
+
+
+.alertInfo, .alertNav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.toShop, .toCart {
+    padding: 1%;
+    border-radius: 5px;
+}
+
+.toShop {
+    border: 1px solid var(--main-text-color);
+} 
+
+.toCart {
+    background-color: var(--main-text-color);
+    color:#fff;
+}
+
 /* MAIN PRODUCT INFO */
 .mainProductInfo {
     width: 90vw; 
@@ -86,6 +132,7 @@ p {
     background-color: #fff;
     box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
     justify-content: space-between;
+    align-items: baseline;
 }
 
 .priceQua, .quantity {
@@ -169,8 +216,8 @@ th {
 
 @media (min-width: 768px) {
     .productImg {
-        height: 60vh;
-        width: 50vw;
+        height: 50vh;
+        width: 55vw;
     }
     .imageSlider {
         height: 45vh;
@@ -221,9 +268,16 @@ th {
         margin-top: 10%;
     }
 
-    /* .detailDesc {
-        width: 78vw;
-    } */
+    .cartAlert {
+        width: 50vw;
+        height: 30vh;
+        left: 25%;
+        padding: 1% 0;
+    }
+
+    .cartAlert h3{
+        font-size: x-large;
+    }
 
 }
 
@@ -253,6 +307,13 @@ th {
         width: 40vw;
     }
 
+    .cartAlert {
+        width: 40vw;
+        height: 30vh;
+        left: 30%;
+        padding: 1% 0;
+    }
+
 }
 
 @media (min-width: 1200px) {
@@ -264,6 +325,13 @@ th {
         width: 70vw;
     }
 
+    .cartAlert {
+        width: 30vw;
+        height: 30vh;
+        left: 33%;
+        top: 12%;
+        padding: 1% 0;
+    }
 
     .mainProductInfo {
         padding-top: 10% 0;
