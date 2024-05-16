@@ -379,16 +379,11 @@ document.querySelector('.button1').addEventListener('click', () => {
     hourCell.textContent = selectedHour;
     hourCell.classList.add('hourCell');
 
-    const addition = document.createElement('td');
-    addition.classList.add('addition');
-    addition.textContent = '\u22EE';
-
     tableRow.appendChild(dayOfWeekCell);
     tableRow.appendChild(monthCell);
     tableRow.appendChild(dayNumberCell);
     tableRow.appendChild(yearCell);
     tableRow.appendChild(hourCell);
-    tableRow.appendChild(addition);
 
     // Get the current count of existing rows
     const existingRows = listTable.querySelectorAll('tr');
@@ -621,8 +616,16 @@ let userId;
 
 fetchAndPopulateUserData();
 fetchAndPopulateDogs();
+
+
 confirmButton.addEventListener('click', function(event) {
     event.preventDefault();
+
+    // Check if listContainer is empty
+    if (listTable.querySelectorAll('tr').length === 0) {
+        alert('Please select at least one training date before confirming.');
+        return; // Prevent form submission if listContainer is empty
+    }
 
     const fullName = document.getElementById('name').value;
     const emailInput = document.getElementById('email').value;

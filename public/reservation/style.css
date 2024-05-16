@@ -35,6 +35,9 @@ body{
     width: 18%;
 }
 .header_line {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
     position: relative;
     background-color: #C5C5C5;
     justify-content: space-between;
@@ -58,6 +61,9 @@ body{
     flex-direction: column;
 }
 .logo{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
     padding: 0.2vh 0 0.2vh 4vw;
 }
 .logo>div{
@@ -71,11 +77,14 @@ body{
     background-size: cover;
 }
 .nav{
-    width: 55vw;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    width: 50vw;
     justify-content: space-evenly;
 }
 .nav-item {
-    font-size: 1.5vw;
+    font-size: 1.6vw;
     font-weight: 450;
 }
 .user{
@@ -168,6 +177,9 @@ input::placeholder{
     color: #808080; /* Сірий колір для галочки при виборі */
 }
 .reservation{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
     height: 100vh;
     background-color: #808080;
     justify-content: space-between;
@@ -251,6 +263,8 @@ button:hover {
     width: 50%;
 }
 .choose{
+    display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
     width: 90%;
@@ -290,11 +304,9 @@ button:hover {
 }
 
 .list-table .hourCell {
-    width: 15%; /* Hour column */
+    width: 20%; /* Hour column */
 }
-.list-table .addition{
-    width: 5%;
-}
+
 .context-menu {
     display: none;
     position: absolute;
@@ -411,6 +423,7 @@ button:hover {
     }
 
     .header_line{
+
         top: 0;
         padding: 0 3vw;
         align-items: center;
