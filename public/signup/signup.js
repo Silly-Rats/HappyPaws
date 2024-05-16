@@ -26,7 +26,6 @@ loginButton.addEventListener('click', function () {
 
 document.getElementById('birthday').addEventListener('focus', function () {
     this.type = 'date';
-    this.style.color = 'black';
 });
 
 document.getElementById('birthday').addEventListener('blur', function () {
@@ -72,21 +71,25 @@ function createAccount() {
 
 
     if (name === '' || surname === '' || birthday === '' || phone === '' || email === '' || password === '' || password2 === '') {
-        alert('Please fill in all fields');
+        alert('Please fill in all fields!');
         return;
     }
 
     if (password !== password2) {
-        alert('Passwords do not match');
+        alert('Passwords do not match!');
         return;
     }
 
     if (phone.length !== 13) {
-        alert("Please enter a valid phone number");
+        alert("Please enter a valid phone number!");
         phone.focus();
         return;
     }
 
+    if (password.length < 8) {
+        alert("Password must from 8 up to 40 symbols!");
+        return;
+    }
 
     let dataToSend = {
         firstName: name,
@@ -107,9 +110,10 @@ function createAccount() {
         .then(response => response.json())
         .then(data => {
             console.log('Success');
-            localStorage.setItem('token', data.token);
+            localStorage.setItem('token', 'Bearer ' + data.token);
         })
         .catch((error) => {
             console.error('Error: ' + error);
+            alert('This email is already used!');
         });
 }
