@@ -34,7 +34,12 @@
         </div>
     </div>
     <div class="user_info">
-        <img src="../images/test1.png" class="user_photo">
+        <div class="user_photo_container">
+            <img src="images/default.png" class="user_photo">
+            <img src="images/download.png" class="download_icon">
+            <input type="file" id="imageUpload" accept="image/*" class="file_input">
+        </div>
+
         <div class="user_box">
             <div>
                 <input type="text" class="name_input" alt="name"readonly>
@@ -49,7 +54,8 @@
             <div>
                 <input type="email"  style="border: none;" readonly>
             </div>
-            <button id="editUserInfo">Edit</button> <button class="delete_button">Delete</button>
+            <button id="editUserInfo">Edit</button>
+            <button class="delete_button" id="accountDelete">Delete</button>
         </div>
     </div>
     <div class="dog_info">
@@ -106,12 +112,12 @@
                 <table>
                     <thead>
                     <tr>
-                        <th>Type</th>
-                        <th>Dog</th>
-                        <th>Trainer/food</th>
+                        <th style="width: 10vw;">Dog</th>
+                        <th style="width: 10vw;">Type</th>
+                        <th style="width: 6vw;">Price</th>
+                        <th>Time</th>
                         <th>Date</th>
-                        <th>Price</th>
-                        <th style="width: 1vw;"></th>
+                        <th style="width: 2vw;"></th>
                     </tr>
                     </thead>
                     <tbody id="reservTableBody">
@@ -139,6 +145,7 @@
         <span id="addDogCloseBtn" class="close">&times;</span>
 
         <p class="info_title" style="text-align: center;">Add Dog</p>
+        <input type="text" id="dogID" style="display: none;" readonly value="">
         <input type="text" id="dogName" placeholder="Name">
         <input type="text" id="dogDOB" placeholder="Date of Birth">
         <select id="dog_breed" name="service" required>
@@ -166,11 +173,16 @@
         <span id="editDogCloseBtn" class="close">&times;</span>
 
         <p class="info_title" style="text-align: center;">Edit Dog</p>
+        <input type="text" id="dogID2" style="display: none;" readonly>
         <input type="text" id="dogName2" placeholder="Name">
-        <input type="text" id="dogDOB2" placeholder="Date of Birth">
-        <select id="dog_breed2" name="service" required>
+        <input type="date" id="dogDOB2" placeholder="Date of Birth">
+        <select id="dog_breed2" name="service" onchange="checkBreedOption()" required>
             <option value="">Select a breed</option>
+            <option value="other">Other breed</option>
         </select>
+        <input type="text" id="otherBreedInput2" style="display: none;" placeholder="Enter breed" maxlength="40">
+        <img src="images/undo.png" style="display: none;" id="backToSelect"  onclick="backToSelect()">
+
         <div class="sizeButtons flex_row">
             <label>
                 <input type="radio" name="size2" value="S"> S
@@ -185,7 +197,7 @@
 
         <textarea id="dogComment2" placeholder="Comment..."></textarea>
 
-        <button id="saveDogBtn" class="brownButton">Save changes</button>
+        <button id="saveDogBtn2" class="brownButton">Save changes</button>
     </div>
 </div>
 
@@ -196,17 +208,8 @@
         <div>
             <input type="text" id="editFirstName" placeholder="First Name" maxlength="20">
             <input type="text" id="editLastName" placeholder="Last Name" maxlength="20">
-            <input type="text" id="editDOB" placeholder="Date of Birth">
-            <div class="custom-file-upload">
-                <label for="imageUpload" class="file-upload-label" id="fileUploadLabel">Upload New Profile Picture</label>
-                <input type="file" id="imageUpload" accept="image/*" onchange="updatePlaceholder()">
-
-            </div>
-
-        </div>
-        <div>
+            <input type="date" id="editDOB" placeholder="Date of Birth">
             <input type="text" id="editPhone" placeholder="Phone" maxlength="13">
-            <input type="email" id="editEmail" placeholder="Email" maxlength="254">
             <input type="password" id="newPassword" placeholder="New Password" maxlength="40">
             <input type="password" id="oldPassword" placeholder="Old Password" maxlength="40">
             <img src="images/close.png" alt="Show/Hide Password" id="toggle-password">
@@ -214,9 +217,15 @@
         <button id="saveEditBtn">Save</button>
     </div>
 </div>
-<div id="passConfirm" class="modal">
+
+<div id="passConfirmModal" class="modal">
     <div class="modal-content" id="passConfirmContent">
         <span id="passConfirmClose" class="close">&times;</span>
+        <p class="info_title">Are you sure you want to delete your account?</p>
+        <p class="small_info">This action cannot be undone.</p>
+        <input type = "password" id="passConfirm" placeholder="Password" maxlength="40">
+        <img src="images/close.png" alt="Show/Hide Password" id="toggle-password1">
+        <button class="delete_button">Cofrim</button>
     </div>
 </div>
 <script src="user_account.js"></script>

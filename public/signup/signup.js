@@ -110,7 +110,7 @@ function createAccount() {
         .then(response => response.json())
         .then(data => {
             console.log('Success');
-            localStorage.setItem('token', data.token);
+            localStorage.setItem('token', 'Bearer ' + data.token);
         })
         .catch((error) => {
             console.error('Error: ' + error);

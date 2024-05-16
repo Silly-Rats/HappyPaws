@@ -72,7 +72,7 @@ function login() {
   .then(response => response.json())
   .then(data => {
       console.log('Success ' + data.token);
-      localStorage.setItem('token', data.token);
+      localStorage.setItem('token', 'Bearer ' + data.token);
   })
   .catch((error) => {
       console.error('Error');

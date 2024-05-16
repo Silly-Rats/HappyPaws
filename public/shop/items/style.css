@@ -80,10 +80,11 @@ input:checked {
 }
 
 .searchButton {
-    margin-top: 1vh;
-    height: 4vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3vh;
     width: 60%;
-    border-radius: 1vh;
 }
 
 .sort {
