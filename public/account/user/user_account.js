@@ -1,6 +1,3 @@
-const Jane = 'eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MiwidHlwZSI6InVzZXIiLCJzdWIiOiJqYW5lLnNtaXRoQGV4YW1wbGUuY29tIiwiaWF0IjoxNzE1Nzc2ODkyLCJleHAiOjE3MTYzODE2OTJ9.LLEaXltp5bG5xLwGYj1_pjSChN9dkmWUQlNe-yiZUT8'
-const John = 'eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwidHlwZSI6InVzZXIiLCJzdWIiOiJqb2huLmRvZUBleGFtcGxlLmNvbSIsImlhdCI6MTcxNTc3NTczNSwiZXhwIjoxNzE2MzgwNTM1fQ.WHYiP31veusEXz90vFhQ9BQJjv-A5SDZqAzIRNl_OcU'
-const Michael = 'eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MywidHlwZSI6InVzZXIiLCJzdWIiOiJtaWNoYWVsLmpvaG5zb25AZXhhbXBsZS5jb20iLCJpYXQiOjE3MTU3Nzc2OTUsImV4cCI6MTcxNjM4MjQ5NX0.CYvFCnUUh7LnnWizDjHL5iV7QTfWJbfE50tbNUU07fw'
 const token = localStorage.getItem('token');
 /*localStorage.setItem('token', null);*/
 
@@ -25,6 +22,7 @@ function showDogs(dogData) {
             <td>
                 <span class="options-icon" style="cursor: pointer;" onclick="openModal('${dog.id}', '${dog.name}', '${dog.dob}', '${dog.breed.size}', '${dog.breed.name}', '${dog.comment}')">&#8942;</span>
             </td>
+            <td style="display: none;">${dog.id}</td>
         `;
 
         if (index % 2 === 1) {
@@ -63,7 +61,12 @@ saveDogBtn2.addEventListener('click', () => {
     const dob = document.getElementById('dogDOB2').value;
     const size = document.querySelector('input[name="size2"]:checked').value;
     const breed = document.getElementById('dog_breed2').selectedOptions[0].getAttribute('data-id');
-    const breedName = document.getElementById('dog_breed2').value;
+    let breedName;
+    if (!breed) {
+        breedName = document.getElementById('otherBreedInput2').value;
+    } else {
+        breedName = document.getElementById('dog_breed2').value;
+    }
     const comment = document.getElementById('dogComment2').value;
 
     console.log("ID:", id);
@@ -94,13 +97,6 @@ saveDogBtn.addEventListener('click', () => {
     const breedName = document.getElementById('dog_breed').value;
     const comment = document.getElementById('dogComment').value;
 
-    console.log("ID:", id);
-    console.log("Name:", name);
-    console.log("Date of Birth:", dob);
-    console.log("Size:", size);
-    console.log("Breed:", breed);
-    console.log("BreedName:", breedName);
-    console.log("Comment:", comment);
 
     uploadDog(id, name, dob, size, breed, breedName, comment)
     location.reload();
@@ -270,7 +266,7 @@ function deleteDog(id) {
         headers: {
             'Authorization': token
         }
-    }).then(location.reload());
+    });
 }
 
 function confirmDelete() {
@@ -278,15 +274,23 @@ function confirmDelete() {
     const confirmation = confirm(`Are you sure you want to delete ${dogName}? This action cannot be undone.`);
     if (confirmation) {
         deleteDog(dogID);
+        location.reload();
     }
 }
 
 function confirmDeleteAll() {
     const confirmation = confirm(`Are you sure you want to delete all dogs? This action cannot be undone.`);
     if (confirmation) {
-        /*кінець бобікам*/
+        const rows = document.querySelectorAll('#dogTableBody tr');
+        rows.forEach(row => {
+            const id = row.querySelector('td:last-of-type').textContent;
+            deleteDog(id);
+        });
+        location.reload();
     }
 }
+
+
 
 let dog_breed_select = document.getElementById('dog_breed');
 let dog_breed_select2 = document.getElementById('dog_breed2');
@@ -329,9 +333,6 @@ function backToSelect() {
     otherBreedInput.style.display = 'none';
     backToSelectButton.style.display = 'none';
 }
-
-
-
 
 /*все по юзеру*/
 let userData;
@@ -383,7 +384,7 @@ async function saveUserInfo() {
         if (response.ok) {
             alert('Changes saved.');
             editUserCloseBtn.onclick();
-            // location.reload();
+            location.reload();
         }
     }).catch(error => {
         console.error('Error');
@@ -413,7 +414,7 @@ function loadImage() {
         .then(data => {
             const img = document.querySelector('.user_photo');
             if (data === '') {
-                img.src = '../images/default.png';
+                img.src = 'images/default.png';
             } else {
                 img.src = data;
             }
@@ -606,4 +607,11 @@ function closeModal(modal_content, modal) {
 
 let backgroundColor = 'white';
 let textColor = '#3C3638';
+
+const newReservButton = document.getElementById('newReserv');
+
+newReservButton.addEventListener('click', () => {
+    window.location.href = "http://localhost:8000/reservation";
+});
+
 /*інше*/
