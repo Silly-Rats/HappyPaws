@@ -61,7 +61,12 @@ saveDogBtn2.addEventListener('click', () => {
     const dob = document.getElementById('dogDOB2').value;
     const size = document.querySelector('input[name="size2"]:checked').value;
     const breed = document.getElementById('dog_breed2').selectedOptions[0].getAttribute('data-id');
-    const breedName = document.getElementById('dog_breed2').value;
+    let breedName;
+    if (!breed) {
+        breedName = document.getElementById('otherBreedInput2').value;
+    } else {
+        breedName = document.getElementById('dog_breed2').value;
+    }
     const comment = document.getElementById('dogComment2').value;
 
     console.log("ID:", id);
