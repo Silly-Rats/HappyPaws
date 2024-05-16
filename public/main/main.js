@@ -18,7 +18,8 @@ function currentDiv(n) {
       x[0].style.display = "block";
     }
   }
-  
+
+
   document.addEventListener("DOMContentLoaded", function() {
     showDivs(1);
   });
