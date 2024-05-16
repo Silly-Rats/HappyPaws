@@ -17,7 +17,7 @@ app.get('/signup', (req, res) => {
 });
 
 app.get('/account/user', (req, res) => {
-    res.sendFile(__dirname + '/public/account/user/account.html');
+    res.sendFile(__dirname + '/public/account/user/user_account.html');
 });
 
 app.get('/reservation', (req, res) => {

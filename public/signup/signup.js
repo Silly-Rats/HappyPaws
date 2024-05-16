@@ -1,3 +1,5 @@
+
+localStorage.setItem('token', null);
 document.getElementById('toggle-password').addEventListener('click', function () {
     let passwordInput = document.getElementById('password');
     let passwordRepeat = document.getElementById('password2');
@@ -111,6 +113,7 @@ function createAccount() {
         .then(data => {
             console.log('Success');
             localStorage.setItem('token', 'Bearer ' + data.token);
+            window.location.href = "http://localhost:8000/account/user";
         })
         .catch((error) => {
             console.error('Error: ' + error);

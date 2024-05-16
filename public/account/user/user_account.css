@@ -88,13 +88,51 @@ input:focus {
     margin: -12vw 0 0 18vw;
 }
 
-.user_photo {
+.user_photo_container {
+    position: relative;
+    display: inline-block;
     margin: 0 0 0 4vw;
+}
+
+.user_photo {
     width: 11vw;
     height: 11vw;
     object-fit: cover;
     border-radius: 50%;
+    transition: filter 0.7s;
 }
+
+.user_photo_container:hover .user_photo {
+    filter: brightness(40%);
+}
+
+.download_icon {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 5vw;
+    height: 5vw;
+    filter: brightness(200%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    cursor: pointer;
+}
+
+.user_photo_container:hover .download_icon {
+    opacity: 1;
+}
+
+.file_input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
 
 .name_input{
     font-weight: 400;
@@ -188,6 +226,7 @@ table th {
 }
 
 .modal-content {
+    position: relative;
     background-color: #fefefe;
     text-align: left;
     margin: 10% auto;
@@ -197,11 +236,20 @@ table th {
     width: 40vw;
     border-radius: 20px;
     animation: slideDown 1s ease;
+    z-index: -2;
+}
+.modal-content::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-image: url('./images/paws.png');
     background-size: cover;
-    background-position: center;
+    opacity: 0.3;
+    z-index: -1;
 }
-
 .close {
     color: #aaa;
     float: right;
@@ -243,14 +291,14 @@ table th {
 }
 
 .addDogmodal-content > input{
-    font-size: 1.8vw;
+    font-size: 1.5vw;
     width: 28vw;
     margin-bottom: 1vw;
 }
 
 #dog_breed,
 #dog_breed2{
-    font-size: 1.8vw;
+    font-size: 1.5vw;
     border: none;
     color: #6C6C6C;
     width: 28vw;
@@ -264,6 +312,7 @@ table th {
     background-size: 1.2vw;
     background-repeat: no-repeat;
     background-position: right center;
+    background-color: rgba(60, 60, 60, 0);
     padding-right: 20px;
 }
 #dog_breed:focus,
@@ -271,7 +320,7 @@ table th {
     outline: none;
 }
 .addDogmodal-content > textarea {
-    font-size: 1.8vw;
+    font-size: 1.5vw;
     border-bottom: 1px solid #6C6C6C;
     font-family: "Work Sans", sans-serif;
     padding: 0.5vw 1vw;
@@ -349,6 +398,9 @@ table th {
 
 .reserv_content{
     font-size: 1.6vw;
+
+    height: 28.3vw;
+    overflow: auto;
 }
 
 .sizeButtons {
@@ -408,41 +460,8 @@ table th {
     width: 50vw;
 }
 
-.custom-file-upload {
-    position: relative;
-    display: inline-block;
-    overflow: hidden;
-}
-
-.file-upload-label {
-    background: none;
-    font-family: "Work Sans", sans-serif;
-    font-size: 1.8vw;
-    font-weight: 300;
-    color: #646464;
-    padding: 10px 10px;
-    margin-right: 1vw;
-    border: solid 1px #646464;
-    cursor: pointer;
-    background-size: cover;
-    background-position: center;
-}
-
-.custom-file-upload input[type="file"] {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 0;
-    padding: 0;
-    font-size: 20px;
-    cursor: pointer;
-    opacity: 0;
-    filter: alpha(opacity=0); /* IE */
-    transform: translate(-300px, 0) scale(4);
-    height: 100%;
-}
-
-#toggle-password{
+#toggle-password,
+#toggle-password1{
     width: 2.5vw;
     margin-left: -3.8vw;
     margin-top: 1vh;
@@ -450,6 +469,12 @@ table th {
     opacity: 60%;
 }
 
+#backToSelect{
+    position: absolute;
+    margin: -3vw 0 0 27vw;
+    width: 1.5vw;
+    opacity: 0.6;
+}
 .icon{
 
     width: 2.5vw;
@@ -459,7 +484,25 @@ table th {
     opacity: 60%;
 }
 
-#oldPassword{
+#oldPassword,
+#passConfirm{
     width: 20.5vw;
     padding-right: 3.5vw;
+}
+
+#passConfirmContent{
+    background-image: none;
+    width: 26.5vw;
+}
+
+#passConfirmContent>button{
+    margin-left: 7.5vw;
+}
+.small_info{
+    font-size: 1.4vw;
+}
+
+#newReserv{
+    margin-left: 37vw;
+    width: 13vw;
 }
