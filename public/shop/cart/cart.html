@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoo Shop</title>
+    <link rel="icon" type="image/x-icon" href="images/mainicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+</head>
+<body>
+<header>
+    <div class="navAndLogo">
+        <div class="imgLogo">
+            <img src="images/logo.png">
+            <h1>Zoo Shop</h1>
+        </div>
+    </div>
+    <div class="categoriesHead">
+        <h3>Categories </h3>
+        <i class="fas fa-chevron-down"></i>
+        <div class="headCategories"></div>
+    </div>
+    <div class="userAccount">
+        <i id="cart" class="fas fa-cart-shopping"></i>
+        <div id="cartWrapper">
+            <div id="cartNum"></div>
+        </div>
+        <i id="account" class="fas fa-user"></i>
+    </div>
+</header>
+<div id="dialogMask"></div>
+<main>
+    <div class="headCategories"></div>
+    <div class="formAndInfo">
+        <div class="formCustomerInfo">
+            <h1>Please fill in information</h1>
+            <h2>Or log in</h2>
+            <div class="fullName">
+                <input type="text" placeholder="Name" id="firstName" class="personalInfoInput">
+                <input type="text" placeholder="Surname" id="lastName" class="personalInfoInput">
+            </div>
+            <div class="contacts">
+                <input type="text" placeholder="Phone number" id="phone" class="personalInfoInput">
+                <input type="email" placeholder="Email" id="email" class="personalInfoInput">
+            </div>
+        </div>
+        <div class="orderInfo">
+            <div class="mainOrderInfo">
+                <h1>You can pick up your order at this address:</h1>
+                <h2>28 Zelena St., lviv.</h2>
+                <div class="totalPriceInfo">
+                    <div>
+                        <h1>The total price:</h1>
+                        <h1><span id="calcTotalPrice"></span>$</h1>
+                    </div>
+                </div>
+                <h1>Our employee will contact you by phone number in a short time. </h1>
+                <button type="submit" class="orderInfoSubmit">Submit</button>
+            </div>
+            <h4>By confirming the order, you agree to the rules of privacy and use of the site</h4>
+        </div>
+    </div>
+
+    <div class="userCart">
+        <h1>Your Cart</h1>
+        <div class="cartProducts"></div>
+    </div>
+
+    <div id="orderedDialog">
+        <h2>Items successfully ordered</h2>
+        <div class="dialogOptions">
+            <button id="toOrders">To Orders</button>
+            <button id="toShop">To Shop</button>
+        </div>
+    </div>
+</main>
+<footer>
+    <div class="footerInfo">
+        <div class="footerPhones">
+            <p>Phones:</p>
+            <p>+380-68-438-68-68 (Telegram,Viber)</p>
+            <p>(425) 555-12-12</p>
+        </div>
+        <div class="footerScdule">
+            <p>Work schedule:</p>
+            <p>Mon-Fri: 6:30-20:00</p>
+            <p>Sat-Sun: 8:00-17:00</p>
+        </div>
+        <div class="footerContacts">
+            <p>Contact:</p>
+            <p>happy.paws@gmail.com</p>
+            <p><i class="fab fa-instagram"></i> @happy_paws</p>
+            <p>Address: 28 Zelena St., Lviv</p>
+        </div>
+    </div>
+    <div class="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2673.591758200127!2d24.038071583982262!3d49.83236914284526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473add42d4507667%3A0x1e478dea8f41eac6!2z0LLRg9C70LjRhtGPINCX0LXQu9C10L3QsCwgMjgsINCb0YzQstGW0LIsINCb0YzQstGW0LLRgdGM0LrQsCDQvtCx0LvQsNGB0YLRjCwgNzkwMDA!5e0!3m2!1suk!2sua!4v1713189273403!5m2!1suk!2sua"
+                width="300" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+</footer>
+</body>
+<script src="header.js"></script>
+<script src="script.js"></script>
+</html>
