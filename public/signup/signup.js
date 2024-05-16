@@ -112,8 +112,8 @@ function createAccount() {
         .then(response => response.json())
         .then(data => {
             console.log('Success');
-            localStorage.setItem('token', 'Bearer ' + data.token);
-            window.location.href = "http://localhost:8000/account/user";
+            alert('Account created! Please, log in.');
+            window.location.href = "http://localhost:8000/login";
         })
         .catch((error) => {
             console.error('Error: ' + error);
