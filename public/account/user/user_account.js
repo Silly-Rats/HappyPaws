@@ -1,6 +1,16 @@
 const token = localStorage.getItem('token');
 /*localStorage.setItem('token', null);*/
 
+fetch('http://localhost:8080/api/user/type', {
+    headers: {'Authorization': localStorage.getItem('token')}
+}).then(res => {
+    if (res.status === 200) {
+        console.log('ok');
+    } else {
+        alert('Session expired! Please log in again.');
+        window.location.href = "http://localhost:8000/login";
+    }
+})
 
 /*все по собаках*/
 let dogData;
@@ -375,6 +385,8 @@ function backToSelect2() {
     backToSelectButton.style.display = 'none';
 }
 
+
+
 /*все по юзеру*/
 let userData;
 const nameInputs = document.querySelectorAll('.name_input');
@@ -426,6 +438,8 @@ async function saveUserInfo() {
             alert('Changes saved.');
             editUserCloseBtn.onclick();
             location.reload();
+        } else{
+            alert('Incorrect Data.');
         }
     }).catch(error => {
         console.error('Error');
@@ -604,9 +618,9 @@ function showReservations(reservData) {
     reservData.forEach((reservation, index) => {
         const newRow = document.createElement('tr');
 
+        //<td>${reservation.service.name}</td>
         newRow.innerHTML = `
             <td>${reservation.dogInfo.name}</td>
-            <td>${reservation.service.name}</td>
             <td>${reservation.price}$</td>
             <td>${new Date(reservation.reserveTime).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</td>
             <td>${new Date(reservation.reserveTime).toLocaleDateString()}</td>
@@ -652,9 +666,19 @@ sortBySelect.addEventListener('change', function() {
         .then(res => res.json())
         .then(res => {
             reservData = res;
+            clearTable();
             showReservations(reservData);
         });
 });
+
+function clearTable() {
+    const tableBody = document.getElementById('reservTableBody');
+    while (tableBody.firstChild) {
+        tableBody.removeChild(tableBody.firstChild);
+    }
+}
+
+
 
 
 
@@ -676,3 +700,11 @@ newReservButton.addEventListener('click', () => {
 });
 
 /*інше*/
+document.getElementById('menuIcon').addEventListener('click', function() {
+    document.getElementById('sidebarMenu').style.width = '60%'; // Adjust width as needed
+});
+
+document.getElementById('closeBtn').addEventListener('click', function() {
+    document.getElementById('sidebarMenu').style.width = '0';
+});
+

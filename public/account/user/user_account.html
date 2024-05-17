@@ -12,24 +12,26 @@
 <div class="content">
     <div class="header">
         <div class="header_line flex_row">
-            <img src="https://img.icons8.com/material-outlined/192/3C3638/menu--v1.png" alt="menu--v1"/>
-            <div class="logo flex_row">
+            <img src="https://img.icons8.com/material-outlined/192/3C3638/menu--v1.png" alt="menu" id="menuIcon">
+
+            <div id="sidebarMenu" class="sidebar">
+                <a href="javascript:void(0)" class="closebtn" id="closeBtn">&times;</a>
+                <a href="http://localhost:8000/reservation">Reservation</a>
+                <a href="http://localhost:8000/training#trainers-info">Trainers</a>
+                <a href="http://localhost:8000/training#price">Price</a>
+                <a href="http://localhost:8000/training#footer_link">Contacts & location</a>
+            </div>
+            <div class="flex_row logo" onclick="window.location = 'http://localhost:8000/training';">
                 <img src="images/logo.png" alt="Happy Paws Logo">
                 <div>Happy<br>Paws</div>
             </div>
             <div class="nav flex_row">
-                <div class="nav-item">Reviews</div>
-                <div class="nav-item">Shop</div>
-                <div class="nav-item">
-                    Services
-                    <img src="images/services.png" alt="services">
-                </div>
-                <div class="nav-item user">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#3c3638" d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>
-                </div>
+                <div class="nav-item" onclick="window.location='http://localhost:8000/training#trainers-info'">Trainers</div>
+                <div class="nav-item" onclick="window.location='http://localhost:8000/training#price'">Price</div>
+
             </div>
-            <div class="user">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#3c3638" d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>
+            <div class ="logout_img" onclick="window.location='http://localhost:8000/training'; localStorage.setItem('token', null);" style="cursor:pointer">
+                <img src="images/logout.png" class="logout_icon">
             </div>
         </div>
     </div>
@@ -65,11 +67,11 @@
                 <table>
                     <thead>
                     <tr>
-                        <th style="width: 10vw;">Name</th>
-                        <th style="width: 10vw;">Birth Date</th>
-                        <th style="width: 6vw;">Size</th>
+                        <th class="column1">Name</th>
+                        <th class="column4">Birth Date</th>
+                        <th>Size</th>
                         <th>Breed</th>
-                        <th style="width: 2vw;"></th>
+                        <th class="column3"></th>
                     </tr>
                     </thead>
                     <tbody id="dogTableBody">
@@ -112,12 +114,12 @@
                 <table>
                     <thead>
                     <tr>
-                        <th style="width: 10vw;">Dog</th>
-                        <th style="width: 10vw;">Type</th>
-                        <th style="width: 6vw;">Price</th>
+                        <th>Dog</th>
+<!--                        <th class="column1">Type</th>-->
+                        <th class="column2">Price</th>
                         <th>Time</th>
                         <th>Date</th>
-                        <th style="width: 2vw;"></th>
+                        <th class="column3"></th>
                     </tr>
                     </thead>
                     <tbody id="reservTableBody">
@@ -148,9 +150,12 @@
         <input type="text" id="dogID" style="display: none;" readonly value="">
         <input type="text" id="dogName" placeholder="Name">
         <input type="text" id="dogDOB" placeholder="Date of Birth">
-        <select id="dog_breed" name="service" required>
+        <select id="dog_breed" name="service" onchange="checkBreedOption()" required>
             <option value="">Select a breed</option>
+            <option value="other">Other breed</option>
         </select>
+        <input type="text" id="otherBreedInput" style="display: none;" placeholder="Enter breed" maxlength="40">
+        <img src="images/undo.png" style="display: none;" id="backToSelect"  onclick="backToSelect()">
         <div class="sizeButtons flex_row">
             <label>
                 <input type="radio" name="size" value="S"> S
@@ -176,12 +181,12 @@
         <input type="text" id="dogID2" style="display: none;" readonly>
         <input type="text" id="dogName2" placeholder="Name">
         <input type="date" id="dogDOB2" placeholder="Date of Birth">
-        <select id="dog_breed2" name="service" onchange="checkBreedOption()" required>
+        <select id="dog_breed2" name="service" onchange="checkBreedOption2()" required>
             <option value="">Select a breed</option>
             <option value="other">Other breed</option>
         </select>
         <input type="text" id="otherBreedInput2" style="display: none;" placeholder="Enter breed" maxlength="40">
-        <img src="images/undo.png" style="display: none;" id="backToSelect"  onclick="backToSelect()">
+        <img src="images/undo.png" style="display: none;" id="backToSelect2"  onclick="backToSelect2()">
 
         <div class="sizeButtons flex_row">
             <label>
@@ -205,7 +210,7 @@
     <div class="modal-content" id="editUserContent">
         <span class="close">&times;</span>
         <p class="info_title" style="text-align: center;">Edit User</p>
-        <div>
+        <div id="box_input">
             <input type="text" id="editFirstName" placeholder="First Name" maxlength="20">
             <input type="text" id="editLastName" placeholder="Last Name" maxlength="20">
             <input type="date" id="editDOB" placeholder="Date of Birth">
