@@ -35,6 +35,9 @@ body{
     width: 18%;
 }
 .header_line {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
     position: relative;
     background-color: #C5C5C5;
     justify-content: space-between;
@@ -44,7 +47,7 @@ body{
     color: #231f20;
     display: none;
 }
-.header_line>.user{
+.header_line>.user, .header_line>.login_img{
     display: none;
 }
 .flex-row{
@@ -58,7 +61,12 @@ body{
     flex-direction: column;
 }
 .logo{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
     padding: 0.2vh 0 0.2vh 4vw;
+    cursor: pointer;
+
 }
 .logo>div{
     font-size: 1.7vw;
@@ -71,18 +79,23 @@ body{
     background-size: cover;
 }
 .nav{
-    width: 55vw;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    width: 40vw;
     justify-content: space-evenly;
 }
 .nav-item {
-    font-size: 1.5vw;
+    font-size: 1.6vw;
     font-weight: 450;
+    cursor: pointer;
+
 }
 .user{
     padding: 0 0 0 2vw;
 }
 .nav-item>img{
-    width: 1.2vw;
+    width: 2.2vw;
 }
 .nav-item>svg{
     width: 2.2vw;
@@ -97,7 +110,7 @@ body{
     letter-spacing: 0.4vw;
     color: #3C3638;
 }
-.reservation-form>form{
+.form1{
     align-items: center;
     justify-content: space-around;
     width: 35vw;
@@ -167,7 +180,13 @@ input::placeholder{
     display: inline-block; /* Показати галочку при виборі */
     color: #808080; /* Сірий колір для галочки при виборі */
 }
+.sidebar{
+    display: none;
+}
 .reservation{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
     height: 100vh;
     background-color: #808080;
     justify-content: space-between;
@@ -209,9 +228,7 @@ input::placeholder{
     min-height: 4vw;
     overflow-y: auto;
 }
-.list-container2{
-    display: none;
-}
+
 button {
     display: flex;
     padding: 0.4vw 3.4vw;
@@ -237,20 +254,15 @@ button:hover {
 .button2{
     display: none;
 }
-.choose>button{
-    text-align: center;
 
-    font-size: 1.5vw;
-
-    padding: 0.5vw 1.5vw;
-
-}
 .right-panel{
     justify-content: center;
     align-items: center;
     width: 50%;
 }
 .choose{
+    display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
     width: 90%;
@@ -261,15 +273,22 @@ button:hover {
     padding: 1.5vh;
     margin: 2vw 0 0 0 ;
 }
+.choose>button{
+    text-align: center;
+    font-size: 1.5vw;
+    padding: 0.5vw 1.5vw;
+}
 .list-table {
     border-collapse: collapse;
     width: 100%;
+
 }
 
 .list-table td {
     border-bottom: 1px solid lightgray;
     padding: 8px;
     align-items: center;
+    cursor: pointer;
 }
 
 /* Set specific widths for each table cell */
@@ -290,23 +309,7 @@ button:hover {
 }
 
 .list-table .hourCell {
-    width: 15%; /* Hour column */
-}
-.list-table .addition{
-    width: 5%;
-}
-.context-menu {
-    display: none;
-    position: absolute;
-    background-color: white;
-    border: 1px solid #ccc;
-    padding: 8px;
-    z-index: 100;
-}
-
-.row-options {
-    display: none; /* Hidden by default */
-    cursor: pointer;
+    width: 20%; /* Hour column */
 }
 
 .calendar-container {
@@ -406,6 +409,10 @@ button:hover {
 
 
 @media (max-width: 576px){
+    .first{
+        justify-content: normal;
+
+    }
     .header>img{
         visibility: hidden;
     }
@@ -439,19 +446,22 @@ button:hover {
     }
     .reservation-form{
         display: flex;
-        margin: 0;
+        width: 100%;
+        margin: 10vh 0;
+        padding: 0;
     }
     .p{
-        margin: 15vw 0 4vw 0;
+        margin: 5vw;
         font-size: 10vw;
     }
 
     .form1{
-        width: 95%;
-        height: auto;
+        width: 90%;
+        height: 50vh;
         background-color: rgba(128, 128, 128, 0.8);
         border-radius: 5px;
-        padding: 4vh 0 4vh 0;
+        box-sizing: border-box;
+
     }
 
     input::placeholder{
@@ -461,7 +471,6 @@ button:hover {
     .form1>input, select, .list-container {
         width: 92%;
         height: auto;
-        margin: 2.5%;
         border-radius: 3px;
         border: none;
         font-size: 2.6vh;
@@ -469,11 +478,55 @@ button:hover {
         box-sizing: border-box;
         color: rgba(128, 128, 128, 0.9);
     }
+    .sizeButtons>label{
+        width: 25%;
+        font-size: 2.6vh;
+    }
+    .sizeButtons input[type="checkbox"]::before {
+        width: 4vw; /* Ширина зображення */
+        height: 4vw; /* Висота зображення */
+        background-image: url('images/check.png'); /* URL зображення галочки */
+    }
+    .sidebar {
+        display: block;
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #3b3a3a;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+    }
 
+    .sidebar a {
+        padding: 3vw 2vw 2vw 8vw;
+        text-decoration: none;
+        font-size: 6vw;
+        color: #f1f1f1;
+        display: block;
+        transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+        color: #f1f1f1;
+    }
+
+    .sidebar .closebtn {
+        position: absolute;
+        top: 0;;
+        font-size: 10vw;
+        padding: 0;
+        margin-left: 50vw;
+    }
     .reservation{
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        min-height: 100vh;
+        height: auto;
     }
 
     .form2>button{
@@ -490,45 +543,55 @@ button:hover {
     }
 
     .left-panel>h2{
-        font-size: 10vw;
-        margin: 4vw;
+        font-size: 5vh;
+        margin: 2vh;
     }
 
     .form2{
         width: 90%;
     }
 
-    .form2>select, .list-container2{
+    .form2>select, .list-container{
         width: 100%;
-        font-size: 5vw;
+        font-size: 2.5vh;
         padding: 1vh;
         box-sizing: border-box;
         color: rgba(128, 128, 128);
         margin: 1.6%;
     }
-    .list-container {
-        display: none;
-    }
 
-    .list-container2{
+    .list-container{
         display: block;
-        height: 15vw;
+        max-height: 10vh;
+        min-height: 5vh;
         width: 95%;
+        overflow-x: hidden;
+    }
+    .list-table {
+        font-size: 2.3vh;
     }
 
-    button {
-        padding: 1vw 15vw;
-        font-size: 7vw;
+    .list-table td {
+        border-bottom: 2px solid #c4c3c3;
+        padding: 4px;
+    }
+
+    .list-table .dayNumberCell {
+        width: 10%; /* Day number column */
+    }
+
+    .list-table .yearCell {
+        width: 20%; /* Year column */
+    }
+
+    .button2 {
+        padding: 0.8vh 12vw;
+        font-size: 3vh;
         border-radius: 5px;
-        border: 0.8vw solid #ffffff;
-        margin: 4.5% 0 0 1.3%;
+        border: 2px solid #ffffff;
+        margin: 2% 0 4% 0;
         letter-spacing: 0.6vw;
     }
-
-    .button2{
-        display: block;
-    }
-
 
     .right-panel{
         justify-content: center;
@@ -538,7 +601,7 @@ button:hover {
 
     .right-panel>select{
         width: 95%;
-        font-size: 5vw;
+        font-size: 2.5vh;
         padding: 0.5vh;
         margin: 5vw 0 0 0 ;
     }
@@ -547,67 +610,341 @@ button:hover {
         width: 100%;
     }
     .calendar-header{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 5vw 0 1.5vw 0;
+        padding: 2.5vh 0 1.5vw 0;
     }
     .month {
         display: flex;
         justify-content: center;
-        font-size: 6vw;
+        font-size: 7vw;
         width: 45vw;
         color: white;
     }
 
     .arrow-left {
-        border-top: 5.5vw solid transparent;
-        border-bottom: 5.5vw solid transparent;
-        border-right: 5.5vw solid #3C3638;
+        border-top: 2.5vh solid transparent;
+        border-bottom: 2.5vh solid transparent;
+        border-right: 2.5vh solid #3C3638;
         border-radius: 5px;
     }
 
     .arrow-right {
-        border-top: 5.5vw solid transparent;
-        border-bottom: 5.5vw solid transparent;
-        border-left: 5.5vw solid #3C3638;
+        border-top: 2.5vh solid transparent;
+        border-bottom: 2.5vh solid transparent;
+        border-left: 2.5vh solid #3C3638;
         border-radius: 5px;
-
     }
 
     .name_day{
-        display: flex;
-        justify-content: center;
-        font-size: 4vw;
+        font-size: 2.5vh;
         font-weight: 300;
         color: white;
     }
+    .sidebar {
+        display: block;
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #3b3a3a;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+    }
 
+    .sidebar a {
+        padding: 3vw 2vw 2vw 8vw;
+        text-decoration: none;
+        font-size: 6vw;
+        color: #f1f1f1;
+        display: block;
+        transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+        color: #f1f1f1;
+    }
+
+    .sidebar .closebtn {
+        position: absolute;
+        top: 0;;
+        font-size: 10vw;
+        padding: 0;
+        margin-left: 50vw;
+    }
     .day {
-        height: 11.5vw;
-        background-color: white;
-        font-size: 5vw;
+        height: 11vw;
+        font-size: 2.3vh;
         padding: 1vw;
-        border: 2px solid #808080;
-        cursor: pointer;
-        color: #808080;
-        transition: 0.9s;
+        border: 0.55vw solid #808080;
     }
-    .day:hover {
-        border: 2px solid #ffffff;
+    .day_choose {
+        border: 3px solid #ffffff;
         background-color: #808080;
-        color: white;
-        transition: 0.9s;
     }
-    .current-month {
-        background-color: #fff;
-        font-weight: bold;
+    .busy_day {
+        background-color: rgba(190, 189, 189, 0.7);
     }
-    .disabled {
-        background-color: rgba(255, 255, 255, 0.5);
-        pointer-events: none;
+
+    .busy_day::before {
+        transform: rotate(25deg);
+
+    }
+
+    .choose{
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        margin: 2vh 0;
+    }
+    .choose>select{
+        width: 85%;
+        font-size: 2.5vh;
+        padding: 0.9vh;
+        margin: 0 3vw 0 0;
+    }
+    .choose>button{
+        text-align: center;
+        font-size:  2.5vh;
+        border: 1px solid #ffffff;
+        padding: 0.9vh 1.3vh;
+        box-sizing: border-box;
+        margin: 0;
+    }
+    .button2{
+        display: block;
     }
 
 }
 
+@media (min-width: 577px) and (max-width: 991px){
+    .first{
+        justify-content: normal;
+    }
+    .header>img{
+        visibility: hidden;
+    }
+
+    .header_line{
+        top: 0;
+        padding: 0 4vw;
+        align-items: center;
+    }
+    .header_line>img{
+        display: block;
+        width: 9vw;
+    }
+
+    .logo{
+        padding: 0.4vh 0 0.4vh 0;
+    }
+    .logo>div{
+        font-size: 7.4vw;
+        line-height: 6vw;
+    }
+    .logo>img {
+        width: 20vw;
+    }
+    .nav{
+        display: none;
+    }
+    .header_line>.user{
+        width: 9vw;
+        display: block;
+    }
+    .reservation-form{
+        display: flex;
+        width: 100%;
+        margin: 10vw 0;
+        padding: 0;
+    }
+    .p{
+        margin: 5vw;
+        font-size: 7vw;
+    }
+
+    .form1{
+        width: 90%;
+        height: 50vh;
+        background-color: rgba(128, 128, 128, 0.8);
+        border-radius: 10px;
+        box-sizing: border-box;
+
+    }
+
+    input::placeholder{
+        color: rgba(128, 128, 128, 0.9);
+    }
+
+    .form1>input, select, .list-container {
+        width: 88%;
+        height: auto;
+        border-radius: 3px;
+        border: none;
+        font-size: 2.6vh;
+        padding: 1vh 0 1vh 2vh;
+        box-sizing: border-box;
+        color: rgba(128, 128, 128, 0.9);
+    }
+    .sizeButtons>label{
+        width: 25%;
+        font-size: 2.6vh;
+    }
+    .reservation{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 5vw 0;
+
+    }
+
+    .form2>button{
+        display: none;
+    }
+
+    .left-panel{
+        width: 100%;
+        padding-left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .left-panel>h2{
+        font-size: 7vw;
+        margin: 2vw;
+    }
+
+    .form2{
+        width: 90%;
+    }
+
+    .form2>select, .list-container{
+        width: 100%;
+        font-size: 3.5vw;
+        padding: 1vh;
+        box-sizing: border-box;
+        color: rgba(128, 128, 128);
+        margin: 1.6%;
+    }
+
+    .list-container{
+        display: block;
+        min-height: 8vw;
+        max-height: 16vw;
+        width: 95%;
+        overflow-x: hidden;
+    }
+    .list-table {
+        font-size: 4vw;
+    }
+
+    .list-table td {
+        border-bottom: 3px solid #dadada;
+        padding: 4px;
+    }
+
+    .list-table .dayNumberCell {
+        width: 10%; /* Day number column */
+    }
+
+    .list-table .yearCell {
+        width: 20%; /* Year column */
+    }
+
+    .button2 {
+        padding: 1vw 11vw;
+        font-size: 5vw;
+        border-radius: 5px;
+        border: 0.5vw solid #ffffff;
+        margin: 2% 0 0 0;
+        letter-spacing: 0.6vw;
+    }
+    .right-panel{
+        justify-content: center;
+        align-items: center;
+        width: 95%;
+    }
+
+
+    .calendar-container {
+        width: 95%;
+    }
+    .calendar-header{
+        padding: 3.5vw 0 1.5vw 0;
+    }
+    .month {
+        display: flex;
+        justify-content: center;
+        font-size: 4vw;
+        width: 40vw;
+        color: white;
+    }
+
+    .arrow-left {
+        border-top: 3.1vw solid transparent;
+        border-bottom: 3.1vw solid transparent;
+        border-right: 3.1vw solid #3C3638;
+        border-radius: 5px;
+    }
+
+    .arrow-right {
+        border-top: 3.1vw solid transparent;
+        border-bottom: 3.1vw solid transparent;
+        border-left: 3.1vw solid #3C3638;
+        border-radius: 5px;
+    }
+
+    .name_day{
+        font-size: 3vw;
+        font-weight: 300;
+        color: white;
+    }
+    .day {
+        height: 9vw;
+        font-size: 3vw;
+        padding: 1vw;
+        border: 3px solid #808080;
+    }
+    .day_choose {
+        border: 3px solid #ffffff;
+        background-color: #808080;
+    }
+    .busy_day {
+        background-color: rgba(190, 189, 189, 0.7);
+    }
+
+    .busy_day::before {
+
+        transform: rotate(35deg);
+
+    }
+
+    .choose{
+        width: 95%;
+        align-items: center;
+        justify-content: center;
+        margin: 2vw 0;
+    }
+    .choose>select{
+        width: 85%;
+        font-size: 3.5vw;
+        padding: 0.9vh;
+        margin: 0 3vw 0 0;
+    }
+    .choose>button{
+        text-align: center;
+        font-size: 3.5vw;
+        border: 2px solid #ffffff;
+        padding: 0.9vh 2vh;
+        box-sizing: border-box;
+        margin: 0;
+    }
+    .button2{
+        display: block;
+    }
+
+}
 
