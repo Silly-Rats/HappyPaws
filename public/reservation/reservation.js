@@ -1,23 +1,10 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const inputs = document.querySelectorAll('input, select');
-
-    const applyTextStyle = (element) => {
-        element.style.color = '#3C3638';
-    };
-
-    inputs.forEach((input) => {
-        input.addEventListener('input', (event) => {
-            applyTextStyle(event.target); // Apply text style when input value changes
-        });
-    });
-
-    inputs.forEach((select) => {
-        select.addEventListener('change', (event) => {
-            applyTextStyle(event.target); // Apply text style when option is selected
-        });
-    });
+document.getElementById('menuIcon').addEventListener('click', function() {
+    document.getElementById('sidebarMenu').style.width = '60%'; // Adjust width as needed
 });
-let service_select = document.getElementById('service');
+
+document.getElementById('closeBtn').addEventListener('click', function() {
+    document.getElementById('sidebarMenu').style.width = '0';
+});
 let worker_select = document.getElementById('Trainer');
 
 const dog_breed_select = document.getElementById('dog_breed');
@@ -104,7 +91,6 @@ function createDateRangeObject(startDate, endDate) {
     const currentDate = new Date(startDate);
     const lastDate = new Date(endDate);
 
-    // Loop through each date in the range
     while (currentDate < lastDate) {
         const formattedDate = formatDate(currentDate);
 
@@ -139,6 +125,7 @@ console.log(missingDates)
 
 let defaultOption = document.createElement('option');
 defaultOption.text = 'Choose trainer';
+
 fetch('http://localhost:8080/api/user/worker/trainer')
     .then(response => response.json())
     .then(trainers => {
@@ -153,6 +140,16 @@ fetch('http://localhost:8080/api/user/worker/trainer')
         worker_select.addEventListener('change', function() {
             let selectedTrainerId = worker_select.value;
 
+            const existingRows = listTable.querySelectorAll('tr');
+
+            if (existingRows.length > 0) {
+                worker_select.value = selectedTrainerId;// Якщо вже є рядки в listTable, повідомляємо користувача і скасовуємо зміну тренера
+                alert('You cannot change the trainer once a training date is selected.');
+                // Скасовуємо вибір нового тренера
+                return;
+            }
+
+            // Виконуємо додаткові дії, якщо немає рядків в listTable
             if (selectedTrainerId) {
                 fetch(`http://localhost:8080/api/reserve/training/free/${selectedTrainerId}?start=${startDate}&end=${endDate}`)
                     .then(response => {
@@ -379,16 +376,11 @@ document.querySelector('.button1').addEventListener('click', () => {
     hourCell.textContent = selectedHour;
     hourCell.classList.add('hourCell');
 
-    const addition = document.createElement('td');
-    addition.classList.add('addition');
-    addition.textContent = '\u22EE';
-
     tableRow.appendChild(dayOfWeekCell);
     tableRow.appendChild(monthCell);
     tableRow.appendChild(dayNumberCell);
     tableRow.appendChild(yearCell);
     tableRow.appendChild(hourCell);
-    tableRow.appendChild(addition);
 
     // Get the current count of existing rows
     const existingRows = listTable.querySelectorAll('tr');
@@ -503,10 +495,9 @@ function updateMonthHeader() {
     currentMonthLabel.textContent = monthNames[currentMonth] + ' ' + currentYear;
 }
 
-
 generateCalendar();
 
-const confirmButton = document.getElementById('confirmButton');
+const confirmButton = document.getElementsByClassName('confirmButton');
 
 function formatISODate(date) {
     const year = date.getFullYear();
@@ -521,9 +512,23 @@ function formatISODate(date) {
     return formattedDate;
 }
 
-
-
 const token = localStorage.getItem('token');
+
+fetch('http://localhost:8080/api/user/type', {
+    headers: {'Authorization': localStorage.getItem('token')}
+}).then(res => {
+    if (res.status === 200) {
+        document.querySelector('.nav-item.user').style.display = 'block';
+        document.querySelector('.nav-item.login_img').style.display = 'none';
+        document.getElementById('confirmButton1').style.pointerEvents = 'auto';
+        document.getElementById('confirmButton2').style.pointerEvents = 'auto';
+    } else {
+        document.querySelector('.nav-item.user').style.display = 'none';
+        document.querySelector('.nav-item.login_img').style.display = 'block';
+        document.getElementById('confirmButton1').style.pointerEvents = 'none';
+        document.getElementById('confirmButton2').style.pointerEvents = 'none';
+    }
+})
 
 function fetchAndPopulateUserData() {
     fetch('http://localhost:8080/api/user/info', {
@@ -621,63 +626,74 @@ let userId;
 
 fetchAndPopulateUserData();
 fetchAndPopulateDogs();
-confirmButton.addEventListener('click', function(event) {
-    event.preventDefault();
 
-    const fullName = document.getElementById('name').value;
-    const emailInput = document.getElementById('email').value;
-    const phoneInput = document.getElementById('phone').value;
-    const dogNameInput = document.getElementById('dog-name').value;
-    const breedInput = document.getElementById('dog_breed').value;
 
-    const dogNameSelect = document.getElementById('dog-name-select').value;
-    const subscriptionTypeElement = document.getElementById('type');
-    const subscriptionTypeValue = subscriptionTypeElement.value;
-    const needPass = (subscriptionTypeValue === 'monthly');
+for (let i = 0; i < confirmButton.length; i++){
+    confirmButton[i].addEventListener('click', function(event) {
+        event.preventDefault();
 
-    const trainerId = document.getElementById('Trainer').value; // Assuming this is how you get the trainer ID
+        // Check if listContainer is empty
+        if (listTable.querySelectorAll('tr').length === 0) {
+            alert('Please select at least one training date before confirming.');
+            return; // Prevent form submission if listContainer is empty
+        }
 
-    const nameParts = fullName.split(' ');
-    const firstName = nameParts[0];
-    const lastName = nameParts.slice(1).join(' ');
+        const fullName = document.getElementById('name').value;
+        const emailInput = document.getElementById('email').value;
+        const phoneInput = document.getElementById('phone').value;
+        const dogNameInput = document.getElementById('dog-name').value;
+        const breedInput = document.getElementById('dog_breed').value;
 
-    const formDataAuthorization = {
-        firstName: firstName,
-        lastName: lastName,
-        email: emailInput,
-        phone: phoneInput,
-        dogId: userId,
-        dogName: dogNameSelect,
-        breed: breedInput,
-        trainerId: parseInt(trainerId), // Convert trainerId to integer if necessary
-        passId: null, // Assuming you'll retrieve this value elsewhere
-        needPass: needPass,
-        times: [],
-        price: 10
-    };
+        const dogNameSelect = document.getElementById('dog-name-select').value;
+        const subscriptionTypeElement = document.getElementById('type');
+        const subscriptionTypeValue = subscriptionTypeElement.value;
+        const needPass = (subscriptionTypeValue === 'monthly');
 
-    processTableRows(listTable, formDataAuthorization);
+        const trainerId = document.getElementById('Trainer').value; // Assuming this is how you get the trainer ID
 
-    fetch('http://localhost:8080/api/reserve/training', {
-        method: 'POST',
-        headers: {
-            'Authorization': token,
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formDataAuthorization)
-    })
-        .then(r => {
-            console.log('Reservation successful');
-            // Reload the page after successful reservation
-            location.reload(); // or window.location.reload();
+        const nameParts = fullName.split(' ');
+        const firstName = nameParts[0];
+        const lastName = nameParts.slice(1).join(' ');
 
-            // Scroll to the top of the page
-            window.scrollTo(0, 0);
+        const formDataAuthorization = {
+            firstName: firstName,
+            lastName: lastName,
+            email: emailInput,
+            phone: phoneInput,
+            dogId: userId,
+            dogName: dogNameSelect,
+            breed: breedInput,
+            trainerId: parseInt(trainerId),
+            passId: null,
+            needPass: needPass,
+            times: [],
+            price: 10
+        };
+
+        processTableRows(listTable, formDataAuthorization);
+
+        fetch('http://localhost:8080/api/reserve/training', {
+            method: 'POST',
+            headers: {
+                'Authorization': token,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formDataAuthorization)
         })
-        .catch(e => {
-            console.error('Error during reservation:', e);
-        });
-});
+            .then(r => {
+                console.log(formDataAuthorization);
+                // Reload the page after successful reservation
+                location.reload(); // or window.location.reload();
+
+                // Scroll to the top of the page
+                window.scrollTo(0, 0);
+            })
+            .catch(e => {
+                console.error('Error during reservation:', e);
+            });
+    });
+
+}
 
 function processTableRows(listTable, formDataAuthorization) {
     listTable.querySelectorAll('tr').forEach(row => {
