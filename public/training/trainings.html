@@ -15,58 +15,69 @@
 <body>
 <div class="content">
 
-   <!--
+    <!--
+     <div class="header">
+         <img src="images/dogsheader.png">
+         <div class="header_line flex_row">
+
+             <div class="logo flex_row">
+                 <img src="images/logo.png" alt="Happy Paws Logo">
+                 <div class="logo-text">Happy<br>Paws</div>
+             </div>
+             <div class="nav flex_row">
+                 <div class="nav-item">Reviews</div>
+                 <div class="nav-item">Shop</div>
+                 <div class="nav-item">
+                     Services
+                     <img src="images/services.png" alt="services">
+                 </div>
+                 <div class="nav-item user">
+                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">  -->
+    <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+    <!--     <path fill="#3c3638"
+               d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>
+     </svg>
+ </div>
+</div>
+</div>
+
+</div>
+-->
     <div class="header">
         <img src="images/dogsheader.png">
-        <div class="header_line flex_row">
-
-            <div class="logo flex_row">
-                <img src="images/logo.png" alt="Happy Paws Logo">
-                <div class="logo_text">Happy<br>Paws</div>
-            </div>
-            <div class="nav flex_row">
-                <div class="nav-item">Reviews</div>
-                <div class="nav-item">Shop</div>
-                <div class="nav-item">
-                    Services
-                    <img src="images/services.png" alt="services">
-                </div>
-                <div class="nav-item user">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">  -->
-                        <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                   <!--     <path fill="#3c3638"
-                              d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>
-                    </svg>
-                </div>
-            </div>
-        </div>
-
-    </div>
--->
         <div class="header">
             <img src="images/dogsheader.png">
-            <div class="header_line flex_row">
-                <img src="https://img.icons8.com/material-outlined/192/3C3638/menu--v1.png" alt="menu--v1"/>
-                <div class="logo flex_row">
+            <div class="header_line">
+                <img src="https://img.icons8.com/material-outlined/192/3C3638/menu--v1.png" alt="menu" id="menuIcon">                <div id="sidebarMenu" class="sidebar">
+                <a href="javascript:void(0)" class="closebtn" id="closeBtn">&times;</a>
+                <a href="http://localhost:8000/reservation">Reservation</a>
+                <a href="http://localhost:8000/training#trainers-info">Trainers</a>
+                <a href="http://localhost:8000/training#price">Price</a>
+                <a href="http://localhost:8000/training#footer_link">Contacts & location</a>
+            </div>
+                <div class="logo" onclick="window.location = 'http://localhost:8000/training';">
                     <img src="images/logo.png" alt="Happy Paws Logo">
                     <div>Happy<br>Paws</div>
                 </div>
-                <div class="nav flex_row">
-                    <div class="nav-item">Reviews</div>
-                    <div class="nav-item">Shop</div>
-                    <div class="nav-item">
-                        Services
-                        <img src="images/services.png" alt="services">
+                <div class="nav">
+                    <div class="nav-item" onclick="window.location='http://localhost:8000/training#trainers-info'">Trainers</div>
+                    <div class="nav-item" onclick="window.location='http://localhost:8000/training#price'">Price</div>
+                    <div class="nav-item user" onclick="window.location='http://localhost:8000/account/user';" style="cursor:pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="#3c3638" d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>
                     </div>
-                    <div class="nav-item user">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#3c3638" d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>
+                    <div class ="nav-item login_img" onclick="window.location='http://localhost:8000/login';" style="cursor:pointer">
+                        <img src="images/login.png">
                     </div>
                 </div>
-                <div class="user">
+                <div class="user" onclick="window.location='http://localhost:8000/account/user';">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#3c3638" d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>
+                </div>
+                <div class ="login_img" onclick="window.location='http://localhost:8000/login';" style="cursor:pointer">
+                    <img src="images/login.png">
                 </div>
             </div>
         </div>
+    </div>
 
 
     <div class="main-content">
@@ -78,7 +89,7 @@
                 <img style="margin-bottom: 1.5vw; width: 3vw; " src="images/arrow.png" alt="arrow">
                 <h2 style="color: #3C3638">Then our experts will help you!</h2>
                 <h3 style="color: #808080">Sign up your dog for training.</h3>
-                <button class="reserve-button" onclick="window.location='http://localhost:63342/HappyPaws/public/reservation/reservation.html?_ijt=jshjompf59pg87v5o90tl6g62m&_ij_reload=RELOAD_ON_SAVE';">Reserve</button>
+                <button class="reserve-button" onclick="window.location='http://localhost:8000/reservation';">Reserve</button>
             </div>
             <div class="right-section">
                 <img src="images/mops.png" alt="mops">
@@ -119,7 +130,6 @@
                 <h5 class="about1" style="">With years of experience, Sarah employs positive
                     reinforcement techniques to address behavioral challenges and cultivate a strong bond between pets
                     and their families.</h5>
-                <button class="reviews-button" onclick="window.location='http://localhost:63342/HappyPaws/public/reservation/reservation.html?_ijt=jshjompf59pg87v5o90tl6g62m&_ij_reload=RELOAD_ON_SAVE';">Reviews</button>
             </div>
         </div>
 
@@ -139,10 +149,9 @@
                     <h5 style="color: #ffffff ;">David Parker</h5>
                 </div>
                 <h5 class="experience2" >Experience: 10 years</h5>
-                <h5 class="about2">David's expertise lies in obedience
+                <h5 class="about2" >David's expertise lies in obedience
                     training and rehabilitation, where he strives to instill confidence and mutual respect in every
                     dog-owner relationship.</h5>
-                <button class="reviews-button2" onclick="window.location='http://localhost:63342/HappyPaws/public/reservation/reservation.html?_ijt=jshjompf59pg87v5o90tl6g62m&_ij_reload=RELOAD_ON_SAVE';">Reviews</button>
             </div>
         </div>
 
@@ -186,16 +195,15 @@
                     <h5 class="white" style="">Michael Johnson</h5>
                 </div>
                 <h5 class="experience2" >Experience: 7 years</h5>
-                <h5 class="about2" style="">
+                <h5 class="about2">
                     With a focus on positive reinforcement and clear communication, Michael empowers both pets and
                     humans to build trust and cooperation in their shared adventures.
                 </h5>
-                <button class="reviews-button2" onclick="window.location='http://localhost:63342/HappyPaws/public/reservation/reservation.html?_ijt=jshjompf59pg87v5o90tl6g62m&_ij_reload=RELOAD_ON_SAVE';">Reviews</button>
             </div>
         </div>
 
 
-        <div class="price">
+        <div class="price"  id="price">
             <div class="left-section2">
                 <h1 class="price-style" style="">Price</h1>
                 <div id="glaw">
@@ -207,7 +215,7 @@
                     <div style="" class="blok1">
                         Personal training (one-time)
                     </div>
-                    <div style="f"
+                    <div style=" "
                          class="blok2">10$/train
                     </div>
                     <div style="" class="blok3">Personal
@@ -235,7 +243,7 @@
             <div class="left-section2">
             </div>
             <div class="left-button">
-                <button class="reserve-button2" onclick="window.location='http://localhost:63342/HappyPaws/public/reservation/reservation.html?_ijt=jshjompf59pg87v5o90tl6g62m&_ij_reload=RELOAD_ON_SAVE';">Reserve</button>
+                <button class="reserve-button2" onclick="window.location='http://localhost:8000/reservation';">Reserve</button>
             </div>
         </div>
         <div class="button-adapt">
@@ -265,21 +273,15 @@
                     <h6 style="">
                         happy.paws@gmail.com</h6>
                 </div>
-                <div class="image-and-heading">
-                    <img style="" src="images/inst.png" alt="tg">
-                    <h6 style="">
-                        @happy_paws</h6>
+                <div class="right-section3">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d82353.16843550742!2d23.97030751944152!3d49.83237583167426!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473add42d4507667%3A0x1e478dea8f41eac6!2z0LLRg9C70LjRhtGPINCX0LXQu9C10L3QsCwgMjgsINCb0YzQstGW0LIsINCb0YzQstGW0LLRgdGM0LrQsCDQvtCx0LvQsNGB0YLRjCwgNzkwMDA!5e0!3m2!1suk!2sua!4v1713694706709!5m2!1suk!2sua"
+                            width="600" height="450" style="border:0;" allowfullscreen=""
+                            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </iframe>
                 </div>
-                <h6 style="">Address: 38 Zelena
-                    St., Lviv</h6>
-            </div>
-            <div class="right-section3">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d82353.16843550742!2d23.97030751944152!3d49.83237583167426!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473add42d4507667%3A0x1e478dea8f41eac6!2z0LLRg9C70LjRhtGPINCX0LXQu9C10L3QsCwgMjgsINCb0YzQstGW0LIsINCb0YzQstGW0LLRgdGM0LrQsCDQvtCx0LvQsNGB0YLRjCwgNzkwMDA!5e0!3m2!1suk!2sua!4v1713694706709!5m2!1suk!2sua"
-                        width="600" height="450" style="border:0;" allowfullscreen=""
-                        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </iframe>
             </div>
         </div>
+
     </div>
 </div>
 <script src="trainings.js"></script>

@@ -5,7 +5,11 @@ body {
     font-optical-sizing: auto;
     font-style: normal;
 }
-
+.flex_row{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
 .content{
     display: flex;
     align-items: center;
@@ -41,7 +45,7 @@ button{
     border: none;
     margin: 2vw 0.5vw 0.5vw;
     cursor: pointer;
-} 
+}
 
 button:hover{
     background-color: #5b4441;
@@ -81,21 +85,21 @@ button:hover{
 input{
     font-size: 1.4vw;
     font-weight: 300;
-    border: none;      
-    font-family: "Work Sans", "Open Sans", sans-serif;        
+    border: none;
+    font-family: "Work Sans", "Open Sans", sans-serif;
     border-bottom: 1px solid #6C6C6C;
     width: 27vw;
     padding: 0.6vw 2vw 0.4vw 2vw;
-    outline: none; 
+    outline: none;
     margin-bottom: 2%;
 }
 
 .inputs{
-    display: flex; 
+    display: flex;
     flex-direction: column;
 }
 
-.flex_row{
+.flex-row{
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -138,24 +142,24 @@ input{
 
 
 .modal {
-    display: none; 
-    position: fixed; 
-    z-index: 1; 
+    display: none;
+    position: fixed;
+    z-index: 1;
     left: 0;
     top: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0,0,0,0.4); 
+    background-color: rgba(0,0,0,0.4);
 }
 
 .modal-content {
     background-color: #fefefe;
     text-align: center;
-    margin: 15% auto; 
+    margin: 15% auto;
     padding: 20px;
-    width: 35vw; 
+    width: 35vw;
     border-radius: 20px;
-    animation: slideDown 1s ease; 
+    animation: slideDown 1s ease;
   }
 
 
@@ -243,7 +247,6 @@ input{
     .logo>img {
         width: 24vw;
     }
-
     .inputImg{
         width: 8vw;
         margin-top: -0.8vw;
@@ -426,7 +429,7 @@ input{
         flex-direction: column;
     }
 
-    .flex_row{
+    .flex-row{
         display: flex;
         align-items: center;
         flex-direction: row;

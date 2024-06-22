@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Zoo shop in Ukraine!</title>
+    <link rel="icon" type="image/x-icon" href="img/mainicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+</head>
+<body>
+<header>
+    <div class="navAndLogo">
+        <div class="imgLogo">
+            <img src="img/logo.png">
+            <h1>Zoo Shop</h1>
+        </div>
+    </div>
+    <div class="sortings">
+        <div class="sorting">
+            <label for="searchId">Order ID: </label>
+            <input id="searchId" type="number" placeholder="Enter order ID here">
+        </div>
+        <div class="sorting">
+            <label for="sortBy">Sort By: </label>
+            <select id="sortBy">
+                <option value="date">Date</option>
+                <option value="status">Status</option>
+                <option value="price">Price</option>
+            </select>
+        </div>
+        <div class="sorting">
+            <label for="status">Status: </label>
+            <select id="status">
+                <option>Not completed</option>
+                <option>All</option>
+                <option>Processing</option>
+                <option>Awaiting delivery</option>
+                <option>Awaiting in shop</option>
+                <option>Completed</option>
+                <option>User cancelled</option>
+                <option>Cancelled</option>
+            </select>
+        </div>
+    </div>
+    <div class="userAccount">
+        <i class="fa-solid fa-user"></i>
+    </div>
+</header>
+<div id="dialogMask" class="dialogClose"></div>
+<main>
+    <div id="orders"></div>
+    <div id="infoDialog">
+        <div id="dialogHeader">
+            <h2>Customer info</h2>
+            <i class="fa-solid fa-xmark fa-2x dialogClose"></i>
+        </div>
+        <h3 id="userName"></h3>
+        <h3 id="userEmail"></h3>
+        <h3 id="userPhone"></h3>
+        <button class="dialogClose">Close</button>
+    </div>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
