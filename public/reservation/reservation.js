@@ -628,6 +628,63 @@ fetchAndPopulateUserData();
 fetchAndPopulateDogs();
 
 
+confirmButton.addEventListener('click', function(event) {
+    event.preventDefault();
+
+    // Check if listContainer is empty
+    if (listTable.querySelectorAll('tr').length === 0) {
+        alert('Please select at least one training date before confirming.');
+        return; // Prevent form submission if listContainer is empty
+    }
+
+    const fullName = document.getElementById('name').value;
+    const emailInput = document.getElementById('email').value;
+    const phoneInput = document.getElementById('phone').value;
+    const dogNameInput = document.getElementById('dog-name').value;
+    const breedInput = document.getElementById('dog_breed').value;
+
+    const dogNameSelect = document.getElementById('dog-name-select').value;
+    const subscriptionTypeElement = document.getElementById('type');
+    const subscriptionTypeValue = subscriptionTypeElement.value;
+    const needPass = (subscriptionTypeValue === 'monthly');
+
+    const trainerId = document.getElementById('Trainer').value; // Assuming this is how you get the trainer ID
+
+    const nameParts = fullName.split(' ');
+    const firstName = nameParts[0];
+    const lastName = nameParts.slice(1).join(' ');
+
+    const formDataAuthorization = {
+        firstName: firstName,
+        lastName: lastName,
+        email: emailInput,
+        phone: phoneInput,
+        dogId: userId,
+        dogName: dogNameSelect,
+        breed: breedInput,
+        trainerId: parseInt(trainerId), // Convert trainerId to integer if necessary
+        passId: null, // Assuming you'll retrieve this value elsewhere
+        needPass: needPass,
+        times: [],
+        price: 10
+    };
+
+    processTableRows(listTable, formDataAuthorization);
+
+    fetch('http://localhost:8080/api/reserve/training', {
+        method: 'POST',
+        headers: {
+            'Authorization': token,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formDataAuthorization)
+    })
+        .then(r => {
+            console.log('Reservation successful');
+            // Reload the page after successful reservation
+            location.reload(); // or window.location.reload();
+
+
 for (let i = 0; i < confirmButton.length; i++){
     confirmButton[i].addEventListener('click', function(event) {
         event.preventDefault();

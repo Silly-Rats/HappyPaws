@@ -82,7 +82,7 @@ body{
     display: flex;
     align-items: center;
     flex-direction: row;
-    width: 40vw;
+    width: 50vw;
     justify-content: space-evenly;
 }
 .nav-item {
@@ -312,6 +312,20 @@ button:hover {
     width: 20%; /* Hour column */
 }
 
+.context-menu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 8px;
+    z-index: 100;
+}
+
+.row-options {
+    display: none; /* Hidden by default */
+    cursor: pointer;
+}
+
 .calendar-container {
     width: 90%;
 }
@@ -418,6 +432,7 @@ button:hover {
     }
 
     .header_line{
+
         top: 0;
         padding: 0 3vw;
         align-items: center;
