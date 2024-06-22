@@ -1,12 +1,18 @@
-const Jane = 'eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MiwidHlwZSI6InVzZXIiLCJzdWIiOiJqYW5lLnNtaXRoQGV4YW1wbGUuY29tIiwiaWF0IjoxNzE1Nzc2ODkyLCJleHAiOjE3MTYzODE2OTJ9.LLEaXltp5bG5xLwGYj1_pjSChN9dkmWUQlNe-yiZUT8'
-const John = 'eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwidHlwZSI6InVzZXIiLCJzdWIiOiJqb2huLmRvZUBleGFtcGxlLmNvbSIsImlhdCI6MTcxNTc3NTczNSwiZXhwIjoxNzE2MzgwNTM1fQ.WHYiP31veusEXz90vFhQ9BQJjv-A5SDZqAzIRNl_OcU'
-const Michael = 'eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MywidHlwZSI6InVzZXIiLCJzdWIiOiJtaWNoYWVsLmpvaG5zb25AZXhhbXBsZS5jb20iLCJpYXQiOjE3MTU3Nzc2OTUsImV4cCI6MTcxNjM4MjQ5NX0.CYvFCnUUh7LnnWizDjHL5iV7QTfWJbfE50tbNUU07fw'
 const token = localStorage.getItem('token');
 /*localStorage.setItem('token', null);*/
 
+fetch('http://localhost:8080/api/user/type', {
+    headers: {'Authorization': localStorage.getItem('token')}
+}).then(res => {
+    if (res.status === 200) {
+        console.log('ok');
+    } else {
+        alert('Session expired! Please log in again.');
+        window.location.href = "http://localhost:8000/login";
+    }
+})
 
 /*все по собаках*/
-
 let dogData;
 const tableBody = document.getElementById('dogTableBody');
 const modal = document.getElementById('myModal');
@@ -25,6 +31,7 @@ function showDogs(dogData) {
             <td>
                 <span class="options-icon" style="cursor: pointer;" onclick="openModal('${dog.id}', '${dog.name}', '${dog.dob}', '${dog.breed.size}', '${dog.breed.name}', '${dog.comment}')">&#8942;</span>
             </td>
+            <td style="display: none;">${dog.id}</td>
         `;
 
         if (index % 2 === 1) {
@@ -63,7 +70,12 @@ saveDogBtn2.addEventListener('click', () => {
     const dob = document.getElementById('dogDOB2').value;
     const size = document.querySelector('input[name="size2"]:checked').value;
     const breed = document.getElementById('dog_breed2').selectedOptions[0].getAttribute('data-id');
-    const breedName = document.getElementById('dog_breed2').value;
+    let breedName;
+    if (!breed) {
+        breedName = document.getElementById('otherBreedInput2').value;
+    } else {
+        breedName = document.getElementById('dog_breed2').value;
+    }
     const comment = document.getElementById('dogComment2').value;
 
     console.log("ID:", id);
@@ -91,8 +103,14 @@ saveDogBtn.addEventListener('click', () => {
     const dob = document.getElementById('dogDOB').value;
     const size = document.querySelector('input[name="size"]:checked').value;
     const breed = document.getElementById('dog_breed').selectedOptions[0].getAttribute('data-id');
-    const breedName = document.getElementById('dog_breed').value;
     const comment = document.getElementById('dogComment').value;
+
+    let breedName;
+    if (!breed) {
+        breedName = document.getElementById('otherBreedInput').value;
+    } else {
+        breedName = document.getElementById('dog_breed').value;
+    }
 
     console.log("ID:", id);
     console.log("Name:", name);
@@ -146,7 +164,7 @@ function fillEditDogForm(id, name, dob, size, breed, comment) {
         selectBreed2.value = "";
         otherBreedInput2.value = breed;
         selectBreed2.style.display = 'none';
-        document.getElementById('backToSelect').style.display = 'block';
+        document.getElementById('backToSelect2').style.display = 'block';
     }
 
     document.getElementById('dogComment2').value = comment;
@@ -197,7 +215,8 @@ addDogCloseBtn.onclick = () => {
     dog_breed_select.value = '';
     document.querySelectorAll('input[name="size"]').forEach(input => input.checked = false);
     dogComment.value = '';
-
+    document.getElementById("otherBreedInput").value = '';
+    backToSelect();
     closeModal(addDogContent, addDogModal);
 };
 
@@ -232,7 +251,7 @@ editDogCloseBtn.onclick = () => {
     const dogComment = dogDetails.querySelector('.comment-box p').textContent.trim();
 
     document.getElementById('otherBreedInput2').style.display = 'none';
-    document.getElementById('backToSelect').style.display = 'none';
+    document.getElementById('backToSelect2').style.display = 'none';
     document.getElementById('dog_breed2').style.display = 'block';
     document.getElementById('dogName2').value = dogName;
     document.getElementById('dogDOB2').value = dogDOB;
@@ -270,7 +289,7 @@ function deleteDog(id) {
         headers: {
             'Authorization': token
         }
-    }).then(location.reload());
+    });
 }
 
 function confirmDelete() {
@@ -278,15 +297,23 @@ function confirmDelete() {
     const confirmation = confirm(`Are you sure you want to delete ${dogName}? This action cannot be undone.`);
     if (confirmation) {
         deleteDog(dogID);
+        location.reload();
     }
 }
 
 function confirmDeleteAll() {
     const confirmation = confirm(`Are you sure you want to delete all dogs? This action cannot be undone.`);
     if (confirmation) {
-        /*кінець бобікам*/
+        const rows = document.querySelectorAll('#dogTableBody tr');
+        rows.forEach(row => {
+            const id = row.querySelector('td:last-of-type').textContent;
+            deleteDog(id);
+        });
+        location.reload();
     }
 }
+
+
 
 let dog_breed_select = document.getElementById('dog_breed');
 let dog_breed_select2 = document.getElementById('dog_breed2');
@@ -303,9 +330,25 @@ fetch('http://localhost:8080/api/dog/breeds')
             }
         }));
 
-function checkBreedOption() {
+function checkBreedOption2() {
     const selectElement = document.getElementById('dog_breed2');
     const otherBreedInput = document.getElementById('otherBreedInput2');
+    const backToSelectButton = document.getElementById('backToSelect2');
+
+    if (selectElement.value === 'other') {
+        selectElement.style.display = 'none';
+        otherBreedInput.style.display = 'block';
+        backToSelectButton.style.display = 'inline-block';
+    } else {
+        selectElement.style.display = 'block';
+        otherBreedInput.style.display = 'none';
+        backToSelectButton.style.display = 'none';
+    }
+}
+
+function checkBreedOption() {
+    const selectElement = document.getElementById('dog_breed');
+    const otherBreedInput = document.getElementById('otherBreedInput');
     const backToSelectButton = document.getElementById('backToSelect');
 
     if (selectElement.value === 'other') {
@@ -319,9 +362,10 @@ function checkBreedOption() {
     }
 }
 
+
 function backToSelect() {
-    const selectElement = document.getElementById('dog_breed2');
-    const otherBreedInput = document.getElementById('otherBreedInput2');
+    const selectElement = document.getElementById('dog_breed');
+    const otherBreedInput = document.getElementById('otherBreedInput');
     const backToSelectButton = document.getElementById('backToSelect');
 
     selectElement.style.display = 'block';
@@ -330,6 +374,16 @@ function backToSelect() {
     backToSelectButton.style.display = 'none';
 }
 
+function backToSelect2() {
+    const selectElement = document.getElementById('dog_breed2');
+    const otherBreedInput = document.getElementById('otherBreedInput2');
+    const backToSelectButton = document.getElementById('backToSelect2');
+
+    selectElement.style.display = 'block';
+    selectElement.value=''
+    otherBreedInput.style.display = 'none';
+    backToSelectButton.style.display = 'none';
+}
 
 
 
@@ -383,7 +437,9 @@ async function saveUserInfo() {
         if (response.ok) {
             alert('Changes saved.');
             editUserCloseBtn.onclick();
-            // location.reload();
+            location.reload();
+        } else{
+            alert('Incorrect Data.');
         }
     }).catch(error => {
         console.error('Error');
@@ -413,7 +469,7 @@ function loadImage() {
         .then(data => {
             const img = document.querySelector('.user_photo');
             if (data === '') {
-                img.src = '../images/default.png';
+                img.src = 'images/default.png';
             } else {
                 img.src = data;
             }
@@ -483,7 +539,8 @@ function deleteAccount(passConfirm) {
     }).then(response => {
         if (response.ok) {
             alert('Account Deleted.');
-            /*треба додати перехід на головну сторінку*/
+            localStorage.setItem('token', null);
+            window.location.href = "http://localhost:8000/training";
         } else {
             alert('Wrong password.');
         }
@@ -561,9 +618,9 @@ function showReservations(reservData) {
     reservData.forEach((reservation, index) => {
         const newRow = document.createElement('tr');
 
+        //<td>${reservation.service.name}</td>
         newRow.innerHTML = `
             <td>${reservation.dogInfo.name}</td>
-            <td>${reservation.service.name}</td>
             <td>${reservation.price}$</td>
             <td>${new Date(reservation.reserveTime).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</td>
             <td>${new Date(reservation.reserveTime).toLocaleDateString()}</td>
@@ -584,7 +641,7 @@ function showReservations(reservData) {
     });
 }
 
-fetch('http://localhost:8080/api/reserve/all?sortBy=date&asc=true&type=null&search=',{
+fetch('http://localhost:8080/api/reserve/all?sortBy=date&asc=true&type=training&search=',{
     headers: {
         'Authorization': token,
         'Content-type': 'application/json'
@@ -594,6 +651,35 @@ fetch('http://localhost:8080/api/reserve/all?sortBy=date&asc=true&type=null&sear
         reservData = res;
         showReservations(reservData);
     });
+
+let sortBySelect = document.getElementById('sortBySelect');
+
+sortBySelect.addEventListener('change', function() {
+    let selectedValue = this.value;
+
+    fetch(`http://localhost:8080/api/reserve/all?sortBy=${selectedValue}&asc=true&type=training&search=`, {
+        headers: {
+            'Authorization': token,
+            'Content-type': 'application/json'
+        }
+    })
+        .then(res => res.json())
+        .then(res => {
+            reservData = res;
+            clearTable();
+            showReservations(reservData);
+        });
+});
+
+function clearTable() {
+    const tableBody = document.getElementById('reservTableBody');
+    while (tableBody.firstChild) {
+        tableBody.removeChild(tableBody.firstChild);
+    }
+}
+
+
+
 
 
 function closeModal(modal_content, modal) {
@@ -606,4 +692,19 @@ function closeModal(modal_content, modal) {
 
 let backgroundColor = 'white';
 let textColor = '#3C3638';
+
+const newReservButton = document.getElementById('newReserv');
+
+newReservButton.addEventListener('click', () => {
+    window.location.href = "http://localhost:8000/reservation";
+});
+
 /*інше*/
+document.getElementById('menuIcon').addEventListener('click', function() {
+    document.getElementById('sidebarMenu').style.width = '60%'; // Adjust width as needed
+});
+
+document.getElementById('closeBtn').addEventListener('click', function() {
+    document.getElementById('sidebarMenu').style.width = '0';
+});
+

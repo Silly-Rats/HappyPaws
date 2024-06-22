@@ -17,7 +17,7 @@ app.get('/signup', (req, res) => {
 });
 
 app.get('/account/user', (req, res) => {
-    res.sendFile(__dirname + '/public/account/user/account.html');
+    res.sendFile(__dirname + '/public/account/user/user_account.html');
 });
 
 app.get('/reservation', (req, res) => {
@@ -32,6 +32,10 @@ app.get('/shop/items/:category', (req, res) => {
     res.sendFile(__dirname + '/public/shop/items/index.html');
 });
 
+app.get('/training', (req, res) => {
+    res.sendFile(__dirname + '/public/training/trainings.html');
+});
+
 app.listen(port, () => {
     console.log('Server started on origin http://localhost:' + port);
     console.log('Available URLs:');
@@ -40,5 +44,6 @@ app.listen(port, () => {
     console.log('http://localhost:' + port + '/signup');
     console.log('http://localhost:' + port + '/account/user');
     console.log('http://localhost:' + port + '/reservation');
+    console.log('http://localhost:' + port + '/training');
     console.log('http://localhost:' + port + '/shop/category');
 })

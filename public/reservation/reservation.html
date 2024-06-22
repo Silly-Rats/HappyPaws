@@ -17,21 +17,32 @@
         <div class="header">
             <img src="images/dogsheader.png">
             <div class="header_line">
-                <img src="https://img.icons8.com/material-outlined/192/3C3638/menu--v1.png" alt="menu--v1"/>
-                <div class="logo">
+                <img src="https://img.icons8.com/material-outlined/192/3C3638/menu--v1.png" alt="menu" id="menuIcon">                <div id="sidebarMenu" class="sidebar">
+                <a href="javascript:void(0)" class="closebtn" id="closeBtn">&times;</a>
+                <a href="http://localhost:8000/reservation">Reservation</a>
+                <a href="http://localhost:8000/training#trainers-info">Trainers</a>
+                <a href="http://localhost:8000/training#price">Price</a>
+                <a href="http://localhost:8000/training#footer_link">Contacts & location</a>
+            </div>
+                <div class="logo" onclick="window.location = 'http://localhost:8000/training';">
                     <img src="images/logo.png" alt="Happy Paws Logo">
                     <div>Happy<br>Paws</div>
                 </div>
                 <div class="nav">
-                    <div class="nav-item">Home</div>
-                    <div class="nav-item">Trainers</div>
-                    <div class="nav-item">Price</div>
-                    <div class="nav-item user">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#3c3638" d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>
+                    <div class="nav-item" onclick="window.location='http://localhost:8000/training#trainers-info'">Trainers</div>
+                    <div class="nav-item" onclick="window.location='http://localhost:8000/training#price'">Price</div>
+                    <div class="nav-item user" onclick="window.location='http://localhost:8000/account/user';" style="cursor:pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="#3c3638" d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>
+                    </div>
+                    <div class ="nav-item login_img" onclick="window.location='http://localhost:8000/login';" style="cursor:pointer">
+                        <img src="images/login.png">
                     </div>
                 </div>
-                <div class="user">
+                <div class="user" onclick="window.location='http://localhost:8000/account/user';">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#3c3638" d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>
+                </div>
+                <div class ="login_img" onclick="window.location='http://localhost:8000/login';" style="cursor:pointer">
+                    <img src="images/login.png">
                 </div>
             </div>
         </div>
@@ -105,7 +116,6 @@
             </div>
             <div class="calendar-container">
                 <div class="calendar-body" id="calendarBody">
-
                 </div>
             </div>
 
@@ -116,16 +126,17 @@
 
                 <button class="button1" type="submit"><div class="h2">Ok</div></button>
 
-            </div>
-
-
-
+            <div class="choose">
+                <select name="type" id="time">
+                    <option value="">Choose time</option>
+                </select>
             <div class="list-container list-container2">
 
             </div>
 
+            </div>
 
-            <button class="button2">Confirm</button>
+            <button class="button2 confirmButton" id="confirmButton2"><div class="h">Confirm</div></button>
         </div>
 
 
