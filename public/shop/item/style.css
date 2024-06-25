@@ -1,12 +1,8 @@
-/* VARIABLES */
-:root {
-    --main-bg-color: #f6bc42;
-    --secondary-bg-color: #f5ded2;
-    --main-text-color: #402918;
-    --secondary-text-color: #de9a2c;
+/* GENERAL */
+main {
+    background-image: url("images/paws.png");
 }
 
-/* GENERAL */
 p {
     font-family: "Exo 2", sans-serif;
 }

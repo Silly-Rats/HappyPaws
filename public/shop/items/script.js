@@ -1,6 +1,6 @@
 'use strict';
 
-const pathName =window.location.pathname.split('/');
+const pathName = window.location.pathname.split('/');
 const category = pathName[pathName.length - 1];
 
 //SIDENAV FUNCTIONS
@@ -33,8 +33,8 @@ const getResource = async (url) => {
     return await res.json();
 };
 
-const limit = 9;
-let start = 0;
+const size = 9;
+let page = 1;
 
 async function fetchProducts() {
     class Product {
@@ -46,20 +46,38 @@ async function fetchProducts() {
         }
     }
 
-    let url = `http://localhost:8080/api/item/${category}/items?start=${start}&limit=${limit}`;
-    start += limit;
+    let url = `http://localhost:8080/api/item/${category}/items?page=${page}&size=${size}`;
 
     try {
-        const data = await getResource(url);
+        let data;
+        await fetch(url, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                asc: sortBy.value === 'item_id' ? !ascValue : ascValue,
+                sortBy: sortBy.value,
+                from: fromPrice.value,
+                to: toPrice.value,
+                namePart: search.value,
+                attributes: Object.fromEntries(map)
+            })
+        }).then(res => res.json())
+            .then(res => data = res);
+        console.log(data);
+
+        page++;
         data.items.forEach(({id, name, description, price}) => {
             let product = new Product(id, name, description, price);
             productsPanel.appendChild(renderProduct(product));
         });
 
-        if (!data.hasMore) {
+        if (
+            !data.hasMore
+        ) {
             seeMore.style.display = 'none';
         }
-    } catch (error) {
+    } catch
+        (error) {
         console.error('Error: ', error);
     }
 }
@@ -89,8 +107,6 @@ function renderProduct(classObj) {
     let h3 = document.createElement('h3');
     h3.innerHTML = classObj.name;
     productDesc.appendChild(h3);
-    let h2 = document.createElement('h2');
-    h2.innerHTML = '12$';
     let price = document.createElement('h2');
     price.innerHTML = `${classObj.price}$`;
     price.classList.add('productPrice');
@@ -140,7 +156,6 @@ async function getCatName() {
     try {
         catName = await getResource(`http://localhost:8080/api/category/${category}/info`);
         document.querySelector('#categoryName').innerHTML = catName.name;
-
     } catch (error) {
         console.error('Error: ', error);
     }
@@ -210,24 +225,11 @@ let ascValue = true;
 
 function filter() {
     seeMore.style.display = 'flex';
-    start = 0;
+    page = 1;
     while (productsPanel.firstChild) {
         productsPanel.removeChild(productsPanel.firstChild);
     }
-
-    let filters = Object.fromEntries(map);
-    fetch(`http://localhost:8080/api/item/filters`, {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({
-            asc: ascValue,
-            sortBy: sortBy.value,
-            from: fromPrice.value,
-            to: toPrice.value,
-            namePart: search.value,
-            attributes: Object.fromEntries(map)
-        })
-    }).then(r => fetchProducts());
+    fetchProducts();
 }
 
 filter();
