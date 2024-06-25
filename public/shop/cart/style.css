@@ -4,14 +4,6 @@
     padding: 0;
 }
 
-/* VARIABLES */
-:root {
-    --main-bg-color: #f6bc42;
-    --secondary-bg-color: #f5ded2;
-    --main-text-color: #402918;
-    --secondary-text-color: #de9a2c;
-}
-
 /* GENERAL */
 h3, h1 {
     color: var(--main-text-color);
@@ -19,10 +11,9 @@ h3, h1 {
     margin-bottom: 1vh;
 }
 
-/* main {
-    display: flex;
-    justify-content: space-between;
-} */
+main {
+    background-image: url("images/paws.png");
+}
 
 p {
     font-family: "Public Sans", sans-serif;

@@ -3,7 +3,7 @@
 const navAndLogo = document.querySelector('.imgLogo');
 
 navAndLogo.addEventListener('click', () => {
-    window.location.href = `http://localhost:8000/shop/category`;
+    window.location.href = `http://localhost:8000/main`;
 });
 
 const cart = document.querySelector('#cart');
@@ -11,7 +11,7 @@ const cartWrapper = document.querySelector('#cartWrapper');
 const cartNum = document.querySelector('#cartNum');
 const account = document.querySelector('#account');
 
-let cartItems = new Map(
+const cartItems = new Map(
     JSON.parse(localStorage.getItem('cartItems')));
 
 account.addEventListener('click', () =>
@@ -19,9 +19,9 @@ account.addEventListener('click', () =>
         headers: {'Authorization': localStorage.getItem('token')}
     }).then(res => {
         if (res.status === 200) {
-            window.location.href = `http://localhost:8000/shop/account`;
+            window.location.href = `http://localhost:8000/account/user`;
         } else {
-            window.location.href = `http://localhost:8000/shop/login`;
+            window.location.href = `http://localhost:8000/login`;
         }
     }));
 
@@ -74,6 +74,9 @@ function dropDownHeadMenu(element, list) {
                 list.style.display = 'none';
             }
         }, 300);
+    });
+    element.addEventListener('click', () => {
+        window.location.href = `http://localhost:8000/shop/category`;
     });
 
     list.addEventListener('mouseover', (e) => {

@@ -1,17 +1,10 @@
-/* VARIABLES */
-:root {
-    --main-bg-color: #f6bc42;
-    --secondary-bg-color: #f5ded2;
-    --main-text-color: #402918;
-    --secondary-text-color: #de9a2c;
-}
-
 .categories {
     padding: 13vh 3vw 5vh 3vw;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    background-image: url("images/paws.png");
 }
 
 .category {

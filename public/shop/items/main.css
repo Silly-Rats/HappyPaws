@@ -6,11 +6,12 @@
 
 /* VARIABLES */
 :root {
-    --main-bg-color: #f6bc42;
-    --secondary-bg-color: #f5ded2;
-    --main-text-color: #402918;
-    --secondary-text-color: #de9a2c;
+    --main-bg-color: #C5C5C5;
+    --secondary-bg-color: #808080;
+    --main-text-color: #3C3638;
+    --secondary-text-color: #846554;
 }
+
 
 h3, h1 {
     color: var(--main-text-color);
