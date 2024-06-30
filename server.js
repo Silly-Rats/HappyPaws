@@ -4,6 +4,10 @@ const port = 8000;
 
 app.use(express.static('public'));
 
+app.get('/', (req, res) => {
+    res.redirect(`http://localhost:${port}/main`);
+})
+
 app.get('/main', (req, res) => {
     res.sendFile(__dirname + '/public/main/main.html');
 });
@@ -50,6 +54,4 @@ app.get('/shop/orders', (req, res) => {
 
 app.listen(port, () => {
     console.log('Server started on origin http://localhost:' + port);
-    console.log('Starting page:');
-    console.log('http://localhost:' + port + '/main');
 })

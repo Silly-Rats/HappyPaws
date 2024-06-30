@@ -117,10 +117,8 @@ function findMissingDates(obj1, obj2) {
 }
 
 const dateRangeObject = createDateRangeObject(startDate, endDate);
-console.log(dateRangeObject)
 
 let missingDates = [];
-console.log(missingDates)
 
 
 let defaultOption = document.createElement('option');
@@ -159,7 +157,6 @@ fetch('http://localhost:8080/api/user/worker/trainer')
                         return response.json();
                     })
                     .then(freeHours => {
-                        console.log(freeHours)
                         globalFreeHours = freeHours;
                         missingDates = findMissingDates(dateRangeObject, freeHours);
 
@@ -225,7 +222,6 @@ function generateCalendar() {
         }
 
         const currentDateStr = `${currentYear}-${(currentMonth + 1).toString().padStart(2, '0')}-${i.toString().padStart(2, '0')}`;
-        console.log(currentDateStr)
         if (missingDates.includes(currentDateStr)) {
 
             day.classList.add('busy_day');
@@ -387,7 +383,6 @@ document.querySelector('.button1').addEventListener('click', () => {
 
     if (subscriptionType === 'single') {
         if (existingRows.length > 0) {
-            console.log(selectedDay)
             selectedDay.classList.remove('day_choose');
 
 
@@ -612,8 +607,6 @@ function populateDogInfo(selectedDog) {
         }
     }
     userId = selectedDog.id;
-    // Log the selected dog's ID to the console
-    console.log('Selected dog ID:', selectedDog.id);
 
     // Update checkboxes for sizes
     const sizeInputs = document.querySelectorAll('input[name="size"]');
@@ -626,63 +619,6 @@ let userId;
 
 fetchAndPopulateUserData();
 fetchAndPopulateDogs();
-
-
-confirmButton.addEventListener('click', function(event) {
-    event.preventDefault();
-
-    // Check if listContainer is empty
-    if (listTable.querySelectorAll('tr').length === 0) {
-        alert('Please select at least one training date before confirming.');
-        return; // Prevent form submission if listContainer is empty
-    }
-
-    const fullName = document.getElementById('name').value;
-    const emailInput = document.getElementById('email').value;
-    const phoneInput = document.getElementById('phone').value;
-    const dogNameInput = document.getElementById('dog-name').value;
-    const breedInput = document.getElementById('dog_breed').value;
-
-    const dogNameSelect = document.getElementById('dog-name-select').value;
-    const subscriptionTypeElement = document.getElementById('type');
-    const subscriptionTypeValue = subscriptionTypeElement.value;
-    const needPass = (subscriptionTypeValue === 'monthly');
-
-    const trainerId = document.getElementById('Trainer').value; // Assuming this is how you get the trainer ID
-
-    const nameParts = fullName.split(' ');
-    const firstName = nameParts[0];
-    const lastName = nameParts.slice(1).join(' ');
-
-    const formDataAuthorization = {
-        firstName: firstName,
-        lastName: lastName,
-        email: emailInput,
-        phone: phoneInput,
-        dogId: userId,
-        dogName: dogNameSelect,
-        breed: breedInput,
-        trainerId: parseInt(trainerId), // Convert trainerId to integer if necessary
-        passId: null, // Assuming you'll retrieve this value elsewhere
-        needPass: needPass,
-        times: [],
-        price: 10
-    };
-
-    processTableRows(listTable, formDataAuthorization);
-
-    fetch('http://localhost:8080/api/reserve/training', {
-        method: 'POST',
-        headers: {
-            'Authorization': token,
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formDataAuthorization)
-    })
-        .then(r => {
-            console.log('Reservation successful');
-            // Reload the page after successful reservation
-            location.reload(); // or window.location.reload();
 
 
 for (let i = 0; i < confirmButton.length; i++){
@@ -738,7 +674,6 @@ for (let i = 0; i < confirmButton.length; i++){
             body: JSON.stringify(formDataAuthorization)
         })
             .then(r => {
-                console.log(formDataAuthorization);
                 // Reload the page after successful reservation
                 location.reload(); // or window.location.reload();
 

@@ -1,9 +1,10 @@
-body{
+body {
     margin: 0;
     font-family: "Work Sans", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
 }
+
 .first {
     align-items: center;
     justify-content: space-between;
@@ -13,6 +14,7 @@ body{
     padding-bottom: 4vh;
     box-sizing: border-box;
 }
+
 .first::after {
     content: "";
     position: absolute;
@@ -25,15 +27,18 @@ body{
     opacity: 0.8;
     z-index: -1;
 }
-.header{
+
+.header {
     width: 100%;
 }
-.header>img{
+
+.header > img {
     position: absolute;
     z-index: 1;
     margin: 0.3% 0 0 14vw;
     width: 18%;
 }
+
 .header_line {
     display: flex;
     align-items: center;
@@ -43,24 +48,29 @@ body{
     justify-content: space-between;
     top: 4.3vw;
 }
-.header_line>img{
+
+.header_line > img {
     color: #231f20;
     display: none;
 }
-.header_line>.user, .header_line>.login_img{
+
+.header_line > .user, .header_line > .login_img {
     display: none;
 }
-.flex-row{
+
+.flex-row {
     display: flex;
     align-items: center;
     flex-direction: row;
 }
-.flex_column{
+
+.flex_column {
     display: flex;
     align-items: center;
     flex-direction: column;
 }
-.logo{
+
+.logo {
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -68,49 +78,84 @@ body{
     cursor: pointer;
 
 }
-.logo>div{
+
+.logo > div {
     font-size: 1.7vw;
     line-height: 1.3vw;
     font-weight: 600;
     color: #231F20;
 }
-.logo>img {
+
+.logo > img {
     width: 5vw;
     background-size: cover;
 }
-.nav{
+
+.nav {
     display: flex;
     align-items: center;
     flex-direction: row;
-    width: 50vw;
+    width: 40vw;
     justify-content: space-evenly;
 }
+
 .nav-item {
     font-size: 1.6vw;
     font-weight: 450;
     cursor: pointer;
 
 }
-.user{
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown_content {
+    display: none;
+    position: absolute;
+    z-index: 1;
+}
+
+.dropdown_options {
+    margin-top: 3vh;
+    padding: 1vh 1vw;
+    border-radius: 2vw;
+}
+
+.dropdown:hover .dropdown_content {
+    display: block;
+}
+
+.dropdown:hover .dropdown_options {
+    background-color: #C5C5C5;
+}
+
+.user {
     padding: 0 0 0 2vw;
 }
-.nav-item>img{
+
+.nav-item > img {
     width: 2.2vw;
 }
-.nav-item>svg{
+
+.nav-item > svg {
     width: 2.2vw;
 }
-.reservation-form{
+
+.reservation-form {
     margin: 8vh 0 0vh 0;
 }
-.p{
+
+.p {
     margin: 1vw;
     font-size: 2.5vw;
     font-weight: 700;
     letter-spacing: 0.4vw;
     color: #3C3638;
 }
-.form1{
+
+.form1 {
     align-items: center;
     justify-content: space-around;
     width: 35vw;
@@ -120,10 +165,12 @@ body{
     padding: 2vw 0;
     box-sizing: border-box;
 }
-input::placeholder{
+
+input::placeholder {
     color: rgba(128, 128, 128, 0.9);
 }
-.form1>input, select, .form2>div {
+
+.form1 > input, select, .form2 > div {
     width: 85%;
     height: auto;
     border-radius: 5px;
@@ -133,6 +180,7 @@ input::placeholder{
     box-sizing: border-box;
     color: rgba(128, 128, 128, 0.9);
 }
+
 .sizeButtons {
     display: flex;
     flex-direction: row;
@@ -140,7 +188,8 @@ input::placeholder{
     justify-content: space-around;
     width: 85%;
 }
-.sizeButtons>label{
+
+.sizeButtons > label {
     width: 15%;
     display: flex;
     align-items: center;
@@ -149,6 +198,7 @@ input::placeholder{
     font-weight: 400;
     color: #ffffff;
 }
+
 .sizeButtons input[type="checkbox"] {
     appearance: none; /* Скасування вбудованого вигляду */
     -webkit-appearance: none; /* Для Safari/Chrome */
@@ -180,10 +230,12 @@ input::placeholder{
     display: inline-block; /* Показати галочку при виборі */
     color: #808080; /* Сірий колір для галочки при виборі */
 }
-.sidebar{
+
+.sidebar {
     display: none;
 }
-.reservation{
+
+.reservation {
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -191,23 +243,27 @@ input::placeholder{
     background-color: #808080;
     justify-content: space-between;
 }
-.left-panel{
+
+.left-panel {
     width: 50%;
     padding-left: 5vw;
     box-sizing: border-box;
 }
-.left-panel>h2{
+
+.left-panel > h2 {
     color: white;
     font-size: 2.8vw;
     font-weight: 500;
     margin: 1vw;
 }
-.form2{
+
+.form2 {
     width: 90%;
     align-items: flex-start;
     height: auto;
 }
-.form2>select, .form2>div{
+
+.form2 > select, .form2 > div {
     width: 100%;
     font-size: 1.4vw;
     padding: 1.7vh;
@@ -223,6 +279,7 @@ input::placeholder{
     max-height: 16vw;
     overflow-y: auto;
 }
+
 .list-container-small {
     background-color: #fff;
     min-height: 4vw;
@@ -251,33 +308,38 @@ button:hover {
     color: #808080;
     border-color: #808080;
 }
-.button2{
+
+.button2 {
     display: none;
 }
 
-.right-panel{
+.right-panel {
     justify-content: center;
     align-items: center;
     width: 50%;
 }
-.choose{
+
+.choose {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     width: 90%;
 }
-.choose>select{
+
+.choose > select {
     width: 85%;
     font-size: 1.4vw;
     padding: 1.5vh;
-    margin: 2vw 0 0 0 ;
+    margin: 2vw 0 0 0;
 }
-.choose>button{
+
+.choose > button {
     text-align: center;
     font-size: 1.5vw;
     padding: 0.5vw 1.5vw;
 }
+
 .list-table {
     border-collapse: collapse;
     width: 100%;
@@ -312,29 +374,17 @@ button:hover {
     width: 20%; /* Hour column */
 }
 
-.context-menu {
-    display: none;
-    position: absolute;
-    background-color: white;
-    border: 1px solid #ccc;
-    padding: 8px;
-    z-index: 100;
-}
-
-.row-options {
-    display: none; /* Hidden by default */
-    cursor: pointer;
-}
-
 .calendar-container {
     width: 90%;
 }
-.calendar-header{
+
+.calendar-header {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 1.5vw 0;
 }
+
 .month {
     display: flex;
     justify-content: center;
@@ -343,7 +393,7 @@ button:hover {
     color: white;
 }
 
-.arrow{
+.arrow {
     font-size: 2.5vw;
     color: #3C3638;
     cursor: pointer;
@@ -366,7 +416,7 @@ button:hover {
     grid-template-columns: repeat(6, 1fr);
 }
 
-.name_day{
+.name_day {
     display: flex;
     justify-content: center;
     font-size: 1.5vw;
@@ -385,12 +435,14 @@ button:hover {
     color: #808080;
     transition: 0.9s;
 }
+
 .day_choose {
     border: 3px solid #ffffff;
     background-color: #808080;
     color: white;
     transition: 0.9s;
 }
+
 .busy_day {
     background-color: rgba(255, 255, 255, 0.7);
     position: relative;
@@ -410,67 +462,77 @@ button:hover {
     transition: transform 0.3s ease-in-out;
     box-sizing: border-box;
 }
-.sunday{
+
+.sunday {
     display: none;
 }
+
 .today {
     font-weight: bold;
 }
+
 .disabled {
     background-color: rgba(255, 255, 255, 0.5);
     pointer-events: none;
 }
 
 
-@media (max-width: 576px){
-    .first{
+@media (max-width: 576px) {
+    .first {
         justify-content: normal;
 
     }
-    .header>img{
+
+    .header > img {
         visibility: hidden;
     }
 
-    .header_line{
-
+    .header_line {
         top: 0;
         padding: 0 3vw;
         align-items: center;
     }
-    .header_line>img{
+
+    .header_line > img {
         display: block;
         width: 10vw;
     }
 
-    .logo{
+    .logo {
         padding: 0.5vh 0 0.5vh 0;
     }
-    .logo>div{
+
+    .logo > div {
         font-size: 8.3vw;
         line-height: 6vw;
     }
-    .logo>img {
+
+    .logo > img {
         width: 24vw;
     }
-    .nav{
+
+    .nav {
         display: none;
     }
-    .header_line>.user{
+
+    .header_line > .user {
         width: 11vw;
         display: block;
     }
-    .reservation-form{
+
+    .reservation-form {
         display: flex;
         width: 100%;
         margin: 10vh 0;
         padding: 0;
     }
-    .p{
+
+    .p {
         margin: 5vw;
         font-size: 10vw;
     }
 
-    .form1{
+    .form1 {
         width: 90%;
         height: 50vh;
         background-color: rgba(128, 128, 128, 0.8);
@@ -479,11 +541,11 @@ button:hover {
 
     }
 
-    input::placeholder{
+    input::placeholder {
         color: rgba(128, 128, 128, 0.9);
     }
 
-    .form1>input, select, .list-container {
+    .form1 > input, select, .list-container {
         width: 92%;
         height: auto;
         border-radius: 3px;
@@ -493,50 +555,19 @@ button:hover {
         box-sizing: border-box;
         color: rgba(128, 128, 128, 0.9);
     }
-    .sizeButtons>label{
+
+    .sizeButtons > label {
         width: 25%;
         font-size: 2.6vh;
     }
+
     .sizeButtons input[type="checkbox"]::before {
         width: 4vw; /* Ширина зображення */
         height: 4vw; /* Висота зображення */
         background-image: url('images/check.png'); /* URL зображення галочки */
     }
-    .sidebar {
-        display: block;
-        height: 100%;
-        width: 0;
-        position: fixed;
-        z-index: 1;
-        top: 0;
-        left: 0;
-        background-color: #3b3a3a;
-        overflow-x: hidden;
-        transition: 0.5s;
-        padding-top: 60px;
-    }
 
-    .sidebar a {
-        padding: 3vw 2vw 2vw 8vw;
-        text-decoration: none;
-        font-size: 6vw;
-        color: #f1f1f1;
-        display: block;
-        transition: 0.3s;
-    }
-
-    .sidebar a:hover {
-        color: #f1f1f1;
-    }
-
-    .sidebar .closebtn {
-        position: absolute;
-        top: 0;;
-        font-size: 10vw;
-        padding: 0;
-        margin-left: 50vw;
-    }
-    .reservation{
+    .reservation {
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -544,11 +575,11 @@ button:hover {
         height: auto;
     }
 
-    .form2>button{
+    .form2 > button {
         display: none;
     }
 
-    .left-panel{
+    .left-panel {
         width: 100%;
         padding-left: 0;
         display: flex;
@@ -557,16 +588,16 @@ button:hover {
         flex-direction: column;
     }
 
-    .left-panel>h2{
+    .left-panel > h2 {
         font-size: 5vh;
         margin: 2vh;
     }
 
-    .form2{
+    .form2 {
         width: 90%;
     }
 
-    .form2>select, .list-container{
+    .form2 > select, .list-container {
         width: 100%;
         font-size: 2.5vh;
         padding: 1vh;
@@ -575,13 +606,14 @@ button:hover {
         margin: 1.6%;
     }
 
-    .list-container{
+    .list-container {
         display: block;
         max-height: 10vh;
         min-height: 5vh;
         width: 95%;
         overflow-x: hidden;
     }
+
     .list-table {
         font-size: 2.3vh;
     }
@@ -608,25 +640,27 @@ button:hover {
         letter-spacing: 0.6vw;
     }
 
-    .right-panel{
+    .right-panel {
         justify-content: center;
         align-items: center;
         width: 95%;
     }
 
-    .right-panel>select{
+    .right-panel > select {
         width: 95%;
         font-size: 2.5vh;
         padding: 0.5vh;
-        margin: 5vw 0 0 0 ;
+        margin: 5vw 0 0 0;
     }
 
     .calendar-container {
         width: 100%;
     }
-    .calendar-header{
+
+    .calendar-header {
         padding: 2.5vh 0 1.5vw 0;
     }
+
     .month {
         display: flex;
         justify-content: center;
@@ -649,11 +683,12 @@ button:hover {
         border-radius: 5px;
     }
 
-    .name_day{
+    .name_day {
         font-size: 2.5vh;
         font-weight: 300;
         color: white;
     }
+
     .sidebar {
         display: block;
         height: 100%;
@@ -688,16 +723,19 @@ button:hover {
         padding: 0;
         margin-left: 50vw;
     }
+
     .day {
         height: 11vw;
         font-size: 2.3vh;
         padding: 1vw;
         border: 0.55vw solid #808080;
     }
+
     .day_choose {
         border: 3px solid #ffffff;
         background-color: #808080;
     }
+
     .busy_day {
         background-color: rgba(190, 189, 189, 0.7);
     }
@@ -707,79 +745,90 @@ button:hover {
 
     }
 
-    .choose{
+    .choose {
         width: 100%;
         align-items: center;
         justify-content: center;
         margin: 2vh 0;
     }
-    .choose>select{
+
+    .choose > select {
         width: 85%;
         font-size: 2.5vh;
         padding: 0.9vh;
         margin: 0 3vw 0 0;
     }
-    .choose>button{
+
+    .choose > button {
         text-align: center;
-        font-size:  2.5vh;
+        font-size: 2.5vh;
         border: 1px solid #ffffff;
         padding: 0.9vh 1.3vh;
         box-sizing: border-box;
         margin: 0;
     }
-    .button2{
+
+    .button2 {
         display: block;
     }
 
 }
 
-@media (min-width: 577px) and (max-width: 991px){
-    .first{
+@media (min-width: 577px) and (max-width: 991px) {
+    .first {
         justify-content: normal;
     }
-    .header>img{
+
+    .header > img {
         visibility: hidden;
     }
 
-    .header_line{
+    .header_line {
         top: 0;
         padding: 0 4vw;
         align-items: center;
     }
-    .header_line>img{
+
+    .header_line > img {
         display: block;
         width: 9vw;
     }
 
-    .logo{
+    .logo {
         padding: 0.4vh 0 0.4vh 0;
     }
-    .logo>div{
+
+    .logo > div {
         font-size: 7.4vw;
         line-height: 6vw;
     }
-    .logo>img {
+
+    .logo > img {
         width: 20vw;
     }
-    .nav{
+
+    .nav {
         display: none;
     }
-    .header_line>.user{
+
+    .header_line > .user {
         width: 9vw;
         display: block;
     }
-    .reservation-form{
+
+    .reservation-form {
         display: flex;
         width: 100%;
         margin: 10vw 0;
         padding: 0;
     }
-    .p{
+
+    .p {
         margin: 5vw;
         font-size: 7vw;
     }
 
-    .form1{
+    .form1 {
         width: 90%;
         height: 50vh;
         background-color: rgba(128, 128, 128, 0.8);
@@ -788,11 +837,11 @@ button:hover {
 
     }
 
-    input::placeholder{
+    input::placeholder {
         color: rgba(128, 128, 128, 0.9);
     }
 
-    .form1>input, select, .list-container {
+    .form1 > input, select, .list-container {
         width: 88%;
         height: auto;
         border-radius: 3px;
@@ -802,11 +851,13 @@ button:hover {
         box-sizing: border-box;
         color: rgba(128, 128, 128, 0.9);
     }
-    .sizeButtons>label{
+
+    .sizeButtons > label {
         width: 25%;
         font-size: 2.6vh;
     }
-    .reservation{
+
+    .reservation {
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -814,11 +865,11 @@ button:hover {
 
     }
 
-    .form2>button{
+    .form2 > button {
         display: none;
     }
 
-    .left-panel{
+    .left-panel {
         width: 100%;
         padding-left: 0;
         display: flex;
@@ -827,16 +878,16 @@ button:hover {
         flex-direction: column;
     }
 
-    .left-panel>h2{
+    .left-panel > h2 {
         font-size: 7vw;
         margin: 2vw;
     }
 
-    .form2{
+    .form2 {
         width: 90%;
     }
 
-    .form2>select, .list-container{
+    .form2 > select, .list-container {
         width: 100%;
         font-size: 3.5vw;
         padding: 1vh;
@@ -845,13 +896,14 @@ button:hover {
         margin: 1.6%;
     }
 
-    .list-container{
+    .list-container {
         display: block;
         min-height: 8vw;
         max-height: 16vw;
         width: 95%;
         overflow-x: hidden;
     }
+
     .list-table {
         font-size: 4vw;
     }
@@ -877,7 +929,8 @@ button:hover {
         margin: 2% 0 0 0;
         letter-spacing: 0.6vw;
     }
-    .right-panel{
+
+    .right-panel {
         justify-content: center;
         align-items: center;
         width: 95%;
@@ -887,9 +940,11 @@ button:hover {
     .calendar-container {
         width: 95%;
     }
-    .calendar-header{
+
+    .calendar-header {
         padding: 3.5vw 0 1.5vw 0;
     }
+
     .month {
         display: flex;
         justify-content: center;
@@ -912,21 +967,24 @@ button:hover {
         border-radius: 5px;
     }
 
-    .name_day{
+    .name_day {
         font-size: 3vw;
         font-weight: 300;
         color: white;
     }
+
     .day {
         height: 9vw;
         font-size: 3vw;
         padding: 1vw;
         border: 3px solid #808080;
     }
+
     .day_choose {
         border: 3px solid #ffffff;
         background-color: #808080;
     }
+
     .busy_day {
         background-color: rgba(190, 189, 189, 0.7);
     }
@@ -937,19 +995,21 @@ button:hover {
 
     }
 
-    .choose{
+    .choose {
         width: 95%;
         align-items: center;
         justify-content: center;
         margin: 2vw 0;
     }
-    .choose>select{
+
+    .choose > select {
         width: 85%;
         font-size: 3.5vw;
         padding: 0.9vh;
         margin: 0 3vw 0 0;
     }
-    .choose>button{
+
+    .choose > button {
         text-align: center;
         font-size: 3.5vw;
         border: 2px solid #ffffff;
@@ -957,7 +1017,8 @@ button:hover {
         box-sizing: border-box;
         margin: 0;
     }
-    .button2{
+
+    .button2 {
         display: block;
     }
 

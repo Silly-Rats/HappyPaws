@@ -4,8 +4,10 @@
     <title>Account</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet">
     <link rel="stylesheet" href="user_account.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 </head>
 
 <body>
@@ -16,21 +18,34 @@
 
             <div id="sidebarMenu" class="sidebar">
                 <a href="javascript:void(0)" class="closebtn" id="closeBtn">&times;</a>
+                <a href="http://localhost:8000">Home</a>
+                <a href="http://localhost:8000/shop/category">Shop</a>
+                <a href="http://localhost:8000/training">Training</a>
                 <a href="http://localhost:8000/reservation">Reservation</a>
-                <a href="http://localhost:8000/training#trainers-info">Trainers</a>
-                <a href="http://localhost:8000/training#price">Price</a>
-                <a href="http://localhost:8000/training#footer_link">Contacts & location</a>
             </div>
-            <div class="flex_row logo" onclick="window.location = 'http://localhost:8000/training';">
+            <div class="flex_row logo" onclick="window.location = 'http://localhost:8000';">
                 <img src="images/logo.png" alt="Happy Paws Logo">
                 <div>Happy<br>Paws</div>
             </div>
             <div class="nav flex_row">
-                <div class="nav-item" onclick="window.location='http://localhost:8000/training#trainers-info'">Trainers</div>
-                <div class="nav-item" onclick="window.location='http://localhost:8000/training#price'">Price</div>
-
+                <div class="nav-item" onclick="window.location='http://localhost:8000'">Home</div>
+                <div class="nav-item" onclick="window.location='http://localhost:8000/shop/category'">Shop</div>
+                <div class="nav-item dropdown">
+                    Services
+                    <i class="fas fa-chevron-down"></i>
+                    <div class="headServices"></div>
+                    <div class="dropdown_content">
+                        <div class="dropdown_options">
+                            <p onclick="window.location='http://localhost:8000/training'">Training</p>
+                            <p onclick="window.location='http://localhost:8000/training'">Daycare</p>
+                            <p onclick="window.location='http://localhost:8000/training'">Grooming</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class ="logout_img" onclick="window.location='http://localhost:8000/training'; localStorage.setItem('token', null);" style="cursor:pointer">
+            <div class="logout_img"
+                 onclick="window.location='http://localhost:8000'; localStorage.setItem('token', null);"
+                 style="cursor:pointer">
                 <img src="images/logout.png" class="logout_icon">
             </div>
         </div>
@@ -44,7 +59,7 @@
 
         <div class="user_box">
             <div>
-                <input type="text" class="name_input" alt="name"readonly>
+                <input type="text" class="name_input" alt="name" readonly>
                 <input type="text" class="name_input" alt="surname" readonly>
             </div>
             <div>
@@ -54,7 +69,7 @@
                 <input type="text" readonly style="border: none;" maxlength="13">
             </div>
             <div>
-                <input type="email"  style="border: none;" readonly>
+                <input type="email" style="border: none;" readonly>
             </div>
             <button id="editUserInfo">Edit</button>
             <button class="delete_button" id="accountDelete">Delete</button>
@@ -92,22 +107,6 @@
                     <option value="dog">Dog</option>
                 </select>
             </p>
-<!--            <p class="filters">Type:-->
-<!--                <select class="filters" id="typeSelect">-->
-<!--                    <option value="all">All</option>-->
-<!--                    <option value="training">Training</option>-->
-<!--                    <option value="grooming">Grooming</option>-->
-<!--                    <option value="hotel">Hotel</option>-->
-<!--                </select>-->
-<!--            </p>-->
-<!--            <p class="filters">Status:-->
-<!--                <select class="filters" id="statusSelect">-->
-<!--                    <option value="all">All</option>-->
-<!--                    <option value="completed">Completed</option>-->
-<!--                    <option value="canceled">Canceled</option>-->
-<!--                    <option value="inProcess">In Process</option>-->
-<!--                </select>-->
-<!--            </p>-->
         </div>
         <div class="reserv_box">
             <div class="reserv_content">
@@ -115,7 +114,6 @@
                     <thead>
                     <tr>
                         <th>Dog</th>
-<!--                        <th class="column1">Type</th>-->
                         <th class="column2">Price</th>
                         <th>Time</th>
                         <th>Date</th>
@@ -127,7 +125,10 @@
                 </table>
             </div>
         </div>
-        <button class="brownButton" id="newReserv">New</button>
+        <div class="ordersButtons">
+            <button class="brownButton" onclick="window.location='http://localhost:8000/shop/orders'" id="shopOrders">Shop Orders</button>
+            <button class="brownButton" id="newReserve">New</button>
+        </div>
     </div>
 </div>
 
@@ -155,7 +156,7 @@
             <option value="other">Other breed</option>
         </select>
         <input type="text" id="otherBreedInput" style="display: none;" placeholder="Enter breed" maxlength="40">
-        <img src="images/undo.png" style="display: none;" id="backToSelect"  onclick="backToSelect()">
+        <img src="images/undo.png" style="display: none;" id="backToSelect" onclick="backToSelect()">
         <div class="sizeButtons flex_row">
             <label>
                 <input type="radio" name="size" value="S"> S
@@ -186,7 +187,7 @@
             <option value="other">Other breed</option>
         </select>
         <input type="text" id="otherBreedInput2" style="display: none;" placeholder="Enter breed" maxlength="40">
-        <img src="images/undo.png" style="display: none;" id="backToSelect2"  onclick="backToSelect2()">
+        <img src="images/undo.png" style="display: none;" id="backToSelect2" onclick="backToSelect2()">
 
         <div class="sizeButtons flex_row">
             <label>
@@ -228,7 +229,7 @@
         <span id="passConfirmClose" class="close">&times;</span>
         <p class="info_title">Are you sure you want to delete your account?</p>
         <p class="small_info">This action cannot be undone.</p>
-        <input type = "password" id="passConfirm" placeholder="Password" maxlength="40">
+        <input type="password" id="passConfirm" placeholder="Password" maxlength="40">
         <img src="images/close.png" alt="Show/Hide Password" id="toggle-password1">
         <button class="delete_button">Cofrim</button>
     </div>
