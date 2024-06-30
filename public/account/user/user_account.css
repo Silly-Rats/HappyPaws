@@ -1,74 +1,87 @@
-body{
+body {
     margin: 0;
     font-family: "Work Sans", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
 }
 
-.header>img{
+.header > img {
     position: absolute;
     z-index: 1;
     margin: 0.3% 0 0 14vw;
     width: 18%;
 }
+
 .header_line {
     position: relative;
     background-color: #C5C5C5;
     justify-content: space-between;
 }
-.header_line>img{
+
+.header_line > img {
     color: #231f20;
     display: none;
 }
-.header_line>.user{
+
+.header_line > .user {
     display: none;
 }
-.flex_row{
+
+.flex_row {
     display: flex;
     align-items: center;
     flex-direction: row;
 }
-.flex_column{
+
+.flex_column {
     display: flex;
     align-items: center;
     flex-direction: column;
 }
-.logo{
+
+.logo {
     padding: 0.2vh 0 0.2vh 4vw;
     cursor: pointer;
 }
-.logo>div{
+
+.logo > div {
     font-size: 1.7vw;
     line-height: 1.3vw;
     font-weight: 600;
     color: #231F20;
 }
-.logo>img {
+
+.logo > img {
     width: 5vw;
     background-size: cover;
 }
-.nav{
+
+.nav {
     width: 40vw;
     justify-content: space-evenly;
     margin-right: -45vw;
 }
+
 .nav-item {
     font-size: 1.6vw;
     font-weight: 450;
     cursor: pointer;
 
 }
-.user{
+
+.user {
     padding: 0 0 0 2vw;
 }
-.nav-item>img{
+
+.nav-item > img {
     width: 2.5vw;
 }
-.nav-item>svg{
+
+.nav-item > svg {
     width: 2.2vw;
 }
 
-input{
+input {
     border: none;
     background: none;
     border-bottom: solid 1px #646464;
@@ -83,11 +96,11 @@ input:focus {
     outline: none;
 }
 
-.user_info{
+.user_info {
     margin: 3vw 0 0 0;
 }
 
-.user_box{
+.user_box {
     position: absolute;
     margin: -12vw 0 0 18vw;
 }
@@ -138,14 +151,14 @@ input:focus {
 }
 
 
-.name_input{
+.name_input {
     font-weight: 400;
     width: 11vw;
     margin-right: 1vw;
     border: none;
 }
 
-button{
+button {
     font-family: "Work Sans", sans-serif;
     font-size: 1.6vw;
     padding: 0.6vw 2.3vw;
@@ -155,21 +168,26 @@ button{
     border-radius: 4px;
     margin: 1.8vw 0.5vw 0 0;
 }
-button:hover{
+
+button:hover {
     background-color: #6c6c6c;
     cursor: pointer;
 }
-.delete_button{
+
+.delete_button {
     color: red;
     background: none;
     padding: 0.4vw 1.8vw;
 }
-.delete_button:hover{
+
+.delete_button:hover {
     background-color: rgba(255, 187, 197, 0.279);
 }
-.dog_info{
+
+.dog_info {
     margin: 7vw 0 0 4vw;
 }
+
 .dog_box {
     width: 40vw;
     height: 11.5vw;
@@ -212,7 +230,7 @@ table th {
 }
 
 
-.info_title{
+.info_title {
     font-weight: 600;
     font-size: 2vw;
     color: #3C3638;
@@ -226,7 +244,7 @@ table th {
     top: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 .modal-content {
@@ -242,6 +260,7 @@ table th {
     animation: slideDown 1s ease;
     z-index: -2;
 }
+
 .modal-content::after {
     content: "";
     position: absolute;
@@ -254,6 +273,7 @@ table th {
     opacity: 0.3;
     z-index: -1;
 }
+
 .close {
     color: #aaa;
     float: right;
@@ -269,16 +289,24 @@ table th {
 }
 
 @keyframes slideDown {
-    from { transform: translateY(-500%); }
-    to { transform: translateY(0); }
+    from {
+        transform: translateY(-500%);
+    }
+    to {
+        transform: translateY(0);
+    }
 }
 
 @keyframes slideUp {
-    from { transform: translateY(0); }
-    to { transform: translateY(500%); }
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(500%);
+    }
 }
 
-.comment-box{
+.comment-box {
     border: 1px solid #6C6C6C;
     background-color: white;
     overflow-y: auto;
@@ -288,20 +316,20 @@ table th {
 }
 
 
-.addDogmodal-content{
+.addDogmodal-content {
     background-image: none;
     width: 30vw;
     height: 30vw;
 }
 
-.addDogmodal-content > input{
+.addDogmodal-content > input {
     font-size: 1.5vw;
     width: 28vw;
     margin-bottom: 1vw;
 }
 
 #dog_breed,
-#dog_breed2{
+#dog_breed2 {
     font-size: 1.5vw;
     border: none;
     color: #6C6C6C;
@@ -318,10 +346,12 @@ table th {
     background-position: right center;
     background-color: rgba(60, 60, 60, 0);
 }
+
 #dog_breed:focus,
-#dog_breed2:focus{
+#dog_breed2:focus {
     outline: none;
 }
+
 .addDogmodal-content > textarea {
     font-size: 1.5vw;
     border-bottom: 1px solid #6C6C6C;
@@ -337,25 +367,48 @@ table th {
     outline: none;
 }
 
-
-.brownButton{
+.brownButton {
     background-color: #846554;
     border-radius: 8px;
     width: 28vw;
 }
 
-.brownButton:hover{
+.brownButton:hover {
     background-color: #594439;
 }
 
 #dogDOB::-webkit-calendar-picker-indicator,
 #dogDOB2::-webkit-calendar-picker-indicator,
-#editDOB::-webkit-calendar-picker-indicator{
+#editDOB::-webkit-calendar-picker-indicator {
     display: none;
 }
 
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
 
-.filters{
+.dropdown_content {
+    display: none;
+    position: absolute;
+    z-index: 1;
+}
+
+.dropdown_options {
+    margin-top: 3vh;
+    padding: 1vh 1vw;
+    border-radius: 2vw;
+}
+
+.dropdown:hover .dropdown_content {
+    display: block;
+}
+
+.dropdown:hover .dropdown_options {
+    background-color: #C5C5C5;
+}
+
+.filters {
     font-family: "Work Sans", sans-serif;
     font-size: 1.4vw;
     margin-top: -1.5vw;
@@ -364,7 +417,8 @@ table th {
     background: none;
     outline: none;
 }
-.filters_box{
+
+.filters_box {
     display: flex;
     align-items: center;
 }
@@ -386,12 +440,12 @@ table th {
 }
 
 
-.reserv_info{
+.reserv_info {
     position: absolute;
     margin: -41.6vw 0 0 48vw;
 }
 
-.reserv_box{
+.reserv_box {
     width: 50vw;
     height: 28.8vw;
     overflow: hidden;
@@ -399,7 +453,7 @@ table th {
     border-radius: 10px;
 }
 
-.reserv_content{
+.reserv_content {
     font-size: 1.6vw;
 
     height: 28.3vw;
@@ -414,7 +468,8 @@ table th {
     margin: 0.5vw 0;
     width: 85%;
 }
-.sizeButtons>label{
+
+.sizeButtons > label {
     width: 15%;
     display: flex;
     align-items: center;
@@ -423,6 +478,7 @@ table th {
     font-weight: 400;
     color: #646464;
 }
+
 .sizeButtons input[type="radio"] {
     appearance: none; /* Скасування вбудованого вигляду */
     -webkit-appearance: none; /* Для Safari/Chrome */
@@ -458,13 +514,13 @@ table th {
 }
 
 
-#editUserContent{
+#editUserContent {
     background-image: none;
     width: 50vw;
 }
 
 #toggle-password,
-#toggle-password1{
+#toggle-password1 {
     width: 2.5vw;
     margin-left: -3.8vw;
     margin-top: 1vh;
@@ -472,13 +528,14 @@ table th {
     opacity: 60%;
 }
 
-#backToSelect{
+#backToSelect {
     position: absolute;
     margin: -3vw 0 0 27vw;
     width: 1.5vw;
     opacity: 0.6;
 }
-.icon{
+
+.icon {
 
     width: 2.5vw;
     margin-left: -3.8vw;
@@ -488,54 +545,71 @@ table th {
 }
 
 #oldPassword,
-#passConfirm{
+#passConfirm {
     width: 20.5vw;
     padding-right: 3.5vw;
 }
 
-#passConfirmContent{
+#passConfirmContent {
     background-image: none;
     width: 26.5vw;
 }
 
-#passConfirmContent>button{
+#passConfirmContent > button {
     margin-left: 7.5vw;
 }
-.small_info{
+
+.small_info {
     font-size: 1.4vw;
 }
 
-#newReserv{
-    margin-left: 37vw;
-    width: 13vw;
+.ordersButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
 }
-#backToSelect2{
+
+#newReserve, #shopOrders {
+    width: 15vw;
+}
+
+#backToSelect2 {
     position: absolute;
     margin: -3vw 0 0 27vw;
     width: 1.5vw;
     opacity: 0.6;
 }
-.column1{
+
+.column1 {
     width: 10vw;
 }
-.column2{
+
+.column2 {
     width: 6vw;
 }
-.column3{
+
+.column3 {
     width: 2vw;
 }
-.column4{
+
+.column4 {
     width: 10vw;
 }
-.logout_icon{
-    width: 3vw;
+
+.logout_icon {
+    width: 2vw;
     margin-right: 2vw;
 }
 
-.sidebar{
+.sidebar {
     display: none;
 }
-@media (max-width: 991px){
+
+@media (max-width: 991px) {
+    .logout_icon {
+        width: 6vw;
+    }
+
     .sidebar {
         display: block;
         height: 100%;
@@ -571,59 +645,62 @@ table th {
         margin-left: 50vw;
     }
 
-    .first{
+    .first {
         justify-content: normal;
 
     }
-    .header>img{
+
+    .header > img {
         visibility: hidden;
     }
 
-    .header_line{
+    .header_line {
         top: 0;
         padding: 0 3vw;
         align-items: center;
     }
-    .header_line>img{
+
+    .header_line > img {
         display: block;
         width: 10vw;
     }
 
-    .logo{
+    .logo {
         padding: 0.5vh 0 0.5vh 0;
     }
-    .logo>div{
+
+    .logo > div {
         font-size: 8.3vw;
         line-height: 6vw;
     }
-    .logo>img {
+
+    .logo > img {
         width: 24vw;
     }
-    .nav{
+
+    .nav {
         display: none;
     }
-    .logout_icon{
-        width: 11vw;
-    }
 
 
-    input{
+    input {
         font-size: 6vw;
         width: 45vw;
     }
 
-    .name_input{
+    .name_input {
         width: 24vw;
     }
+
     input:focus {
         outline: none;
     }
 
-    .user_info{
+    .user_info {
         margin: 3vw 0 0 0;
     }
 
-    .user_box{
+    .user_box {
         position: absolute;
         margin: -36vw 0 0 44vw;
     }
@@ -642,16 +719,18 @@ table th {
         height: 12vw;
     }
 
-    button{
+    button {
         font-size: 6vw;
         padding: 2vw 5vw;
         border-radius: 10px;
         margin: 1.8vw 0.5vw 0 0;
     }
-    .delete_button{
+
+    .delete_button {
         padding: 1.5vw 5vw;
     }
-    .dog_info{
+
+    .dog_info {
         margin: 20vw 0 0 9vw;
     }
 
@@ -667,19 +746,24 @@ table th {
         overflow: auto;
         max-height: 29.5vw;
     }
-    .column1{
+
+    .column1 {
         width: 20vw;
     }
-    .column2{
+
+    .column2 {
         width: 12vw;
     }
-    .column3{
+
+    .column3 {
         width: 4vw;
     }
-    .column4{
+
+    .column4 {
         width: 28vw;
     }
-    .info_title{
+
+    .info_title {
         font-size: 7.5vw;
         margin-bottom: 2vw;
         text-align: center;
@@ -698,18 +782,18 @@ table th {
         font-size: 10vw;
     }
 
-    .comment-box{
+    .comment-box {
         border-radius: 10px;
         width: 83vw;
         height: 20vw;
     }
 
-    .addDogmodal-content{
+    .addDogmodal-content {
         width: 80vw;
         height: 90vw;
     }
 
-    .addDogmodal-content > input{
+    .addDogmodal-content > input {
         border-bottom: 2px solid #6C6C6C;
         font-size: 6vw;
         width: 73vw;
@@ -718,7 +802,7 @@ table th {
     }
 
     #dog_breed,
-    #dog_breed2{
+    #dog_breed2 {
         border-bottom: 2px solid #6C6C6C;
         font-size: 6vw;
         width: 73vw;
@@ -736,7 +820,7 @@ table th {
         border-radius: 8px;
     }
 
-    .brownButton{
+    .brownButton {
         background-color: #846554;
         border-radius: 14px;
         margin-left: 2vw;
@@ -747,7 +831,7 @@ table th {
         padding: 2vw 0.5vw;
     }
 
-    .filters{
+    .filters {
         font-size: 5vw;
         margin: -0.5vw 2vw 1vw 8vw;
     }
@@ -757,12 +841,12 @@ table th {
         padding-right: 2vw;
     }
 
-    .reserv_info{
+    .reserv_info {
         position: relative;
         margin: 0;
     }
 
-    .reserv_box{
+    .reserv_box {
         width: 85vw;
         height: 55vw;
         border: 2px solid #808080;
@@ -770,7 +854,7 @@ table th {
         margin-left: 8vw;
     }
 
-    .reserv_content{
+    .reserv_content {
         font-size: 4.5vw;
         height: 54vw;
     }
@@ -783,13 +867,15 @@ table th {
         margin: 2vw 5vw;
         width: 85%;
     }
-    .sizeButtons>label{
+
+    .sizeButtons > label {
         width: 20%;
         display: flex;
         align-items: center;
         justify-content: space-evenly;
         font-size: 6vw;
     }
+
     .sizeButtons input[type="radio"] {
         width: 8vw;
         height: 8vw;
@@ -802,29 +888,29 @@ table th {
         height: 10vw;
     }
 
-    #editUserContent{
+    #editUserContent {
         background-image: none;
         width: 70vw;
         height: 85vw;
     }
 
-    #box_input>#oldPassword{
+    #box_input > #oldPassword {
         width: 57.5vw;
         padding-right: 6vw;
     }
 
-    #box_input>input{
+    #box_input > input {
         width: 63vw;
         margin-left: 2vw;
     }
 
-    #editUserContent>button{
+    #editUserContent > button {
         margin-left: 2vw;
         margin-top: 2vw;
     }
 
     #toggle-password,
-    #toggle-password1{
+    #toggle-password1 {
         width: 6vw;
         margin-left: -8vw;
         margin-top: 1vh;
@@ -832,7 +918,7 @@ table th {
         opacity: 60%;
     }
 
-    .icon{
+    .icon {
 
         width: 2.5vw;
         margin-left: -3.8vw;
@@ -842,40 +928,45 @@ table th {
     }
 
 
-    #passConfirmContent{
+    #passConfirmContent {
         width: 70vw;
         height: 73vw;
     }
 
-    #passConfirmContent>#passConfirm{
+    #passConfirmContent > #passConfirm {
         width: 57.5vw;
         padding-right: 6vw;
         margin-left: 1.5vw;
     }
-    #passConfirmContent>button{
+
+    #passConfirmContent > button {
         margin-left: 18vw;
     }
-    .small_info{
+
+    .small_info {
         font-size: 4vw;
         margin-left: 5.5vw;
     }
 
-    #newReserv{
+    #newReserve {
         margin-left: 58vw;
         width: 35vw;
     }
-    #backToSelect{
+
+    #backToSelect {
         position: absolute;
         margin: -9vw 0 0 70vw;
         width: 6vw;
         opacity: 0.6;
     }
-    #backToSelect2{
+
+    #backToSelect2 {
         position: absolute;
         margin: -9vw 0 0 70vw;
         width: 6vw;
         opacity: 0.6;
     }
+
     table th {
         background-color: #4F4C4D;
         color: white;

@@ -678,10 +678,6 @@ function clearTable() {
     }
 }
 
-
-
-
-
 function closeModal(modal_content, modal) {
     modal_content.style.animation = "slideUp 0.8s ease";
     setTimeout(() => {
@@ -693,7 +689,7 @@ function closeModal(modal_content, modal) {
 let backgroundColor = 'white';
 let textColor = '#3C3638';
 
-const newReservButton = document.getElementById('newReserv');
+const newReservButton = document.getElementById('newReserve');
 
 newReservButton.addEventListener('click', () => {
     window.location.href = "http://localhost:8000/reservation";
@@ -707,4 +703,3 @@ document.getElementById('menuIcon').addEventListener('click', function() {
 document.getElementById('closeBtn').addEventListener('click', function() {
     document.getElementById('sidebarMenu').style.width = '0';
 });
-
