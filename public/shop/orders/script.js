@@ -1,6 +1,9 @@
 const token = localStorage.getItem('token');
+
+const API_URL = 'https://happypawsserver.fly.dev/api';
+
 let type;
-fetch("http://localhost:8080/api/user/type", {
+fetch(`${API_URL}/user/type`, {
     headers: {'Authorization': token}
 }).then(res => res.text())
     .then(res => {
@@ -90,7 +93,7 @@ function main() {
             button.classList.add('cancel');
             button.textContent = 'Cancel order';
             button.addEventListener('click', () => {
-                fetch('http://localhost:8080/api/order/cancel', {
+                fetch(`${API_URL}/order/cancel`, {
                     method: 'PATCH',
                     headers: {
                         'Authorization': token,
@@ -115,7 +118,7 @@ function main() {
                 button = document.createElement('button');
                 button.classList.add('nextStatus');
                 button.addEventListener('click', () => {
-                    fetch('http://localhost:8080/api/order/proceed', {
+                    fetch(`${API_URL}/order/proceed`, {
                         method: 'PATCH',
                         headers: {
                             'Authorization': token,
@@ -145,7 +148,7 @@ function main() {
         dateAndStatus.classList.add('dateAndStatus');
 
         let h2 = document.createElement('h2');
-        let date = new Date(classObj.orderDate).toLocaleDateString('ua-UA');
+        let date = new Date(classObj.orderDate).toeDateString('ua-UA');
         h2.textContent = date;
         dateAndStatus.appendChild(h2);
 
@@ -196,10 +199,10 @@ function main() {
 
         let url;
         if (type === 'shop worker') {
-            url = `http://localhost:8080/api/order/all?orderId=${orderId.value}&` +
+            url = `${API_URL}/order/all?orderId=${orderId.value}&` +
                 `status=${status.value}&sortBy=${sortBy.value}&asc=true`;
         } else {
-            url = `http://localhost:8080/api/order/user?status=${status.value}&sortBy=${sortBy.value}&asc=true`;
+            url = `${API_URL}/order/user?status=${status.value}&sortBy=${sortBy.value}&asc=true`;
         }
 
         fetch(url, {
@@ -231,18 +234,18 @@ dialogClose.forEach(e => e.addEventListener('click', (e) => {
 const navAndLogo = document.querySelector('.imgLogo');
 
 navAndLogo.addEventListener('click', () => {
-    window.location.href = `http://localhost:8000/shop/category`;
+    window.location.pathname = '/shop/category';
 });
 
 const account = document.querySelector('.userAccount');
 
 account.addEventListener('click', () =>
-    fetch('http://localhost:8080/api/user/type', {
+    fetch(`${API_URL}/user/type`, {
         headers: {'Authorization': localStorage.getItem('token')}
     }).then(res => {
         if (res.status === 200) {
-            window.location.href = `http://localhost:8000/shop/account`;
+            window.location.pathname = `/shop/account`;
         } else {
-            window.location.href = `http://localhost:8000/shop/login`;
+            window.location.pathname = `/shop/login`;
         }
     }));

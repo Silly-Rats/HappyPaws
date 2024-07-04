@@ -1,3 +1,5 @@
+const API_URL = 'https://happypawsserver.fly.dev/api';
+
 document.getElementById('menuIcon').addEventListener('click', function() {
     document.getElementById('sidebarMenu').style.width = '60%'; // Adjust width as needed
 });
@@ -10,7 +12,7 @@ let worker_select = document.getElementById('Trainer');
 const dog_breed_select = document.getElementById('dog_breed');
 const sizeCheckboxes = document.querySelectorAll('input[type="checkbox"][name="size"]');
 
-fetch('http://localhost:8080/api/dog/breeds')
+fetch(`${API_URL}/api/dog/breeds`)
     .then((response) => response.json())
     .then((dog_breeds) => {
         // Populate the <select> element with dog breed options
@@ -124,7 +126,7 @@ let missingDates = [];
 let defaultOption = document.createElement('option');
 defaultOption.text = 'Choose trainer';
 
-fetch('http://localhost:8080/api/user/worker/trainer')
+fetch(`${API_URL}/api/user/worker/trainer`)
     .then(response => response.json())
     .then(trainers => {
         trainers.forEach(trainer => {
@@ -149,7 +151,7 @@ fetch('http://localhost:8080/api/user/worker/trainer')
 
             // Виконуємо додаткові дії, якщо немає рядків в listTable
             if (selectedTrainerId) {
-                fetch(`http://localhost:8080/api/reserve/training/free/${selectedTrainerId}?start=${startDate}&end=${endDate}`)
+                fetch(`${API_URL}/reserve/training/free/${selectedTrainerId}?start=${startDate}&end=${endDate}`)
                     .then(response => {
                         if (!response.ok) {
                             throw new Error('Network response was not ok');
@@ -509,7 +511,7 @@ function formatISODate(date) {
 
 const token = localStorage.getItem('token');
 
-fetch('http://localhost:8080/api/user/type', {
+fetch(`${API_URL}/user/type`, {
     headers: {'Authorization': localStorage.getItem('token')}
 }).then(res => {
     if (res.status === 200) {
@@ -526,7 +528,7 @@ fetch('http://localhost:8080/api/user/type', {
 })
 
 function fetchAndPopulateUserData() {
-    fetch('http://localhost:8080/api/user/info', {
+    fetch(`${API_URL}/user/info`, {
         headers: {
             'Authorization': token,
             'Content-type': 'application/json'
@@ -548,7 +550,7 @@ function populateUserData(userData) {
     document.getElementById('phone').value = userData.phoneNum;
 }
 function fetchAndPopulateDogs() {
-    fetch('http://localhost:8080/api/dog/user', {
+    fetch(`${API_URL}/dog/user`, {
         headers: {
             'Authorization': token,
             'Content-type': 'application/json'
@@ -665,7 +667,7 @@ for (let i = 0; i < confirmButton.length; i++){
 
         processTableRows(listTable, formDataAuthorization);
 
-        fetch('http://localhost:8080/api/reserve/training', {
+        fetch(`${API_URL}/reserve/training`, {
             method: 'POST',
             headers: {
                 'Authorization': token,
