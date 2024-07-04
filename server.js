@@ -1,12 +1,14 @@
 const express = require('express');
 const app = express();
-const port = 8000;
+const port = 3000;
+
+const axios = require('axios');
 
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-    res.redirect(`http://localhost:${port}/main`);
-})
+    res.redirect(`https://happypaws.fly.dev/main`);
+});
 
 app.get('/main', (req, res) => {
     res.sendFile(__dirname + '/public/main/main.html');
@@ -52,6 +54,18 @@ app.get('/shop/orders', (req, res) => {
     res.sendFile(__dirname + '/public/shop/orders/orders.html');
 });
 
+app.get('/ping', (req, res) => {
+    res.sendStatus(200);
+});
+
 app.listen(port, () => {
-    console.log('Server started on origin http://localhost:' + port);
-})
+    console.log('Server started on port: ' + port);
+});
+
+setInterval(() => {
+    axios.get('https://happypaws.fly.dev/ping')
+        .then((res) => {
+        })
+        .catch((err) => {
+        });
+}, 60000);

@@ -1,5 +1,7 @@
 'use strict';
 
+const API_URL = 'https://happypawsserver.fly.dev/api';
+
 const pathName = window.location.pathname.split('/');
 let categoryId = '';
 if (pathName[3]) {
@@ -13,7 +15,7 @@ function renderCategory(classObj) {
 
     let img = document.createElement('img');
     img.value = classObj.id;
-    fetch(`http://localhost:8080/api/category/${classObj.id}/img`)
+    fetch(`${API_URL}/category/${classObj.id}/img`)
         .then(res => res.text())
         .then(res => img.src = res);
     category.appendChild(img);
@@ -24,9 +26,9 @@ function renderCategory(classObj) {
 
     categoryName.addEventListener('click', () => {
         if (classObj.subCategories.length > 0) {
-            window.location.href = `http://localhost:8000/shop/category/${classObj.id}`;
+            window.location.pathname = `/shop/category/${classObj.id}`;
         } else {
-            window.location.href = `http://localhost:8000/shop/items/${classObj.id}`;
+            window.location.pathname = `/shop/items/${classObj.id}`;
         }
     })
 
@@ -34,6 +36,6 @@ function renderCategory(classObj) {
     categories.appendChild(category);
 }
 
-fetch(`http://localhost:8080/api/category${categoryId}/info`)
+fetch(`${API_URL}/category${categoryId}/info`)
     .then(res => res.json())
     .then(res => res.subCategories.forEach(renderCategory));

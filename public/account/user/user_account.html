@@ -18,33 +18,33 @@
 
             <div id="sidebarMenu" class="sidebar">
                 <a href="javascript:void(0)" class="closebtn" id="closeBtn">&times;</a>
-                <a href="http://localhost:8000">Home</a>
-                <a href="http://localhost:8000/shop/category">Shop</a>
-                <a href="http://localhost:8000/training">Training</a>
-                <a href="http://localhost:8000/reservation">Reservation</a>
+                <a onclick="window.location.pathname='/'">Home</a>
+                <a onclick="window.location.pathname='/shop/category'">Shop</a>
+                <a onclick="window.location.pathname='/training'">Training</a>
+                <a onclick="window.location.pathname='/reservation'">Reservation</a>
             </div>
-            <div class="flex_row logo" onclick="window.location = 'http://localhost:8000';">
+            <div class="flex_row logo" onclick="window.location.pathname='/'">
                 <img src="images/logo.png" alt="Happy Paws Logo">
                 <div>Happy<br>Paws</div>
             </div>
             <div class="nav flex_row">
-                <div class="nav-item" onclick="window.location='http://localhost:8000'">Home</div>
-                <div class="nav-item" onclick="window.location='http://localhost:8000/shop/category'">Shop</div>
+                <div class="nav-item" onclick="window.location.pathname='/'">Home</div>
+                <div class="nav-item" onclick="window.location.pathname='/shop/category'">Shop</div>
                 <div class="nav-item dropdown">
                     Services
                     <i class="fas fa-chevron-down"></i>
                     <div class="headServices"></div>
                     <div class="dropdown_content">
                         <div class="dropdown_options">
-                            <p onclick="window.location='http://localhost:8000/training'">Training</p>
-                            <p onclick="window.location='http://localhost:8000/training'">Daycare</p>
-                            <p onclick="window.location='http://localhost:8000/training'">Grooming</p>
+                            <p onclick="window.location.pathname='/training'">Training</p>
+                            <p onclick="window.location.pathname='/training'">Daycare</p>
+                            <p onclick="window.location.pathname='/training'">Grooming</p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="logout_img"
-                 onclick="window.location='http://localhost:8000'; localStorage.setItem('token', null);"
+                 onclick="window.location.pathname='/'; localStorage.setItem('token', null);"
                  style="cursor:pointer">
                 <img src="images/logout.png" class="logout_icon">
             </div>
@@ -126,7 +126,7 @@
             </div>
         </div>
         <div class="ordersButtons">
-            <button class="brownButton" onclick="window.location='http://localhost:8000/shop/orders'" id="shopOrders">Shop Orders</button>
+            <button class="brownButton" onclick="window.location.pathname='/shop/orders'" id="shopOrders">Shop Orders</button>
             <button class="brownButton" id="newReserve">New</button>
         </div>
     </div>

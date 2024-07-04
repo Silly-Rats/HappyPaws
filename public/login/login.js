@@ -1,3 +1,4 @@
+const API_URL = 'https://happypawsserver.fly.dev/api';
 
 localStorage.setItem('token', null);
 document.getElementById('toggle-password').addEventListener('click', function() {
@@ -46,7 +47,7 @@ document.getElementById('toggle-password').addEventListener('click', function() 
 let signupButton = document.getElementById('signUp');
 
 signupButton.addEventListener('click', function() {
-    window.location.href = "http://localhost:8000/signup";
+    window.location.pathname = '/signup';
 });
 
 
@@ -66,7 +67,7 @@ function login() {
       password: password
   };
 
-  fetch('http://localhost:8080/api/auth/authenticate', {
+  fetch(`${API_URL}/api/auth/authenticate`, {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify(dataToSend)
@@ -75,7 +76,7 @@ function login() {
   .then(data => {
       console.log('Success ' + data.token);
       localStorage.setItem('token', 'Bearer ' + data.token);
-      window.location.href = "http://localhost:8000/account/user";
+      window.location.pathname = '/account/user';
   })
   .catch((error) => {
       console.error('Error');

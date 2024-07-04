@@ -1,3 +1,5 @@
+const API_URL = 'https://happypawsserver.fly.dev/api';
+
 function currentDiv(n) {
     showDivs(slideIndex = n);
 }
@@ -28,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
     showDivs(1);
 });
 
-fetch('http://localhost:8080/api/user/type', {
+fetch(`${API_URL}/user/type`, {
     headers: {'Authorization': localStorage.getItem('token')}
 }).then(res => {
     if (res.status === 200) {
@@ -44,14 +46,14 @@ fetch('http://localhost:8080/api/user/type', {
     }
 });
 
-document.getElementById('closeBtn').addEventListener('click', function() {
+document.getElementById('closeBtn').addEventListener('click', function () {
     document.getElementById('sidebarMenu').style.width = '0';
 });
 
-document.getElementById('menuIcon').addEventListener('click', function() {
+document.getElementById('menuIcon').addEventListener('click', function () {
     document.getElementById('sidebarMenu').style.width = '60%'; // Adjust width as needed
 });
 
-document.getElementById('closeBtn').addEventListener('click', function() {
+document.getElementById('closeBtn').addEventListener('click', function () {
     document.getElementById('sidebarMenu').style.width = '0';
 });
