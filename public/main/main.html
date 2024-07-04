@@ -10,37 +10,64 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
           rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <title>Happy Paws</title>
 </head>
 <body>
 <div class="content">
     <div class="header">
         <img src="images/dogsheader.png">
-        <div class="header_line flex_row">
-
-            <div class="logo flex_row">
-                <img src="images/logo.png" alt="Happy Paws Logo">
-                <div class="logo-text">Happy<br>Paws</div>
+        <div class="header_line">
+            <img src="https://img.icons8.com/material-outlined/192/3C3638/menu--v1.png" alt="menu" id="menuIcon">
+            <div id="sidebarMenu" class="sidebar">
+                <a href="javascript:void(0)" class="closebtn" id="closeBtn">&times;</a>
+                <a onclick="window.location.pathname='/'">Home</a>
+                <a onclick="window.location.pathname='/shop/category'">Shop</a>
+                <a onclick="window.location.pathname='/training'">Training</a>
+                <a onclick="window.location.pathname='/reservation'">Reservation</a>
             </div>
-            <div class="nav flex_row">
-                <div class="nav-item">Reviews</div>
-                <div class="nav-item">Shop</div>
-                <div class="nav-item">
+            <div class="logo" onclick="window.location.pathname='/'">
+                <img src="images/logo.png" alt="Happy Paws Logo">
+                <div>Happy<br>Paws</div>
+            </div>
+            <div class="nav">
+                <div class="nav-item" onclick="window.location.pathname='/'">Home</div>
+                <div class="nav-item" onclick="window.location.pathname='/shop/category'">Shop</div>
+                <div class="nav-item dropdown">
                     Services
-                    <img src="images/services.png" alt="services">
+                    <i class="fas fa-chevron-down"></i>
+                    <div class="headServices"></div>
+                    <div class="dropdown_content">
+                        <div class="dropdown_options">
+                            <p onclick="window.location.pathname='/training'">Training</p>
+                            <p onclick="window.location.pathname='/training'">Daycare</p>
+                            <p onclick="window.location.pathname='/training'">Grooming</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="nav-item user">
+                <div class="nav-item user" onclick="window.location.pathname='/account/user'"
+                     style="cursor:pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                        <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
                         <path fill="#3c3638"
                               d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>
                     </svg>
                 </div>
+                <div class="nav-item login_img" onclick="window.location.pathname='/login'"
+                     style="cursor:pointer">
+                    <img src="images/login.png">
+                </div>
+            </div>
+            <div class="user" onclick="window.location.pathname='/account/user'">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path fill="#3c3638"
+                          d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>
+                </svg>
+            </div>
+            <div class="login_img" onclick="window.location.pathname='/login';" style="cursor:pointer">
+                <img src="images/login.png">
             </div>
         </div>
-
     </div>
-
 
     <div class="main-content">
         <div class="container">
@@ -59,19 +86,19 @@
         </div>
 
         <div class="menu">
-            <div class="service">
+            <div class="service" onclick="window.location.pathname='/shop/category'">
                 <img src="images/menu1.png" alt="menu1" class="service-image">
                 <div class="service-overlay">Dog Shop</div>
             </div>
-            <div class="service">
+            <div class="service" onclick="window.location.pathname='/training'">
                 <img src="images/menu2.png" alt="menu2" class="service-image">
                 <div class="service-overlay">Dog Daycare</div>
             </div>
-            <div class="service">
+            <div class="service" onclick="window.location.pathname='/training'">
                 <img src="images/menu3.png" alt="menu3" class="service-image">
                 <div class="service-overlay">Dog Training</div>
             </div>
-            <div class="service">
+            <div class="service" onclick="window.location.pathname='/training'">
                 <img src="images/menu4.png" alt="menu4" class="service-image">
                 <div class="service-overlay">Dog Grooming</div>
             </div>

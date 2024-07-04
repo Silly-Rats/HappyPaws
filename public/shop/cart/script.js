@@ -1,5 +1,7 @@
 'use strict';
 
+// const API_URL = 'https://happypawsserver.fly.dev/api';
+
 let token = localStorage.getItem('token');
 
 const firstName = document.querySelector('#firstName');
@@ -12,7 +14,7 @@ const calcTotalPrice = document.querySelector('#calcTotalPrice');
 let cartItemsMap = new Map(JSON.parse(localStorage.getItem('cartItems')));
 const cartProducts = document.querySelector('.cartProducts');
 
-fetch('http://localhost:8080/api/user/info', {
+fetch(`${API_URL}/user/info`, {
     headers: {'Authorization': token}
 }).then(res => res.json())
     .then(data => {
@@ -68,7 +70,7 @@ function renderItem(classObj, qty) {
     let productImg = document.createElement('div');
     productImg.classList.add('productImg');
     let img = document.createElement('img');
-    fetch(`http://localhost:8080/api/item/${classObj.itemInfo.id}/image`)
+    fetch(`${API_URL}/item/${classObj.itemInfo.id}/image`)
         .then(res => res.text())
         .then(data => img.src = data);
     productImg.appendChild(img);
@@ -145,7 +147,7 @@ function renderItem(classObj, qty) {
 async function getItems() {
     let totalPrice = 0;
     for (const item of cartItemsMap) {
-        let itemInfo = await fetch(`http://localhost:8080/api/item/type/${item[0]}/info`)
+        let itemInfo = await fetch(`${API_URL}/item/type/${item[0]}/info`)
             .then(res => res.json());
         totalPrice += renderItem(itemInfo, item[1]);
     }
@@ -163,11 +165,11 @@ const toOrders = document.querySelector('#toOrders');
 const toShop = document.querySelector('#toShop');
 
 toOrders.addEventListener('click', () => {
-    window.location.href = 'http://localhost:8000/shop/orders';
+    window.location.pathname = '/shop/orders';
 })
 
 toShop.addEventListener('click', () => {
-    window.location.href = 'http://localhost:8000/shop/category';
+    window.location.pathname = '/shop/category';
 });
 
 submit.addEventListener('click', () => {
@@ -180,7 +182,7 @@ submit.addEventListener('click', () => {
             });
         }
 
-        fetch('http://localhost:8080/api/order/user', {
+        fetch(`${API_URL}/api/order/user`, {
             method: 'POST',
             headers: {'Authorization': token, 'Content-Type': 'application/json'},
             body: JSON.stringify(request)

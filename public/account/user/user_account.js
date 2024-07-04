@@ -1,14 +1,15 @@
-const token = localStorage.getItem('token');
-/*localStorage.setItem('token', null);*/
+const API_URL = 'https://happypawsserver.fly.dev/api';
 
-fetch('http://localhost:8080/api/user/type', {
+const token = localStorage.getItem('token');
+
+fetch(`${API_URL}/user/type`, {
     headers: {'Authorization': localStorage.getItem('token')}
 }).then(res => {
     if (res.status === 200) {
         console.log('ok');
     } else {
         alert('Session expired! Please log in again.');
-        window.location.href = "http://localhost:8000/login";
+        window.location.pathname = '/login';
     }
 })
 
@@ -19,6 +20,7 @@ const modal = document.getElementById('myModal');
 const dogDetails = document.getElementById('dogDetails');
 const closeBtn = document.querySelector('.close');
 const modalContent = document.querySelector(".modal-content");
+
 function showDogs(dogData) {
     dogData.forEach((dog, index) => {
         const newRow = document.createElement('tr');
@@ -48,8 +50,8 @@ function showDogs(dogData) {
     });
 }
 
-function loadDog(){
-    fetch('http://localhost:8080/api/dog/user',{
+function loadDog() {
+    fetch(`${API_URL}/dog/user`, {
         headers: {
             'Authorization': token,
             'Content-type': 'application/json'
@@ -60,6 +62,7 @@ function loadDog(){
             showDogs(res);
         });
 }
+
 loadDog();
 
 const saveDogBtn2 = document.getElementById('saveDogBtn2');
@@ -127,7 +130,7 @@ saveDogBtn.addEventListener('click', () => {
 
 
 function uploadDog(id, name, dob, size, breed, breedName, comment) {
-    fetch('http://localhost:8080/api/dog/user', {
+    fetch(`${API_URL}/dog/user`, {
         method: 'POST',
         headers: {
             'Authorization': token,
@@ -146,8 +149,8 @@ function uploadDog(id, name, dob, size, breed, breedName, comment) {
 }
 
 function fillEditDogForm(id, name, dob, size, breed, comment) {
-    document.getElementById('otherBreedInput2').value ='';
-    document.getElementById('dogID2').value= id;
+    document.getElementById('otherBreedInput2').value = '';
+    document.getElementById('dogID2').value = id;
     document.getElementById('dogName2').value = name;
     document.getElementById('dogDOB2').value = dob;
     document.querySelector('input[name="size2"][value="' + size + '"]').checked = true;
@@ -176,7 +179,9 @@ function openEditDogModal(id, name, dob, size, breed, comment) {
     editDogModal.style.display = "block";
     editDogContent.style.animation = "slideDown 0.8s ease";
 }
+
 let dogID;
+
 function openModal(id, name, dob, weight, breed, comment) {
     editDogTitle.textContent = `Edit Dog: ${name}`;
     const commentBox = `
@@ -284,7 +289,7 @@ document.getElementById('dogDOB2').addEventListener('blur', function () {
 
 function deleteDog(id) {
     console.log("ID:", id);
-    fetch(`http://localhost:8080/api/dog/user/${id}`, {
+    fetch(`${API_URL}/dog/user/${id}`, {
         method: 'DELETE',
         headers: {
             'Authorization': token
@@ -314,10 +319,9 @@ function confirmDeleteAll() {
 }
 
 
-
 let dog_breed_select = document.getElementById('dog_breed');
 let dog_breed_select2 = document.getElementById('dog_breed2');
-fetch('http://localhost:8080/api/dog/breeds')
+fetch(`${API_URL}/dog/breeds`)
     .then((response) => response.json()
         .then((dog_breeds) => {
             for (const dog_breed of dog_breeds) {
@@ -369,7 +373,7 @@ function backToSelect() {
     const backToSelectButton = document.getElementById('backToSelect');
 
     selectElement.style.display = 'block';
-    selectElement.value=''
+    selectElement.value = ''
     otherBreedInput.style.display = 'none';
     backToSelectButton.style.display = 'none';
 }
@@ -380,11 +384,10 @@ function backToSelect2() {
     const backToSelectButton = document.getElementById('backToSelect2');
 
     selectElement.style.display = 'block';
-    selectElement.value=''
+    selectElement.value = ''
     otherBreedInput.style.display = 'none';
     backToSelectButton.style.display = 'none';
 }
-
 
 
 /*все по юзеру*/
@@ -395,7 +398,7 @@ const phoneInput = document.querySelector('input[type="text"][maxlength="13"]');
 const emailInput = document.querySelector('input[type="email"]');
 
 function loadUser() {
-    fetch('http://localhost:8080/api/user/info',{
+    fetch(`${API_URL}/user/info`, {
         headers: {
             'Authorization': token,
             'Content-type': 'application/json'
@@ -406,6 +409,7 @@ function loadUser() {
             showUser(res);
         });
 }
+
 loadUser();
 const saveEditButton = document.getElementById('saveEditBtn');
 
@@ -422,7 +426,7 @@ async function saveUserInfo() {
             return;
         }
     }
-    fetch('http://localhost:8080/api/user', {
+    fetch(`${API_URL}/user`, {
         method: 'PATCH',
         headers: {'Authorization': token, 'Content-Type': 'application/json'},
         body: JSON.stringify({
@@ -438,7 +442,7 @@ async function saveUserInfo() {
             alert('Changes saved.');
             editUserCloseBtn.onclick();
             location.reload();
-        } else{
+        } else {
             alert('Incorrect Data.');
         }
     }).catch(error => {
@@ -446,7 +450,7 @@ async function saveUserInfo() {
     });
 }
 
-function showUser (userData){
+function showUser(userData) {
     nameInputs[0].value = userData.firstName;
     nameInputs[1].value = userData.lastName;
     dateInput.value = userData.dob;
@@ -463,7 +467,7 @@ const file = document.getElementById('imageUpload');
 const fileReader = new FileReader();
 
 function loadImage() {
-    fetch('http://localhost:8080/api/user/image', {
+    fetch(`${API_URL}/user/image`, {
         headers: {'Authorization': token}
     }).then(res => res.text())
         .then(data => {
@@ -483,7 +487,7 @@ image.addEventListener('click', () => {
 });
 
 fileReader.addEventListener('loadend', (e) => {
-    fetch('http://localhost:8080/api/user/image', {
+    fetch(`${API_URL}/user/image`, {
         method: 'PATCH',
         headers: {'Authorization': token},
         body: e.target.result
@@ -497,7 +501,7 @@ file.addEventListener('change', (e) => {
 
 const deleteButton = document.getElementById('accountDelete');
 
-deleteButton.addEventListener('click', function() {
+deleteButton.addEventListener('click', function () {
     const passConfirmModal = document.getElementById('passConfirmModal');
     passConfirmModal.style.display = 'block';
     passConfirmContent.style.animation = "slideDown 0.8s ease";
@@ -507,7 +511,7 @@ const passConfirmClose = document.getElementById('passConfirmClose');
 const passConfirmModal = document.getElementById('passConfirmModal');
 const passConfirmContent = document.getElementById('passConfirmContent');
 
-passConfirmClose.addEventListener('click', function() {
+passConfirmClose.addEventListener('click', function () {
     passConfirmContent.style.animation = "slideUp 0.8s ease";
     setTimeout(() => {
         passConfirmModal.style.display = 'none';
@@ -520,7 +524,7 @@ passConfirmClose.addEventListener('click', function() {
 
 const deleteAccountButton = document.querySelector('#passConfirmModal button');
 
-deleteAccountButton.addEventListener('click', function() {
+deleteAccountButton.addEventListener('click', function () {
     const passConfirm = document.getElementById('passConfirm').value;
 
     if (passConfirm.trim() === '') {
@@ -531,7 +535,7 @@ deleteAccountButton.addEventListener('click', function() {
 });
 
 function deleteAccount(passConfirm) {
-    fetch(`http://localhost:8080/api/user?pass=${passConfirm}`, {
+    fetch(`${API_URL}/user?pass=${passConfirm}`, {
         method: 'DELETE',
         headers: {
             'Authorization': token
@@ -540,7 +544,7 @@ function deleteAccount(passConfirm) {
         if (response.ok) {
             alert('Account Deleted.');
             localStorage.setItem('token', null);
-            window.location.href = "http://localhost:8000/training";
+            window.location.pathname = '/training';
         } else {
             alert('Wrong password.');
         }
@@ -564,7 +568,7 @@ editUserCloseBtn.onclick = () => {
 
     document.getElementById('newPassword').value = '';
     document.getElementById('oldPassword').value = '';
-    showUser (userData);
+    showUser(userData);
     setTimeout(() => {
         editUserModal.style.display = "none";
     }, 500);
@@ -613,6 +617,7 @@ document.getElementById('toggle-password1').addEventListener('click', function (
 /*все по резерваціях*/
 let reservData;
 const tableBodyReserv = document.getElementById('reservTableBody');
+
 function showReservations(reservData) {
 
     reservData.forEach((reservation, index) => {
@@ -622,7 +627,7 @@ function showReservations(reservData) {
         newRow.innerHTML = `
             <td>${reservation.dogInfo.name}</td>
             <td>${reservation.price}$</td>
-            <td>${new Date(reservation.reserveTime).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</td>
+            <td>${new Date(reservation.reserveTime).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'})}</td>
             <td>${new Date(reservation.reserveTime).toLocaleDateString()}</td>
             <td>
                 <span class="options-icon" style="cursor: pointer;">&#8942;</span>
@@ -641,7 +646,7 @@ function showReservations(reservData) {
     });
 }
 
-fetch('http://localhost:8080/api/reserve/all?sortBy=date&asc=true&type=training&search=',{
+fetch(`${API_URL}/reserve/all?sortBy=date&asc=true&type=training&search=`, {
     headers: {
         'Authorization': token,
         'Content-type': 'application/json'
@@ -654,10 +659,10 @@ fetch('http://localhost:8080/api/reserve/all?sortBy=date&asc=true&type=training&
 
 let sortBySelect = document.getElementById('sortBySelect');
 
-sortBySelect.addEventListener('change', function() {
+sortBySelect.addEventListener('change', function () {
     let selectedValue = this.value;
 
-    fetch(`http://localhost:8080/api/reserve/all?sortBy=${selectedValue}&asc=true&type=training&search=`, {
+    fetch(`${API_URL}/api/reserve/all?sortBy=${selectedValue}&asc=true&type=training&search=`, {
         headers: {
             'Authorization': token,
             'Content-type': 'application/json'
@@ -678,10 +683,6 @@ function clearTable() {
     }
 }
 
-
-
-
-
 function closeModal(modal_content, modal) {
     modal_content.style.animation = "slideUp 0.8s ease";
     setTimeout(() => {
@@ -693,18 +694,17 @@ function closeModal(modal_content, modal) {
 let backgroundColor = 'white';
 let textColor = '#3C3638';
 
-const newReservButton = document.getElementById('newReserv');
+const newReservButton = document.getElementById('newReserve');
 
 newReservButton.addEventListener('click', () => {
-    window.location.href = "http://localhost:8000/reservation";
+    window.location.pathname = '/reservation';
 });
 
 /*інше*/
-document.getElementById('menuIcon').addEventListener('click', function() {
+document.getElementById('menuIcon').addEventListener('click', function () {
     document.getElementById('sidebarMenu').style.width = '60%'; // Adjust width as needed
 });
 
-document.getElementById('closeBtn').addEventListener('click', function() {
+document.getElementById('closeBtn').addEventListener('click', function () {
     document.getElementById('sidebarMenu').style.width = '0';
 });
-

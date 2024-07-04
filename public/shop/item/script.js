@@ -1,5 +1,7 @@
 'use strict';
 
+// const API_URL = 'https://happypawsserver.fly.dev/api';
+
 let infoBody = document.querySelector('.productDesc');
 let imgBody = document.querySelector('.productImg');
 let alertBtn = document.querySelector('.cartAlert');
@@ -24,7 +26,7 @@ const getResource = async (url) => {
 };
 
 async function fetchProductDesc() {
-    let url = `http://localhost:8080/api/item/${id}/info`;
+    let url = `${API_URL}/item/${id}/info`;
 
     try {
         const data = await getResource(url);
@@ -171,16 +173,16 @@ xmark.addEventListener('click', () => {
 });
 
 toShop.addEventListener('click', () => {
-    window.location.href = 'http://localhost:8000/shop/category';
+    window.location.pathname = '/shop/category';
 });
 
 toCart.addEventListener('click', () => {
-    window.location.href = 'http://localhost:8000/shop/cart';
+    window.location.pathname = '/shop/cart';
 });
 
 async function fetchPhotos() {
 
-    let url = `http://localhost:8080/api/item/${id}/images`;
+    let url = `${API_URL}/item/${id}/images`;
 
     try {
         const data = await getResource(url);

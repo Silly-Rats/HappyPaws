@@ -1,4 +1,6 @@
-fetch('http://localhost:8080/api/user/type', {
+const API_URL = 'https://happypawsserver.fly.dev/api';
+
+fetch(`${API_URL}/user/type`, {
     headers: {'Authorization': localStorage.getItem('token')}
 }).then(res => {
     if (res.status === 200) {

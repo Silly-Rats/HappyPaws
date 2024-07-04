@@ -1,5 +1,7 @@
 'use strict';
 
+// const API_URL = 'https://happypawsserver.fly.dev/api';
+
 const pathName = window.location.pathname.split('/');
 const category = pathName[pathName.length - 1];
 
@@ -46,7 +48,7 @@ async function fetchProducts() {
         }
     }
 
-    let url = `http://localhost:8080/api/item/${category}/items?page=${page}&size=${size}`;
+    let url = `${API_URL}/item/${category}/items?page=${page}&size=${size}`;
 
     try {
         let data;
@@ -97,7 +99,7 @@ function renderProduct(classObj) {
     div.appendChild(productImg);
 
     let img = document.createElement('img');
-    fetch(`http://localhost:8080/api/item/${classObj.id}/image`)
+    fetch(`${API_URL}/item/${classObj.id}/image`)
         .then(r => r.text())
         .then(r => img.src = r);
     div.appendChild(img);
@@ -114,7 +116,7 @@ function renderProduct(classObj) {
     let h4 = document.createElement('h4');
     h4.innerHTML = 'Learn More';
     h4.addEventListener('click', () => {
-        window.location.href = `http://localhost:8000/shop/item/${classObj.id}`;
+        window.location.pathname = `/shop/item/${classObj.id}`;
     });
     productDesc.appendChild(h4);
     div.appendChild(productDesc);
@@ -137,7 +139,7 @@ async function fetchFilters() {
     }
 
     try {
-        const data = await getResource(`http://localhost:8080/api/category/${category}/attr`);
+        const data = await getResource(`${API_URL}/category/${category}/attr`);
         data.forEach(({id, name, values}) => {
             let filterItem = new Filter(id, name, values);
             filtersList.push(filterItem);
@@ -154,7 +156,7 @@ fetchFilters();
 async function getCatName() {
     let catName;
     try {
-        catName = await getResource(`http://localhost:8080/api/category/${category}/info`);
+        catName = await getResource(`${API_URL}/category/${category}/info`);
         document.querySelector('#categoryName').innerHTML = catName.name;
     } catch (error) {
         console.error('Error: ', error);
