@@ -68,4 +68,9 @@ setInterval(() => {
         })
         .catch((err) => {
         });
+    axios.get('https://happypawsserver.fly.dev/ping')
+        .then((res) => {
+        })
+        .catch((err) => {
+        });
 }, 60000);
