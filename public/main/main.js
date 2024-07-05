@@ -1,4 +1,4 @@
-const API_URL = 'https://happypawsserver.fly.dev/api';
+const API_URL = 'https://happypawsserver.onrender.com/api';
 
 function currentDiv(n) {
     showDivs(slideIndex = n);

@@ -63,7 +63,12 @@ app.listen(port, () => {
 });
 
 setInterval(() => {
-    axios.get('https://happypaws.fly.dev/')
+    axios.get('https://happypawsserver.onrender.com/api/ping')
+        .then((res) => {
+        })
+        .catch((err) => {
+        });
+    axios.get('https://happypaws-87hv.onrender.com/ping')
         .then((res) => {
         })
         .catch((err) => {

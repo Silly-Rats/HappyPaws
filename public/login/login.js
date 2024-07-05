@@ -1,4 +1,4 @@
-const API_URL = 'https://happypawsserver.fly.dev/api';
+const API_URL = 'https://happypawsserver.onrender.com/api';
 
 localStorage.setItem('token', null);
 document.getElementById('toggle-password').addEventListener('click', function() {
@@ -67,7 +67,7 @@ function login() {
       password: password
   };
 
-  fetch(`${API_URL}/api/auth/authenticate`, {
+  fetch(`${API_URL}/auth/authenticate`, {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify(dataToSend)

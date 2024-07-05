@@ -1,4 +1,4 @@
-const API_URL = 'https://happypawsserver.fly.dev/api';
+const API_URL = 'https://happypawsserver.onrender.com/api';
 
 const token = localStorage.getItem('token');
 
@@ -662,7 +662,7 @@ let sortBySelect = document.getElementById('sortBySelect');
 sortBySelect.addEventListener('change', function () {
     let selectedValue = this.value;
 
-    fetch(`${API_URL}/api/reserve/all?sortBy=${selectedValue}&asc=true&type=training&search=`, {
+    fetch(`${API_URL}/reserve/all?sortBy=${selectedValue}&asc=true&type=training&search=`, {
         headers: {
             'Authorization': token,
             'Content-type': 'application/json'
