@@ -1,4 +1,4 @@
-const API_URL = 'https://happypawsserver.fly.dev/api';
+const API_URL = 'https://happypawsserver.onrender.com/api';
 
 document.getElementById('menuIcon').addEventListener('click', function() {
     document.getElementById('sidebarMenu').style.width = '60%'; // Adjust width as needed
@@ -12,7 +12,7 @@ let worker_select = document.getElementById('Trainer');
 const dog_breed_select = document.getElementById('dog_breed');
 const sizeCheckboxes = document.querySelectorAll('input[type="checkbox"][name="size"]');
 
-fetch(`${API_URL}/api/dog/breeds`)
+fetch(`${API_URL}/dog/breeds`)
     .then((response) => response.json())
     .then((dog_breeds) => {
         // Populate the <select> element with dog breed options
@@ -126,7 +126,7 @@ let missingDates = [];
 let defaultOption = document.createElement('option');
 defaultOption.text = 'Choose trainer';
 
-fetch(`${API_URL}/api/user/worker/trainer`)
+fetch(`${API_URL}/user/worker/trainer`)
     .then(response => response.json())
     .then(trainers => {
         trainers.forEach(trainer => {

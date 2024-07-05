@@ -1,6 +1,6 @@
 'use strict';
 
-// const API_URL = 'https://happypawsserver.fly.dev/api';
+// const API_URL = 'https://happypawsserver.onrender.com/api';
 
 let token = localStorage.getItem('token');
 
@@ -182,7 +182,7 @@ submit.addEventListener('click', () => {
             });
         }
 
-        fetch(`${API_URL}/api/order/user`, {
+        fetch(`${API_URL}/order/user`, {
             method: 'POST',
             headers: {'Authorization': token, 'Content-Type': 'application/json'},
             body: JSON.stringify(request)

@@ -48,7 +48,7 @@ async function fetchProducts() {
         }
     }
 
-    let url = `${API_URL}/item/${category}/items?page=${page}&size=${size}`;
+    let url = `${API_URL}/item/${category}/items`;
 
     try {
         let data;
@@ -56,6 +56,8 @@ async function fetchProducts() {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
+                page: page,
+                size: size,
                 asc: sortBy.value === 'item_id' ? !ascValue : ascValue,
                 sortBy: sortBy.value,
                 from: fromPrice.value,

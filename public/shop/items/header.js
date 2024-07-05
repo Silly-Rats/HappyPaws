@@ -1,6 +1,6 @@
 'use strict';
 
-const API_URL = 'https://happypawsserver.fly.dev/api';
+const API_URL = 'https://happypawsserver.onrender.com/api';
 
 const navAndLogo = document.querySelector('.imgLogo');
 

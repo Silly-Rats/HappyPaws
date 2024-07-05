@@ -1,6 +1,6 @@
 const token = localStorage.getItem('token');
 
-const API_URL = 'https://happypawsserver.fly.dev/api';
+const API_URL = 'https://happypawsserver.onrender.com/api';
 
 let type;
 fetch(`${API_URL}/user/type`, {
@@ -148,7 +148,7 @@ function main() {
         dateAndStatus.classList.add('dateAndStatus');
 
         let h2 = document.createElement('h2');
-        let date = new Date(classObj.orderDate).toeDateString('ua-UA');
+        let date = new Date(classObj.orderDate).toDateString('ua-UA');
         h2.textContent = date;
         dateAndStatus.appendChild(h2);
 
