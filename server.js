@@ -7,7 +7,7 @@ const axios = require('axios');
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-    res.redirect(`https://happypaws.fly.dev/main`);
+    res.redirect(`https://happypaws-87hv.onrender.com/main`);
 });
 
 app.get('/main', (req, res) => {
