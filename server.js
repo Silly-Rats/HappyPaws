@@ -61,16 +61,3 @@ app.get('/ping', (req, res) => {
 app.listen(port, () => {
     console.log('Server started on port: ' + port);
 });
-
-setInterval(() => {
-    axios.get('https://happypawsserver.onrender.com/api/ping')
-        .then((res) => {
-        })
-        .catch((err) => {
-        });
-    axios.get('https://happypaws-87hv.onrender.com/ping')
-        .then((res) => {
-        })
-        .catch((err) => {
-        });
-}, 60000);
